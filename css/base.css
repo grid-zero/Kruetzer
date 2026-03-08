@@ -1,0 +1,264 @@
+@media (max-width: 730px) {
+ 
+  form-row { flex-direction: column; } /* Stack form fields vertically on smaller screens */
+  h1 { font-size: var(--font-large); } /* Reduce h1 font size on smaller screens */
+  body nav > :first-child { margin-left: 0; }
+  body nav > :last-child { margin-right: 0; }
+  body nav > * { margin-left: 0 }
+  body nav {flex-direction: column; align-items: center; gap: var(--gap-small); }
+  body nav nav-logo-main { display: none; } /* Hide main logo on smaller screens to save space */
+ 
+  main figure figcaption { font-size: var(--font-small) } /* Reduce figcaption font size on smaller screens */
+  body main h1 { font-size: 10vw; } /* Reduce h1 font size on smaller screens */
+  body main contact-sub { font-size: 8vw; } /* Reduce h1 font size on smaller screens */
+  testimonials { flex-direction: column; align-items: center; gap: var(--gap-small); } /* Stack testimonials vertically on smaller screens */
+ 
+}
+
+@media (max-width: 1000px) {
+nav {
+  margin-top: var(--gap-small); /* Add top margin to nav to allow logo to fit above */
+}
+  nav nav-logo-main { top: 20%; } /* Move logo up to fit above nav links */
+  main { margin-top: var(--gap-huge); } /* Reduce main content margins on smaller screens */
+  main figure img { max-width: 80%; }
+}
+
+@media (max-width: 1300px) {
+ figure{ /* Stack figure elements vertically on smaller screens */
+    flex-direction: column;
+    align-items: center;
+  }
+  /* Allow images to take more width on smaller screens */
+}
+
+
+button:hover {
+  background-color: transparent;
+  color: var(--text_colour);
+}
+
+nav {
+  top: 0;
+  width: 100%;
+  z-index: 100;
+  display: flex;
+  position: relative;
+  gap: var(--gap-small);
+}
+
+nav > :first-child {
+  margin-left: var(--gap-small);
+}
+nav > :last-child {
+  margin-right: var(--gap-small);
+}
+nav > * {
+  margin-left: var(--gap-small);
+}
+
+nav-logo {
+  height: 7rem;
+  flex: 0 1 auto;
+}
+nav-logo img {
+  height: 100%;
+  max-width: 100%;
+  object-fit: contain;
+}
+
+nav-links {
+  display: flex;
+  align-items: center;
+  list-style: none;
+  gap: inherit;
+  font-size: var(--font-medium);
+}
+
+nav-links li { position: relative; }
+
+nav-logo-main {
+  display: inline-block;
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  margin: 0;
+  transform: translateX(-50%) translateY(-50%);
+  font-family: 'Tangerine', cursive;
+  font-size: var(--font-large);
+  color: var(--text_colour);
+}
+
+
+nav-actions {
+  display: flex;
+  align-items: center;
+  gap: inherit;
+  margin-left: auto;
+}
+
+button {
+  background-color: transparent;
+  color: var(--background_colour);
+  border: 1px solid var(--text_colour);
+  background-color: var(--text_colour);
+  font-size: var(--font-small);
+  border-radius: 10px ;
+  padding: 0.5rem 1rem;
+  cursor: pointer;
+  transition: background-color 0.25s ease;
+}
+
+h1 {
+  display: block;
+  font-weight: var(--font-weight-bold);
+  color: var(--text_colour);
+  margin-top:var(--gap-large-r);
+  text-align: center;
+  font-size: var(--font-xlarge);
+}
+
+h2 {
+  display: block;
+  font-weight: var(--font-weight-bold);
+  color: var(--text_colour);
+  margin-top:var(--gap-large-r);
+  font-size: var(--font-medium);
+}
+
+section {
+  display: block;
+  margin-top: var(--gap-large-r);
+  margin-bottom: var(--gap-large-r);
+}
+
+section > p{
+  font-size: var(--font-medium);
+  color: var(--text_colour);
+  width: 100%;
+}
+
+testimonials {
+  display: flex;
+  gap: var(--gap-medium);
+}
+
+testimonial {
+  display: block;
+  font-weight: var(--font-weight-regular);
+  color: var(--text_colour);
+  font-size: var(--font-small);
+}
+
+testimonial > *{
+  font-size: inherit;
+}
+
+
+figure {
+  display: flex;
+  margin: 0;
+  text-align: left;
+  gap: clamp(0px, calc(-928.57px + 76.43vw), 600px);
+
+}
+
+
+figure img {
+  max-width: 30%;
+  height: auto;
+  border-radius: 10px;
+}
+
+figcaption {
+  margin-top: var(--gap-small);
+  font-size: var(--font-medium);
+  align-content: center;
+}
+
+
+
+/* Contact form */
+
+contact-sub {
+    display: block;
+    text-align: center;
+    font-family: 'Tangerine', cursive;
+    font-size: var(--font-large);
+    color: var(--text_colour);
+    opacity: 0.7;
+    margin-top: 0.25em;
+    margin-bottom: var(--gap-large-r);
+}
+
+/* ── Form layout ── */
+form {
+  display: flex;
+  flex-direction: column;
+  gap: var(--gap-medium-r);
+  max-width: 680px;
+  margin: 0 auto var(--gap-large-r);
+}
+
+/* Row: two fields side by side */
+form-row {
+  display: flex;
+  gap: 1rem;
+}
+
+form-row > label {
+  flex: 1;
+}
+
+/* ── Labels & inputs ── */
+label {
+  display: flex;
+  flex-direction: column;
+  gap: 0.4em;
+  font-size: var(--font-small);
+}
+
+input,
+select,
+textarea {
+  background: transparent;
+  border: none;
+  border-bottom: 1px solid var(--text_colour);
+  color: var(--text_colour);
+  padding: 0.4em 0;
+  font-size: var(--font-small);
+  outline: none;
+  transition: border-color 0.25s ease;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+input:focus,
+select:focus,
+textarea:focus {
+  border-bottom-color: var(--text_colour_light);
+}
+
+/* Remove default select arrow styling conflict */
+select {
+  appearance: none;
+  -webkit-appearance: none;
+  cursor: pointer;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%23f2e8b9' stroke-width='1.5' fill='none' stroke-linecap='round'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 0.5em center;
+  padding-right: 1.8em;
+}
+
+select option {
+  background-color: var(--background_colour);
+  color: var(--text_colour);
+}
+
+textarea {
+  resize: vertical;
+  min-height: 6em;
+}
+
+/* Placeholder colour */
+::placeholder { color: var(--text_colour); opacity: 0.4; }

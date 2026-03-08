@@ -1,0 +1,101 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="description" content="Kreutzer">
+  <title>Kreutzer</title>
+  <link rel="stylesheet" href="css/index.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+  <link
+    href="https://fonts.googleapis.com/css2?family=Overpass:ital,wght@0,100..900;1,100..900&family=Public+Sans:ital,wght@0,100..900;1,100..900&family=Tangerine:wght@400;700&display=swap"
+    rel="stylesheet">
+  <link
+    href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Overpass:ital,wght@0,100..900;1,100..900&family=Public+Sans:ital,wght@0,100..900;1,100..900&family=Tangerine:wght@400;700&display=swap"
+    rel="stylesheet">
+
+</head>
+
+<body>
+  <nav>
+    <nav-logo>
+      <a href="index.html"><img src="assets/Kreutzer-源文件2修改颜色-.svg"></a>
+    </nav-logo>
+
+    <nav-links>
+      <li><a href="about.html">About</a></li>
+      <li><a href="contact.html">Contact</a></li>
+    </nav-links>
+
+    <nav-logo-main>Kreutzer </nav-logo-main>
+
+    <nav-actions>
+      <button>Book a trial lesson</button>
+    </nav-actions>
+  </nav>
+  <main>
+    <h1>Get in Touch</h1>
+    <contact-sub>let's make music together</contact-sub>
+    <form>
+      <form-row>
+        <label>
+          First Name
+          <input type="text" name="first-name" placeholder="Jane" autocomplete="given-name" required />
+        </label>
+        <label>
+          Last Name
+          <input type="text" name="last-name" placeholder="Smith" autocomplete="family-name" required />
+        </label>
+      </form-row>
+
+      <label>
+        Email
+        <input type="email" name="email" placeholder="jane@example.com" autocomplete="email" required />
+      </label>
+
+      <label>
+        Phone <span style="opacity:0.45; font-size:0.8em;">(optional)</span>
+        <input type="tel" name="phone" placeholder="+61 400 000 000" autocomplete="tel" />
+      </label>
+
+      <form-row>
+        <label>
+          Instrument
+          <select name="instrument" required>
+            <option value="" disabled selected>Select…</option>
+            <option>Piano</option>
+            <option>Guitar</option>
+            <option>Violin</option>
+            <option>Voice</option>
+            <option>Drums</option>
+            <option>Other</option>
+          </select>
+        </label>
+        <label>
+          Experience Level
+          <select name="level" required>
+            <option value="" disabled selected>Select…</option>
+            <option>Complete Beginner</option>
+            <option>Some Experience</option>
+            <option>Intermediate</option>
+            <option>Advanced</option>
+          </select>
+        </label>
+      </form-row>
+
+      <label>
+        Message
+        <textarea name="message" placeholder="Tell me a little about your goals…" required></textarea>
+      </label>
+
+      <button type="submit">Send Message</button>
+
+    </form>
+  </main>
+  <script src="index.js" defer></script>
+</body>
+
+</html>

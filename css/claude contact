@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Contact — Music Tuition</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display&family=Tangerine:wght@700&display=swap" rel="stylesheet">
+
+  <style>
+    /* ── Mirrors root.css ── */
+    :root {
+      --font: 'DM Serif Display', serif;
+      --font-small: 1.25em;
+      --font-medium: 2em;
+      --font-large: 4em;
+      --font-xlarge: 5em;
+      --font-weight-regular: 400;
+      --font-weight-bold: 700;
+      --background_colour: #28282B;
+      --text_colour: #f2e8b9;
+      --text_colour_light: #ffffff;
+      --gap-small: 1em;
+      --gap-medium: 5em;
+      --gap-large: 10em;
+      --gap-medium-r: 5rem;
+      --gap-large-r: 10rem;
+    }
+
+    :where(img, svg, video, canvas, audio, iframe, embed, object) { display: block; }
+    :where(input, button, textarea, select),
+    :where(input[type="file"])::-webkit-file-upload-button {
+      font: inherit; font-size: inherit; color: inherit; letter-spacing: inherit;
+    }
+    html { -webkit-text-size-adjust: none; text-size-adjust: none; }
+
+    body {
+      font-family: var(--font);
+      background-color: var(--background_colour);
+      color: var(--text_colour);
+      font-weight: var(--font-weight-regular);
+      margin: 0;
+    }
+
+    main {
+      margin-left: var(--gap-medium);
+      margin-right: var(--gap-medium);
+      margin-top: var(--gap-large-r);
+      font-size: 1vw;
+    }
+
+    /* ── Page heading ── */
+    moto {
+      display: block;
+      font-weight: var(--font-weight-bold);
+      color: var(--text_colour);
+      margin-top: var(--gap-large-r);
+      text-align: center;
+      font-size: var(--font-xlarge);
+    }
+
+    /* ── Decorative sub-heading ── */
+    contact-sub {
+      display: block;
+      text-align: center;
+      font-family: 'Tangerine', cursive;
+      font-size: var(--font-large);
+      color: var(--text_colour);
+      opacity: 0.7;
+      margin-top: 0.25em;
+      margin-bottom: var(--gap-large-r);
+    }
+
+    /* ── Form layout ── */
+    form {
+      display: flex;
+      flex-direction: column;
+      gap: var(--gap-medium-r);
+      max-width: 680px;
+      margin: 0 auto var(--gap-large-r);
+    }
+
+    /* Row: two fields side by side */
+    form-row {
+      display: flex;
+      gap: 1rem;
+    }
+
+    form-row > label {
+      flex: 1;
+    }
+
+    /* ── Labels & inputs ── */
+    label {
+      display: flex;
+      flex-direction: column;
+      gap: 0.4em;
+      font-size: var(--font-small);
+    }
+
+    input,
+    select,
+    textarea {
+      background: transparent;
+      border: none;
+      border-bottom: 1px solid var(--text_colour);
+      color: var(--text_colour);
+      padding: 0.4em 0;
+      font-size: var(--font-small);
+      outline: none;
+      transition: border-color 0.25s ease;
+      width: 100%;
+      box-sizing: border-box;
+    }
+
+    input:focus,
+    select:focus,
+    textarea:focus {
+      border-bottom-color: var(--text_colour_light);
+    }
+
+    /* Remove default select arrow styling conflict */
+    select {
+      appearance: none;
+      -webkit-appearance: none;
+      cursor: pointer;
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%23f2e8b9' stroke-width='1.5' fill='none' stroke-linecap='round'/%3E%3C/svg%3E");
+      background-repeat: no-repeat;
+      background-position: right 0.5em center;
+      padding-right: 1.8em;
+    }
+
+    select option {
+      background-color: var(--background_colour);
+      color: var(--text_colour);
+    }
+
+    textarea {
+      resize: vertical;
+      min-height: 6em;
+    }
+
+    /* Placeholder colour */
+    ::placeholder { color: var(--text_colour); opacity: 0.4; }
+
+    /* ── Submit button — mirrors base.css button ── */
+    button {
+      align-self: flex-start;
+      background-color: var(--text_colour);
+      color: var(--background_colour);
+      border: 1px solid var(--text_colour);
+      border-radius: 10px;
+      padding: 0.5rem 1rem;
+      cursor: pointer;
+      transition: background-color 0.25s ease, color 0.25s ease;
+      font-size: var(--font-small);
+    }
+
+    button:hover {
+      background-color: transparent;
+      color: var(--text_colour);
+    }
+
+    /* ── Responsive ── */
+    @media (max-width: 1000px) {
+      main { margin-left: var(--gap-small); margin-right: var(--gap-small); }
+    }
+
+    @media (max-width: 700px) {
+      form-row { flex-direction: column; }
+      moto { font-size: var(--font-large); }
+    }
+  </style>
+</head>
+<body>
+
+  <main>
+    <moto>Get in Touch</moto>
+    <contact-sub>let's make music together</contact-sub>
+
+    <form>
+
+      <form-row>
+        <label>
+          First Name
+          <input type="text" name="first-name" placeholder="Jane" autocomplete="given-name" required />
+        </label>
+        <label>
+          Last Name
+          <input type="text" name="last-name" placeholder="Smith" autocomplete="family-name" required />
+        </label>
+      </form-row>
+
+      <label>
+        Email
+        <input type="email" name="email" placeholder="jane@example.com" autocomplete="email" required />
+      </label>
+
+      <label>
+        Phone <span style="opacity:0.45; font-size:0.8em;">(optional)</span>
+        <input type="tel" name="phone" placeholder="+61 400 000 000" autocomplete="tel" />
+      </label>
+
+      <form-row>
+        <label>
+          Instrument
+          <select name="instrument" required>
+            <option value="" disabled selected>Select…</option>
+            <option>Piano</option>
+            <option>Guitar</option>
+            <option>Violin</option>
+            <option>Voice</option>
+            <option>Drums</option>
+            <option>Other</option>
+          </select>
+        </label>
+        <label>
+          Experience Level
+          <select name="level" required>
+            <option value="" disabled selected>Select…</option>
+            <option>Complete Beginner</option>
+            <option>Some Experience</option>
+            <option>Intermediate</option>
+            <option>Advanced</option>
+          </select>
+        </label>
+      </form-row>
+
+      <label>
+        Message
+        <textarea name="message" placeholder="Tell me a little about your goals…" required></textarea>
+      </label>
+
+      <button type="submit">Send Message</button>
+
+    </form>
+  </main>
+
+</body>
+</html>
