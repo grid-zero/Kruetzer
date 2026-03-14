@@ -1,12 +1,11 @@
 <!doctype html>
 <html lang="en">
-
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <meta name="description" content="Kreutzer">
     <title>Kreutzer</title>
-    <link rel="stylesheet" href="css/index.css">
+    <link rel="stylesheet" href="new/index.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 
@@ -16,56 +15,206 @@
     <link
       href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Overpass:ital,wght@0,100..900;1,100..900&family=Public+Sans:ital,wght@0,100..900;1,100..900&family=Tangerine:wght@400;700&display=swap"
       rel="stylesheet">
-
   </head>
 
   <body>
-    <nav>
-      <nav-logo>
+    <header>
+      <nav>
         <a href="index.html"><img src="assets/Kreutzer-源文件2修改颜色-.svg"></a>
-      </nav-logo>
 
-      <nav-links>
-        <li><a href="about.html">About</a></li>
-        <li><a href="contact.html">Contact</a></li>
+        <ul role="list">
+          <li><a href="about.html">About</a></li>
+          <li><a href="contact.html">Contact</a></li>
+        </ul>
 
-      </nav-links>
+        <nav-logo-main> Kreutzer </nav-logo-main>
+        <a href="contact.html" class="btn">Book a trial lesson</a>
+      </nav>
+    </header>
 
-      <nav-logo-main> Kreutzer </nav-logo-main>
-
-      <nav-actions>
-        <button>Book a trial lesson</button>
-      </nav-actions>
-    </nav>
     <main>
-      <h1>Inspiring The Art<br> Of Music</h1>
+      <section intro>
+      <div>
+        <h3> Music Tuition · Canberra </h3>
+        <h1>Inspiring The <em>Art</em><br>Of Music</h1>
+        <p>Private lessons, a thriving community and recital opportunities — for beginners through to advanced musicians.</p>
+        <div>
+          <a href="contact.html" class="btn">Book a Trial Lesson</a>
+          <a href="about.html" class="btn btn-clear">Meet Your Teacher</a>
+        </div>
+      </div>
+      </section>
 
-      <section>
-        <p> Kreutzer is a music collaboration platform bringing students together to not just learn but join a thriving comunity of musicions of all levels with opportunitys to grow and develop their skills through recital opportunits at our dedicated studios   </p>
+      <section about>
+        <div>
+          <company-story>
+            <p class="reveal">Our story</p>
+            <h2 id="about-heading" class="reveal">More than lessons, a musical community</h2>
+            <p>Kreutzer is a music collaboration platform bringing students together to not just learn, but join a thriving community of musicians at all levels. With opportunities to grow through recitals, ensemble work and peer support at our dedicated studios, your musical journey starts here.</p>
+            <p>Whether you're picking up an instrument for the first time or preparing for a conservatorium audition, our tailored approach meets you exactly where you are.</p>
+            <a href="about.html" class="btn btn-clear" style="margin-top:var(--space-lg);display:inline-flex;">About Kreutzer →</a>
+          </company-story>
+          <company-stats>
+            <div class="reveal"><div>10+</div><div>Years of teaching experience</div></div>
+            <div class="reveal reveal-delay-1"><div>5</div><div>Instruments taught</div></div>
+            <div class="reveal reveal-delay-2"><div>100%</div><div>Personalised lessons</div></div>
+          </company-stats>
+        </div>
       </section>
       
-      <section>
-         <h2>Testimonials</h2>
-        <testimonials>
-          <testimonial>
-            <p>"Kreutzer has transformed the way I learn music. The interactive lessons and supportive community have made my musical journey enjoyable and rewarding."</p>
-            <cite>- Alex M.</cite>
-          </testimonial>
-          <testimonial>
-            <p>"Kreutzer has transformed the way I learn music. The interactive lessons and supportive community have made my musical journey enjoyable and rewarding."</p>
-            <cite>- Alex M.</cite>
-          </testimonial>
-          <testimonial>
-            <p>"Kreutzer has transformed the way I learn music. The interactive lessons and supportive community have made my musical journey enjoyable and rewarding."</p>
-            <cite>- Alex M.</cite>
-          </testimonial>
-        </testimonials>
-      </section>
+      <section instruments>
+      <div>
+      <p class="reveal">Instruments</p>
+      <h2 id="instruments-heading" class="reveal">What we teach</h2>
+      <ul class="instruments-grid" role="list">
+        <li class="reveal"><span>🎹</span><p>Piano</p><p>Classical, contemporary and jazz — all ages welcome</p></li>
+        <li class="reveal reveal-delay-1"><span>🎻</span><p>Violin</p><p>From first bow hold to advanced repertoire</p></li>
+        <li class="reveal reveal-delay-2"><span>🎸</span><p>Guitar</p><p>Acoustic, classical and electric styles</p></li>
+        <li class="reveal reveal-delay-3"><span>🎤</span><p>Voice</p><p>Technique, performance and songwriting</p></li>
+        <li class="reveal"><span>🥁</span><p>Drums</p><p>Rhythm, groove and full kit technique</p></li>
+      </ul>
+      <div>
+    </section>
 
-      <section>
-        <p> Join Kreutzer today and embark on a musical journey like no other. Whether you're a beginner or an experienced musician, our platform offers the tools and community you need to thrive. Sign up now and start making music with us!</p>
-      </section>
+     <section how-it-works>
+      <div>
+      <p class="reveal">Getting started</p>
+      <h2 id="how-heading" class="reveal">Three simple steps</h2>
+      <div>
+        <div class="reveal"><div>1</div><div>Book</div><p>Fill in our short contact form and we'll get back to you within 24 hours to schedule your free trial lesson.</p></div>
+        <div class="reveal reveal-delay-1"><div>2</div><div>Meet</div><p>Attend your trial lesson at our Canberra studio. We'll assess your current level and craft a personalised learning plan just for you.</p></div>
+        <div class="reveal reveal-delay-2"><div>3</div><div>Play</div><p>Begin your regular lessons and join the Kreutzer community — recitals, ensembles, and lifelong musicianship await.</p></div>
+      </div>
+    </div>
+
+    </section>
+
+    <section testimonials>
+      <div>
+      <p class="reveal">What students say</p>
+      <h2 id="testimonials-heading" class="reveal">Testimonials</h2>
+      <div class="testimonials-stack">
+
+        <article data-slide="left">
+          <testimonial-quote>
+            <div aria-hidden="true">"</div>
+            <p>Kreutzer has completely transformed the way I relate to music. The lessons are thoughtful, structured, and genuinely joyful. I've improved more in six months here than in three years of previous tuition.</p>
+          </testimonial-quote>
+          <testimonial-reference>
+            <div>★★★★★</div>
+            <cite>Alex M.</cite>
+            <span>Piano student</span>
+          </testimonial-reference>
+        </article>
+
+        <article data-slide="right">
+          <testimonial-quote>
+            <div aria-hidden="true">"</div>
+            <p>I came in as a complete beginner and within a year I was performing at the studio recital. The supportive community makes all the difference — you never feel alone in your learning.</p>
+          </testimonial-quote>
+          <testimonial-reference>
+            <div>★★★★★</div>
+            <cite>Mei L.</cite>
+            <span>Violin student</span>
+          </testimonial-reference>
+        </article>
+
+        <article data-slide="left">
+          <testimonial-quote>
+            <div aria-hidden="true">"</div>
+            <p>My daughter has flourished under Phoebe's guidance. She's patient, encouraging and has an extraordinary ability to make difficult concepts click instantly. Highly recommend to any family.</p>
+          </testimonial-quote>
+          <testimonial-reference>
+            <div>★★★★★</div>
+            <cite>Sarah K.</cite>
+            <span>Parent</span>
+          </testimonial-reference>
+        </article>
+
+      </div>
+    </div>
+
+    </section>
+
+    <section pricing>
+      <div>
+      <p class="reveal">Transparent pricing</p>
+      <h2 id="pricing-heading" class="reveal">Lesson packages</h2>
+      <div class="pricing-grid">
+        <div class="reveal">
+          <h3>Trial Lesson</h3>
+          <strong>Free</strong>
+          <p>Your first lesson is on us. No commitment required.</p>
+          <ul><li>30-minute introductory lesson</li><li>Level assessment</li><li>Personalised learning plan</li><li>Studio tour</li></ul>
+          <a href="contact.html" class="btn btn-clear" style="width:100%;justify-content:center;">Book Now</a>
+        </div>
+        <div class="featured reveal reveal-delay-1">
+          <span>Most popular</span>
+          <h3>10 Lesson pack</h3>
+          <strong>$500 <span>$50/ 30 min</span></strong>
+          <p>Pre-purchase a term block and save.</p>
+          <ul><li>Save $100 per term</li><li>Regular lessons</li></ul>
+          <a href="contact.html" class="btn" style="width:100%;justify-content:center;">Enquire</a>
+        </div>
+        <div class="reveal reveal-delay-2">
+          <h3>Single lessons</h3>
+          <strong>$60 <span>/ 30 min</span></strong>
+          <p>Individual lessons</p>
+          <ul><li>Pay as you go</li><li>Flexible scheduling</li><li>No long-term commitment</li></ul>
+          <a href="contact.html" class="btn btn-clear" style="width:100%;justify-content:center;">Get Started</a>
+        </div>
+        
+      </div>
+      </div>
+    </section>
+
+    <section faq>
+      <div>
+      <p class="reveal">Questions</p>
+      <h2 id="faq-heading" class="reveal" style="text-align:center;">Frequently asked</h2>
+      <ul class="faq">
+        <li><button>What age do you teach from?<em>+</em></button><div><div>We welcome students from age 5 upward, all the way through to adults. Our teaching approach is fully adapted to suit the age and learning style of each student.</div></div></li>
+        <li><button>Do I need my own instrument?<em>+</em></button><div><div>Our studios are fully equipped so you can use instruments during lessons. For home practice we do recommend having access to an instrument, and we're happy to advise on affordable options.</div></div></li>
+        <li><button>How long are lessons?<em>+</em></button><div><div>Standard lessons are 45 minutes. For advanced students or those preparing for exams, 60-minute sessions can be arranged on request.</div></div></li>
+        <li><button>What if I need to cancel a lesson?<em>+</em></button><div><div>We ask for at least 24 hours notice to reschedule. Bundle package holders receive a makeup lesson guarantee — one catch-up per term at no extra cost.</div></div></li>
+        <li><button>Are there performance opportunities?<em>+</em></button><div><div>Yes! Kreutzer hosts termly studio recitals at our dedicated venue, as well as community ensemble events throughout the year. Participation is encouraged but never compulsory.</div></div></li>
+      </ul>
+      </div>
+    </section>
     </main>
+
+    <footer>
+      <div>
+        <div>
+          <h3>Kreutzer</h3>
+          <p>Music tuition for all ages and levels at our dedicated Canberra studios. Building musicians and community since 2014.</p>
+          <nav aria-label="Social links">
+            <a href="#" aria-label="Instagram">📷</a>
+            <a href="#" aria-label="Facebook">📘</a>
+            <a href="#" aria-label="YouTube">▶️</a>
+          </nav>
+        </div>
+        <div>
+          <h4>Navigate</h4>
+          <ul role="list">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="about.html">About</a></li>
+            <li><a href="contact.html">Contact</a></li>
+            <li><a href="contact.html">Book a lesson</a></li>
+          </ul>
+        </div>
+        <div>
+          <h4>Contact</h4>
+          <ul role="list">
+            <li><a href="mailto:hello@kreutzer.com.au">kreutzer@gmail.com</a></li>
+            <li><a href="tel:+61467925666">+61 467 925 666</a></li>
+            <li><a href="#">Canberra, ACT</a></li>
+          </ul>
+        </div>
+      </div>
+      <span>© 2026 Kreutzer Music. All rights reserved.</span>
+    </footer>
+
     <script src="index.js" defer></script>
   </body>
 

@@ -1,0 +1,60 @@
+footer {
+  background: var(--bg-raised);
+  border-top: 1px solid rgba(242,232,185,0.07);
+  padding: var(--space-xl) var(--page-pad) var(--space-md);
+}
+
+footer > div {
+  max-width: var(--page-max);
+  display: grid;
+  grid-template-columns: 3fr 1fr 1fr;
+  gap: var(--space-xl);
+  margin-left: auto;
+  margin-right: auto;
+  margin-bottom: var(--space-xl);
+}
+
+
+footer h3 {
+  font-family: var(--font-script);
+  font-size: 3rem;
+  color: var(--cream);
+  line-height: 1;
+  margin-bottom: var(--space-sm);
+}
+
+footer h4 {
+  font-size: var(--text-xs);
+  font-weight: var(--weight-bold);
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--gold);
+  margin-bottom: var(--space-md);
+}
+
+footer p, footer li > a{
+  color: var(--cream-dim);
+  font-size: var(--text-sm);
+  line-height: 1.5;
+}
+
+footer ul a:hover {
+  color: var(--cream);
+}
+
+footer span {
+  display: block;
+  border-top: 1px solid rgba(242,232,185,0.07);
+  padding-top: var(--space-md);
+  max-width: var(--page-max);
+  color: var(--cream-dim);
+  font-size: var(--text-xs);
+  margin-left: auto;
+  margin-right: auto;
+}
+
+footer nav {
+   display: flex;
+   gap: var(--space-sm);
+   margin-top: var(--space-md); 
+}
