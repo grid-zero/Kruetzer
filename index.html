@@ -9,27 +9,42 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 
-    <link
-      href="https://fonts.googleapis.com/css2?family=Overpass:ital,wght@0,100..900;1,100..900&family=Public+Sans:ital,wght@0,100..900;1,100..900&family=Tangerine:wght@400;700&display=swap"
-      rel="stylesheet">
-    <link
-      href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Overpass:ital,wght@0,100..900;1,100..900&family=Public+Sans:ital,wght@0,100..900;1,100..900&family=Tangerine:wght@400;700&display=swap"
-      rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display&family=Cinzel:wght@400;700&family=Fauna+One&family=Tangerine:wght@400;700&display=swap" rel="stylesheet">
   </head>
 
   <body>
     <header>
       <nav>
-        <a href="index.html"><img src="assets/Kreutzer-源文件2修改颜色-.svg"></a>
-
-        <ul role="list">
-          <li><a href="about.html">About</a></li>
-          <li><a href="contact.html">Contact</a></li>
-        </ul>
-
+        <div>
+          <a href="index.html"><img src="assets/Kreutzer-源文件2修改颜色-.svg"></a>
+          <ul role="list">
+          <li><a href="about.html">about</a></li>
+          <li><a href="teachers.html">teachers</a></li>
+          <li><a href="shop.html">shop</a></li>
+          <li><a href="resources.html">resources</a></li>
+          </ul>
+        </div>
         <nav-logo-main> Kreutzer </nav-logo-main>
-        <a href="contact.html" class="btn">Book a trial lesson</a>
+        <a href="contact.html" class="btn">Enquire now</a>
+
+        <!-- Mobile Section -->
+        <button class="burger-btn" id="burgerBtn" aria-label="Toggle menu" aria-expanded="false">
+          <span class="bar"></span>
+          <span class="bar"></span>
+          <span class="bar"></span>
+        </button>
+      
+        <div class="overlay" id="overlay"></div>
+        <aside id="sidebar">
+          <ul role="list">
+          <li><a href="about.html">about</a></li>
+          <li><a href="teachers.html">teachers</a></li>
+          <li><a href="shop.html">shop</a></li>
+          <li><a href="resources.html">resources</a></li>
+          </ul>
+        </aside>
       </nav>
+
     </header>
 
     <main>
@@ -48,37 +63,42 @@
       <section about>
         <div>
           <company-story>
-            <p class="reveal">Our story</p>
+            <h3 class="reveal">Our story</h3>
             <h2 id="about-heading" class="reveal">More than lessons, a musical community</h2>
             <p>Kreutzer is a music collaboration platform bringing students together to not just learn, but join a thriving community of musicians at all levels. With opportunities to grow through recitals, ensemble work and peer support at our dedicated studios, your musical journey starts here.</p>
             <p>Whether you're picking up an instrument for the first time or preparing for a conservatorium audition, our tailored approach meets you exactly where you are.</p>
             <a href="about.html" class="btn btn-clear" style="margin-top:var(--space-lg);display:inline-flex;">About Kreutzer →</a>
           </company-story>
+          <div>
           <company-stats>
             <div class="reveal"><div>10+</div><div>Years of teaching experience</div></div>
             <div class="reveal reveal-delay-1"><div>5</div><div>Instruments taught</div></div>
             <div class="reveal reveal-delay-2"><div>100%</div><div>Personalised lessons</div></div>
           </company-stats>
+          <img src="assets/phoebe mu.jpg" style="width: 15rem; height: auto;" alt="Photo of Phoebe teaching a student at the piano" class="reveal reveal-delay-1">
+          </div>
+          
         </div>
       </section>
       
       <section instruments>
       <div>
-      <p class="reveal">Instruments</p>
+      <h3 class="reveal">Instruments</h3>
       <h2 id="instruments-heading" class="reveal">What we teach</h2>
       <ul class="instruments-grid" role="list">
-        <li class="reveal"><span>🎹</span><p>Piano</p><p>Classical, contemporary and jazz — all ages welcome</p></li>
+        
         <li class="reveal reveal-delay-1"><span>🎻</span><p>Violin</p><p>From first bow hold to advanced repertoire</p></li>
         <li class="reveal reveal-delay-2"><span>🎸</span><p>Guitar</p><p>Acoustic, classical and electric styles</p></li>
+        <li class="reveal"><span>🎹</span><p>Piano</p><p>Classical, contemporary and jazz — all ages welcome</p></li>
         <li class="reveal reveal-delay-3"><span>🎤</span><p>Voice</p><p>Technique, performance and songwriting</p></li>
         <li class="reveal"><span>🥁</span><p>Drums</p><p>Rhythm, groove and full kit technique</p></li>
       </ul>
       <div>
     </section>
 
-     <section how-it-works>
+    <section how-it-works>
       <div>
-      <p class="reveal">Getting started</p>
+      <h3 class="reveal">Getting started</h3>
       <h2 id="how-heading" class="reveal">Three simple steps</h2>
       <div>
         <div class="reveal"><div>1</div><div>Book</div><p>Fill in our short contact form and we'll get back to you within 24 hours to schedule your free trial lesson.</p></div>
@@ -91,7 +111,7 @@
 
     <section testimonials>
       <div>
-      <p class="reveal">What students say</p>
+      <h3 class="reveal">What students say</h3>
       <h2 id="testimonials-heading" class="reveal">Testimonials</h2>
       <div class="testimonials-stack">
 
@@ -138,7 +158,7 @@
 
     <section pricing>
       <div>
-      <p class="reveal">Transparent pricing</p>
+      <h3 class="reveal">Transparent pricing</h3>
       <h2 id="pricing-heading" class="reveal">Lesson packages</h2>
       <div class="pricing-grid">
         <div class="reveal">
@@ -168,21 +188,16 @@
       </div>
     </section>
 
-    <section faq>
+    <section contact>
       <div>
-      <p class="reveal">Questions</p>
-      <h2 id="faq-heading" class="reveal" style="text-align:center;">Frequently asked</h2>
-      <ul class="faq">
-        <li><button>What age do you teach from?<em>+</em></button><div><div>We welcome students from age 5 upward, all the way through to adults. Our teaching approach is fully adapted to suit the age and learning style of each student.</div></div></li>
-        <li><button>Do I need my own instrument?<em>+</em></button><div><div>Our studios are fully equipped so you can use instruments during lessons. For home practice we do recommend having access to an instrument, and we're happy to advise on affordable options.</div></div></li>
-        <li><button>How long are lessons?<em>+</em></button><div><div>Standard lessons are 45 minutes. For advanced students or those preparing for exams, 60-minute sessions can be arranged on request.</div></div></li>
-        <li><button>What if I need to cancel a lesson?<em>+</em></button><div><div>We ask for at least 24 hours notice to reschedule. Bundle package holders receive a makeup lesson guarantee — one catch-up per term at no extra cost.</div></div></li>
-        <li><button>Are there performance opportunities?<em>+</em></button><div><div>Yes! Kreutzer hosts termly studio recitals at our dedicated venue, as well as community ensemble events throughout the year. Participation is encouraged but never compulsory.</div></div></li>
-      </ul>
+      <h3 class="reveal">Get in touch</h3>
+      <h2 id="contact-heading" class="reveal">Contact us</h2>
+      <p class="reveal reveal-delay-1">Ready to start your musical journey? Have questions about our lessons or community? We're here to help! Reach out to us and we'll get back to you within 24 hours.</p>
+      <a href="contact.html" class="btn reveal reveal-delay-2">Enquire Now</a>
       </div>
-    </section>
-    </main>
-
+    </section>  
+  </main>
+   
     <footer>
       <div>
         <div>
@@ -203,6 +218,14 @@
             <li><a href="contact.html">Book a lesson</a></li>
           </ul>
         </div>
+         <div>
+          <h4>More pages</h4>
+          <ul role="list">
+            <li><a href="careers.html">Careers</a></li>
+            <li><a href="faq.html">FAQ</a></li>
+            <li><a href="terms.html">Terms and Conditions</a></li>
+          </ul>
+        </div>
         <div>
           <h4>Contact</h4>
           <ul role="list">
@@ -214,8 +237,6 @@
       </div>
       <span>© 2026 Kreutzer Music. All rights reserved.</span>
     </footer>
-
     <script src="index.js" defer></script>
   </body>
-
 </html>

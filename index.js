@@ -1,0 +1,85 @@
+window.addEventListener("load", function() {
+    const loader = document.getElementById("loader-wrapper");
+    // Add a fade-out effect
+    loader.style.transition = "opacity 2s ease";
+    loader.style.opacity = "0";
+    
+    // Remove from DOM after fade
+    setTimeout(() => {
+        loader.style.display = "none";
+    }, 2000);
+});
+
+
+const observerOptions = {
+  root: null, // use the viewport
+  threshold: 0.1 // trigger when 10% of the element is visible
+};
+
+const observer = new IntersectionObserver((entries, observer) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      entry.target.classList.add('visible');
+      // Optional: stop observing once it has revealed
+      observer.unobserve(entry.target);
+    }
+  });
+}, observerOptions);
+
+// Target all elements with the .reveal class
+document.querySelectorAll('.reveal').forEach(el => {
+  observer.observe(el);
+});
+
+
+
+
+document.querySelectorAll('.teacher-card-container').forEach(card => {
+  card.addEventListener('click', () => {
+    card.classList.toggle('is-flipped');
+  });
+});
+
+
+
+
+  const btn = document.getElementById('burgerBtn');
+  const sidebar = document.getElementById('sidebar');
+  const overlay = document.getElementById('overlay');
+ 
+  function openSidebar() {
+    sidebar.classList.add('open');
+    overlay.style.display = 'block';
+    requestAnimationFrame(() => overlay.classList.add('active'));
+    btn.classList.add('open');
+    btn.setAttribute('aria-expanded', 'true');
+    sidebar.setAttribute('aria-hidden', 'false');
+  }
+ 
+  function closeSidebar() {
+    sidebar.classList.remove('open');
+    overlay.classList.remove('active');
+    btn.classList.remove('open');
+    btn.setAttribute('aria-expanded', 'false');
+    sidebar.setAttribute('aria-hidden', 'true');
+    setTimeout(() => { overlay.style.display = 'none'; }, 400);
+  }
+ 
+  btn.addEventListener('click', () => {
+    sidebar.classList.contains('open') ? closeSidebar() : openSidebar();
+  });
+ 
+  overlay.addEventListener('click', closeSidebar);
+ 
+  document.addEventListener('keydown', e => {
+    if (e.key === 'Escape' && sidebar.classList.contains('open')) closeSidebar();
+  });
+ 
+  sidebar.querySelectorAll('.sidebar-link').forEach(link => {
+    link.addEventListener('click', () => {
+      sidebar.querySelectorAll('.sidebar-link').forEach(l => l.classList.remove('active'));
+      link.classList.add('active');
+      closeSidebar();
+    });
+  });
+

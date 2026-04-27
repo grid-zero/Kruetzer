@@ -2,7 +2,8 @@
 :root {
   --font-display:  'DM Serif Display', serif;
   --font-script:   'Tangerine', cursive;
-  --font-body:     'Public Sans', sans-serif;
+  --font-title:    'Cinzel', serif;
+  --font-body:     'Fauna One', serif;
 
   --text-xs:     clamp(0.75rem,  1vw,    0.875rem);
   --text-sm:     clamp(0.9rem,   1.2vw,  1rem);
@@ -16,15 +17,21 @@
   --weight-regular: 400;
   --weight-medium:  500;
   --weight-bold:    700;
-
-  --bg:          #28282B;
-  --bg-raised:   #2f2f33;
+  
+  --bg-blue:   #33616d;
+  
+  --bg:          #070707;
+  /*--bg:          #141414;*/
   --bg-card:     #323236;
+  --bg-cream:    #d6d3c4;
+
+  --text-blue: #7392c5;
   --cream:       #f2e8b9;
   --cream-dim:   rgba(242, 232, 185, 0.55);
   --cream-faint: rgba(242, 232, 185, 0.12);
   --gold:        #c9a84c;
   --gold-light:  #e2c47a;
+  --dark-red:    #d75466;
 
   --space-xs:  0.5rem;
   --space-sm:  1rem;
@@ -44,8 +51,16 @@
   --t-mid:  0.35s;
   --t-slow: 0.65s;
 
+  --shadow-md: 0 4px 16px rgba(0,0,0,0.5),
+               0 8px 24px rgba(0,0,0,0.35);
   --shadow-lg: 0 20px 60px rgba(0,0,0,0.55);
+
+  --border-glow-cream: 0 0 0 1px rgba(242,232,185,0.2),
+                       0 0 12px rgba(242,232,185,0.08);
   --glow-gold: 0 0 30px rgba(201,168,76,0.25);
+
+  --sidebar-width: 240px;
+  --transition: cubic-bezier(0.77, 0, 0.175, 1);
 }
 
 @keyframes fadeUp {
@@ -63,6 +78,15 @@
 @keyframes pulse-glow {
   0%, 100% { box-shadow: 0 0 0 0 rgba(201,168,76,0); }
   50%       { box-shadow: 0 0 18px 4px rgba(201,168,76,0.35); }
+}
+
+@keyframes slideIn {
+  from {
+    translate: 60vw 0; /* slides up from below */
+  }
+  to {
+    translate: 0 0;
+  }
 }
 
 /* Reset and base styles
@@ -104,10 +128,12 @@ a { color: var(--cream); text-decoration: none; cursor: pointer;}
 /* animations */
 .reveal {
   transform: translateY(28px);
-  transition: opacity 0.65s var(--ease), transform 0.65s var(--ease);
+  opacity: 0;
+  transition: opacity 1.65s var(--ease), transform 0.65s var(--ease);
 }
 .reveal.visible {
   transform: translateY(0);
+  opacity: 1;
 }
 .reveal-delay-1 {
   transition-delay: 0.1s;
