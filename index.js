@@ -1,14 +1,41 @@
-window.addEventListener("load", function() {
-    const loader = document.getElementById("loader-wrapper");
-    // Add a fade-out effect
-    loader.style.transition = "opacity 2s ease";
-    loader.style.opacity = "0";
-    
-    // Remove from DOM after fade
+const fillInner   = document.getElementById('fillInner');
+const loaderWrap  = document.getElementById('loaderWrap');
+
+let current = 0;
+const target = 100;
+
+// Simulate a realistic loading curve (fast then slows, then finishes)
+function easeProgress(t) {
+  // t: 0→1  returns 0→1 with a slight S-curve
+  return t < 0.5 ? 2 * t * t : -1 + (4 - 2 * t) * t;
+}
+
+const duration = 4000; // ms total
+let startTime = null;
+
+function step(ts) {
+  if (!startTime) startTime = ts;
+  const elapsed = Math.min(ts - startTime, duration);
+  const rawT    = elapsed / duration;
+  const eased   = easeProgress(rawT);
+  const pct     = Math.round(eased * 100);
+
+  fillInner.style.height   = pct + '%';
+
+  if (elapsed < duration) {
+    requestAnimationFrame(step);
+  } else {
+    fillInner.style.height  = '100%';
+    loaderWrap.classList.add('done');
+    /* remove from dom after animation finishes */
     setTimeout(() => {
-        loader.style.display = "none";
+        loaderWrap.style.display = "none";
     }, 2000);
-});
+  }
+}
+
+requestAnimationFrame(step);
+
 
 
 const observerOptions = {

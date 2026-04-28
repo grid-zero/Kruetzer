@@ -30,6 +30,10 @@ header > nav > div > a img {
   object-fit: contain;
 }
 
+header > nav > div > a img[mobile] {
+  display: none;
+}
+
 /* Nav links list */
 header > nav > div > ul {
   display: flex;
