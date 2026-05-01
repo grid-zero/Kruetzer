@@ -10,7 +10,7 @@ function easeProgress(t) {
   return t < 0.5 ? 2 * t * t : -1 + (4 - 2 * t) * t;
 }
 
-const duration = 4000; // ms total
+const duration = 1600; // ms total
 let startTime = null;
 
 function step(ts) {
@@ -20,12 +20,12 @@ function step(ts) {
   const eased   = easeProgress(rawT);
   const pct     = Math.round(eased * 100);
 
-  fillInner.style.height   = pct + '%';
+  fillInner.style.width   = pct + '%';
 
   if (elapsed < duration) {
     requestAnimationFrame(step);
   } else {
-    fillInner.style.height  = '100%';
+    fillInner.style.width  = '100%';
     loaderWrap.classList.add('done');
     /* remove from dom after animation finishes */
     setTimeout(() => {
