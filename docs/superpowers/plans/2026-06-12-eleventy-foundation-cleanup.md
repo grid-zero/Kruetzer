@@ -25,12 +25,12 @@ Branch: `claude/clever-ellis-6c6361` · executed via subagent-driven-development
 | 3. Shared shell (base/header/footer/loader + active-nav CSS) | ✅ Done | `d41dafa` |
 | 4. Convert homepage | ✅ Done | `2b69f48` (+ `ff8d039` permalink cleanup) |
 | 5. Convert remaining 10 pages | ✅ Done | `dbb0237` |
-| 6. No-JS hardening | ⏳ Not started | — |
-| 7. Remove dead/legacy files | ⏳ Not started | — |
-| 8. GitHub Pages deploy workflow | ⏳ Not started | — |
-| 9. Final full verification | ⏳ Not started | — |
+| 6. No-JS hardening | ✅ Done | `58b40d1` |
+| 7. Remove dead/legacy files | ✅ Done | `70dd67c` |
+| 8. GitHub Pages deploy workflow | ✅ Done | `ecfee61` |
+| 9. Final full verification | ✅ Done | `d38aa38` |
 
-**Resume at Task 6.** See `PROGRESS.md` for decisions, gotchas, and the finish-up steps (merge/PR + the one-time GitHub Pages "GitHub Actions" source toggle).
+All 9 tasks complete. See `PROGRESS.md` for decisions, gotchas, and the finish-up steps (merge/PR + the one-time GitHub Pages "GitHub Actions" source toggle).
 
 ---
 

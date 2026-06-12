@@ -10,7 +10,7 @@ This is a running, session-spanning log. Update it as tasks complete.
 
 ---
 
-## Current status: Tasks 1–5 DONE, resume at Task 6
+## Current status: ALL TASKS 1–9 DONE ✅
 
 The site already builds (`npm run build` → 11 pages in `_site/`) with a single
 shared nav/footer, the `lessons` link on every page, active-link underlines, and
@@ -24,24 +24,13 @@ below is committed.
 | 3. Shared shell (base/header/footer/loader + active-nav CSS) | ✅ | `d41dafa` |
 | 4. Convert homepage | ✅ | `2b69f48`, `ff8d039` |
 | 5. Convert remaining 10 pages | ✅ | `dbb0237` |
-| 6. No-JS hardening | ⏳ resume here | — |
-| 7. Remove dead/legacy files | ⏳ | — |
-| 8. GitHub Pages deploy workflow | ⏳ | — |
-| 9. Final full verification | ⏳ | — |
+| 6. No-JS hardening | ✅ | `58b40d1` |
+| 7. Remove dead/legacy files | ✅ | `70dd67c` |
+| 8. GitHub Pages deploy workflow | ✅ | `ecfee61` |
+| 9. Final full verification | ✅ | `d38aa38` |
 
-After Task 9: run **superpowers:finishing-a-development-branch** to decide
+Next: run **superpowers:finishing-a-development-branch** to decide
 merge-to-`main` vs PR.
-
----
-
-## How to resume
-
-1. Re-open the plan file and continue at **Task 6** (No-JS hardening).
-2. Keep using subagent-driven-development: dispatch one implementer subagent per
-   task with the full task text from the plan, then spec-review, then
-   quality-review, then mark done.
-3. Toolchain is ready: Node v22.13.1 / npm 10.9.2; Eleventy 3.1.6 installed.
-   `npm run build` builds to `_site/`; `npm run dev` serves at `localhost:8080`.
 
 ---
 
