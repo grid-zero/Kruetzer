@@ -10,6 +10,28 @@
 
 **Reference spec:** `docs/superpowers/specs/2026-06-12-eleventy-foundation-cleanup-design.md`
 
+**Running progress note:** `docs/superpowers/PROGRESS.md`
+
+---
+
+## Execution Status (last updated 2026-06-12)
+
+Branch: `claude/clever-ellis-6c6361` · executed via subagent-driven-development.
+
+| Task | Status | Commit |
+|------|--------|--------|
+| 1. Initialize Eleventy project | ✅ Done | `2ffcfc8` |
+| 2. Configure Eleventy + move files to `src/` | ✅ Done | `ea4478e` |
+| 3. Shared shell (base/header/footer/loader + active-nav CSS) | ✅ Done | `d41dafa` |
+| 4. Convert homepage | ✅ Done | `2b69f48` (+ `ff8d039` permalink cleanup) |
+| 5. Convert remaining 10 pages | ✅ Done | `dbb0237` |
+| 6. No-JS hardening | ⏳ Not started | — |
+| 7. Remove dead/legacy files | ⏳ Not started | — |
+| 8. GitHub Pages deploy workflow | ⏳ Not started | — |
+| 9. Final full verification | ⏳ Not started | — |
+
+**Resume at Task 6.** See `PROGRESS.md` for decisions, gotchas, and the finish-up steps (merge/PR + the one-time GitHub Pages "GitHub Actions" source toggle).
+
 ---
 
 ## File Structure (target)
@@ -40,7 +62,7 @@ website/
 
 ---
 
-## Task 1: Initialize the Eleventy project
+## Task 1: Initialize the Eleventy project — ✅ DONE (`2ffcfc8`)
 
 **Files:**
 - Create: `package.json`
@@ -91,7 +113,7 @@ git commit -m "chore: initialize Eleventy project"
 
 ---
 
-## Task 2: Configure Eleventy and move static files into `src/`
+## Task 2: Configure Eleventy and move static files into `src/` — ✅ DONE (`ea4478e`)
 
 **Files:**
 - Create: `.eleventy.js`
@@ -155,7 +177,7 @@ git commit -m "build: configure Eleventy and move static files into src/"
 
 ---
 
-## Task 3: Build the shared shell (layout + partials)
+## Task 3: Build the shared shell (layout + partials) — ✅ DONE (`d41dafa`)
 
 **Files:**
 - Create: `src/_includes/base.html`
@@ -325,7 +347,7 @@ git commit -m "feat: add shared base layout, header, footer, loader partials"
 
 ---
 
-## Task 4: Convert the homepage and verify end-to-end
+## Task 4: Convert the homepage and verify end-to-end — ✅ DONE (`2b69f48`, `ff8d039`)
 
 This is the worked example for the page-conversion pattern used in Task 5.
 
@@ -396,7 +418,7 @@ git commit -m "feat: convert homepage to Eleventy layout"
 
 ---
 
-## Task 5: Convert the remaining pages
+## Task 5: Convert the remaining pages — ✅ DONE (`dbb0237`)
 
 Apply the **conversion pattern** from Task 4 to each page below. For each: create `src/<name>.html` with the front-matter shown, followed by the verbatim inner-`<main>` content copied from the existing root file of the same name. The old root files are deleted in Task 7.
 
@@ -532,7 +554,7 @@ git commit -m "feat: convert all remaining pages to Eleventy layout"
 
 ---
 
-## Task 6: No-JS hardening
+## Task 6: No-JS hardening — ⏳ NOT STARTED (resume here)
 
 Make content visible by default and gate all JS-only behaviour behind the `js` class. Also guard `index.js` so it never throws on pages without a loader.
 
@@ -662,7 +684,7 @@ git commit -m "feat: harden site to work without JavaScript"
 
 ---
 
-## Task 7: Remove dead and legacy files
+## Task 7: Remove dead and legacy files — ⏳ NOT STARTED
 
 Now that `src/` is the source of truth and the build is verified, delete the orphan and the superseded root-level files.
 
@@ -706,7 +728,7 @@ git commit -m "chore: remove orphan navbar.html and legacy root pages"
 
 ---
 
-## Task 8: GitHub Pages deploy workflow
+## Task 8: GitHub Pages deploy workflow — ⏳ NOT STARTED
 
 **Files:**
 - Create: `.github/workflows/deploy.yml`
@@ -773,7 +795,7 @@ git commit -m "ci: add GitHub Pages build-and-deploy workflow"
 
 ---
 
-## Task 9: Final full verification
+## Task 9: Final full verification — ⏳ NOT STARTED
 
 - [ ] **Step 1: Clean build from scratch**
 
