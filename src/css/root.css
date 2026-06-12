@@ -125,22 +125,21 @@ a { color: var(--cream); text-decoration: none; cursor: pointer;}
   font: inherit; font-size: inherit; color: inherit; letter-spacing: inherit;
 }
 
-/* animations */
+/* animations — content is visible by default so it shows without JS */
 .reveal {
+  opacity: 1;
+  transform: none;
+}
+/* When JS is available, hide first, then reveal on scroll */
+.js .reveal {
   transform: translateY(28px);
   opacity: 0;
   transition: opacity 1.65s var(--ease), transform 0.65s var(--ease);
 }
-.reveal.visible {
+.js .reveal.visible {
   transform: translateY(0);
   opacity: 1;
 }
-.reveal-delay-1 {
-  transition-delay: 0.1s;
-}
-.reveal-delay-2 {
-  transition-delay: 0.2s;
-}
-.reveal-delay-3 {
-  transition-delay: 0.3s;
-}
+.reveal-delay-1 { transition-delay: 0.1s; }
+.reveal-delay-2 { transition-delay: 0.2s; }
+.reveal-delay-3 { transition-delay: 0.3s; }

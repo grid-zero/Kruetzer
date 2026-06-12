@@ -1,6 +1,7 @@
 const fillInner   = document.getElementById('fillInner');
 const loaderWrap  = document.getElementById('loaderWrap');
 
+if (fillInner && loaderWrap) {
 let current = 0;
 const target = 100;
 
@@ -35,7 +36,7 @@ function step(ts) {
 }
 
 requestAnimationFrame(step);
-
+}
 
 
 const observerOptions = {
@@ -73,6 +74,7 @@ document.querySelectorAll('.teacher-card-container').forEach(card => {
   const btn = document.getElementById('burgerBtn');
   const sidebar = document.getElementById('sidebar');
   const overlay = document.getElementById('overlay');
+  if (btn && sidebar && overlay) {
  
   function openSidebar() {
     sidebar.classList.add('open');
@@ -109,4 +111,5 @@ document.querySelectorAll('.teacher-card-container').forEach(card => {
       closeSidebar();
     });
   });
+  }
 
