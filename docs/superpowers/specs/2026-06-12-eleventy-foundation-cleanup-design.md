@@ -118,7 +118,10 @@ Day-to-day workflow: edit in `src/` → `npm run dev` to preview → commit → 
 
 ## Cleanup Details
 
-- **Delete dead files:** `navbar.html`, `phoebe.html`.
+- **Delete dead files:** `navbar.html` only (true orphan, referenced nowhere).
+  `phoebe.html` is linked from `teachers.html` ("Learn More" on Phoebe's card),
+  so it is **kept and converted** like the other pages — not deleted. It is a
+  "Coming Soon" stub today; its content is built out in the later content phase.
 - **Data inconsistencies:**
   - Standardize the contact email to **hello@kreutzer.com.au** in both the
     footer text and the `mailto:`.
@@ -142,7 +145,7 @@ Day-to-day workflow: edit in `src/` → `npm run dev` to preview → commit → 
   auto-deploys to GitHub Pages.
 - With JavaScript disabled in a desktop browser: every page renders its content,
   navigation works, no loader traps the page, and no content is invisible.
-- `navbar.html` and `phoebe.html` are gone.
+- `navbar.html` is gone; `phoebe.html` is kept and builds via the shared layout.
 - The contact email is `hello@kreutzer.com.au` consistently; no `href="#"`
   links remain that should point somewhere; images have alt text.
 
