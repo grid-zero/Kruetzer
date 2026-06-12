@@ -132,7 +132,8 @@ This applies the base layout to every page and preserves `.html` URLs (so existi
 module.exports = {
   layout: "base.html",
   eleventyComputed: {
-    permalink: (data) => `${data.page.fileSlug}.html`,
+    // Eleventy sets fileSlug to "" for index.html, so fall back to "index".
+    permalink: (data) => `${data.page.fileSlug || "index"}.html`,
   },
 };
 ```
