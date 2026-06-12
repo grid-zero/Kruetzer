@@ -153,3 +153,9 @@ header > nav > aside > ul {
   gap: var(--space-sm);
   padding-left: var(--space-lg);
 }
+
+/* Persistent underline on the current page's nav link (no JS needed) */
+header > nav ul a.active::after,
+header > nav ul a[aria-current="page"]::after {
+  transform: scaleX(1);
+}

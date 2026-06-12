@@ -1,0 +1,24 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <script>document.documentElement.classList.add('js');</script>
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <meta name="description" content="{{ description }}">
+    <title>{{ title }}</title>
+    <link rel="icon" type="image/svg+xml" href="assets/Kreutzer-Icon.svg">
+    <link rel="stylesheet" href="css/index.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display&family=Cinzel:wght@400;700&family=Fauna+One&family=Tangerine:wght@400;700&display=swap" rel="stylesheet">
+  </head>
+  <body>
+    {% if loader %}{% include "loader.html" %}{% endif %}
+    {% include "header.html" %}
+    <main>
+      {{ content }}
+    </main>
+    {% include "footer.html" %}
+    <script src="index.js" defer></script>
+  </body>
+</html>

@@ -1,0 +1,34 @@
+<header>
+  <nav>
+    <div>
+      <a href="index.html">
+        <img desktop src="assets/Kreutzer-源文件2修改颜色-.svg" alt="Kreutzer">
+        <img mobile src="assets/Kreutzer-Logo-Only.svg" alt="Kreutzer">
+      </a>
+      {% assign navItems = "about,teachers,shop,resources,lessons" | split: "," %}
+      <ul role="list">
+        {% for item in navItems %}
+        <li><a href="{{ item }}.html"{% if page.fileSlug == item %} class="active" aria-current="page"{% endif %}>{{ item }}</a></li>
+        {% endfor %}
+      </ul>
+    </div>
+    <nav-logo-main> Kreutzer </nav-logo-main>
+    <a href="contact.html" class="btn">Enquire now</a>
+
+    <!-- Mobile Section -->
+    <button class="burger-btn" id="burgerBtn" aria-label="Toggle menu" aria-expanded="false">
+      <span class="bar"></span>
+      <span class="bar"></span>
+      <span class="bar"></span>
+    </button>
+
+    <div class="overlay" id="overlay"></div>
+    <aside id="sidebar">
+      <ul role="list">
+        {% for item in navItems %}
+        <li><a href="{{ item }}.html"{% if page.fileSlug == item %} class="active" aria-current="page"{% endif %}>{{ item }}</a></li>
+        {% endfor %}
+      </ul>
+    </aside>
+  </nav>
+</header>
