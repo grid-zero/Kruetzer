@@ -1,7 +1,9 @@
 # CSS architecture
 
 Reference for working in `src/css/`. Read this before adding, moving, or restyling CSS.
-(For the build pipeline and the site's load-bearing constraints, see the repo root `CLAUDE.md`.)
+(For the build pipeline and the site's load-bearing constraints, see the repo root `CLAUDE.md`;
+for the *visual* intent behind the tokens — tone, palette, type rationale — see the repo root
+`DESIGN.md`.)
 
 ## How it's bundled
 
