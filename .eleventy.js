@@ -4,9 +4,12 @@ const fs = require('fs');
 const path = require('path');
 
 module.exports = function (eleventyConfig) {
-  eleventyConfig.addPassthroughCopy("src/css");
+  eleventyConfig.addPassthroughCopy("src/css/*.css");
   eleventyConfig.addPassthroughCopy("src/assets");
   eleventyConfig.addPassthroughCopy("src/index.js");
+
+  // Developer docs co-located with the CSS — keep them in the repo, not the built site
+  eleventyConfig.ignores.add("src/css/README.md");
 
   // Bundle CSS @imports into single file after passthrough copy
   eleventyConfig.on('afterBuild', () => {
