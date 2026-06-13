@@ -13,10 +13,9 @@
     <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display&family=Cinzel:wght@400;700&family=Fauna+One&family=Tangerine:wght@400;700&display=swap" rel="stylesheet">
   </head>
   <body>
-    <a href="#main-content" class="skip-link">Skip to content</a>
     {% if loader %}{% include "loader.html" %}{% endif %}
     {% include "header.html" %}
-    <main id="main-content" tabindex="-1">
+    <main>
       {{ content }}
     </main>
     {% include "footer.html" %}
