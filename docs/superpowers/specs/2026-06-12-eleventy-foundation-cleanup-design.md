@@ -1,7 +1,7 @@
 # Foundation Cleanup: Eleventy Migration & Shared Structure
 
 **Date:** 2026-06-12
-**Status:** Approved design
+**Status:** Implemented (merged to `main` 2026-06-12)
 **Phase:** 1 of N (foundation/cleanliness — page content is a separate later phase)
 
 ## Problem

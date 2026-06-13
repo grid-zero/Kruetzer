@@ -16,7 +16,8 @@
 
 ## Execution Status (last updated 2026-06-12)
 
-Branch: `claude/clever-ellis-6c6361` · executed via subagent-driven-development.
+**Merged to `main`** (fast-forward, 14 commits). Branch `claude/clever-ellis-6c6361` deleted.
+Executed via subagent-driven-development.
 
 | Task | Status | Commit |
 |------|--------|--------|
@@ -30,7 +31,8 @@ Branch: `claude/clever-ellis-6c6361` · executed via subagent-driven-development
 | 8. GitHub Pages deploy workflow | ✅ Done | `ecfee61` |
 | 9. Final full verification | ✅ Done | `d38aa38` |
 
-All 9 tasks complete. See `PROGRESS.md` for decisions, gotchas, and the finish-up steps (merge/PR + the one-time GitHub Pages "GitHub Actions" source toggle).
+All 9 tasks complete and merged. See `PROGRESS.md` for decisions, gotchas, and the
+one-time GitHub Pages "GitHub Actions" source toggle still needed by a repo admin.
 
 ---
 
@@ -554,7 +556,7 @@ git commit -m "feat: convert all remaining pages to Eleventy layout"
 
 ---
 
-## Task 6: No-JS hardening — ⏳ NOT STARTED (resume here)
+## Task 6: No-JS hardening — ✅ DONE (`58b40d1`)
 
 Make content visible by default and gate all JS-only behaviour behind the `js` class. Also guard `index.js` so it never throws on pages without a loader.
 
@@ -684,7 +686,7 @@ git commit -m "feat: harden site to work without JavaScript"
 
 ---
 
-## Task 7: Remove dead and legacy files — ⏳ NOT STARTED
+## Task 7: Remove dead and legacy files — ✅ DONE (`70dd67c`)
 
 Now that `src/` is the source of truth and the build is verified, delete the orphan and the superseded root-level files.
 
@@ -728,7 +730,7 @@ git commit -m "chore: remove orphan navbar.html and legacy root pages"
 
 ---
 
-## Task 8: GitHub Pages deploy workflow — ⏳ NOT STARTED
+## Task 8: GitHub Pages deploy workflow — ✅ DONE (`ecfee61`)
 
 **Files:**
 - Create: `.github/workflows/deploy.yml`
@@ -795,7 +797,7 @@ git commit -m "ci: add GitHub Pages build-and-deploy workflow"
 
 ---
 
-## Task 9: Final full verification — ⏳ NOT STARTED
+## Task 9: Final full verification — ✅ DONE (`d38aa38`)
 
 - [ ] **Step 1: Clean build from scratch**
 
