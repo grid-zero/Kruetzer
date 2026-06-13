@@ -65,6 +65,18 @@ section[contact-form] {
   font-size: var(--text-base);
 }
 
+.contact-fallback{
+  text-align: center;
+  margin-top: var(--space-lg);
+  & p {
+    margin-bottom: var(--space-sm);
+    color: var(--gold);
+  }
+  & a {
+    color: var(--gold);
+  }
+}
+
 /* Mobile adjustments */
 @media (max-width: 600px) {
   .form-row {

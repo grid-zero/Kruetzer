@@ -12,7 +12,11 @@ description: "Get in touch with Kreutzer to book a free trial music lesson in Ca
 
     <section contact-form>
       <div class="contact-container reveal">
-        <form action="#" method="POST" class="">
+
+        <form action="https://formspree.io/f/YOUR_FORM_ID" method="POST" class="">
+          <!-- Honeypot spam protection -->
+          <input type="text" name="_gotcha" style="display:none">
+
           <div class="form-grid">
             <div class="form-group">
               <label for="name">Full Name</label>
@@ -60,5 +64,14 @@ description: "Get in touch with Kreutzer to book a free trial music lesson in Ca
             <button type="submit" class="btn btn-large">Send Enquiry</button>
           </div>
         </form>
+
+         <div class="contact-fallback">
+          <p >Or reach us directly:</p>
+          <p>
+            <a href="tel:+61467925666" >+61 467 925 666</a>
+            &ensp;·&ensp;
+            <a href="mailto:hello@kreutzer.com.au">hello@kreutzer.com.au</a>
+          </p>
+        </div>
       </div>
     </section>

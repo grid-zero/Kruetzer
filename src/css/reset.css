@@ -27,3 +27,29 @@ a { color: var(--cream); text-decoration: none; cursor: pointer;}
 :where(input[type="file"])::-webkit-file-upload-button {
   font: inherit; font-size: inherit; color: inherit; letter-spacing: inherit;
 }
+
+/* Focus visibility */
+:focus-visible {
+  outline: 2px solid var(--gold);
+  outline-offset: 2px;
+}
+
+/* Skip-to-content link — visually hidden until focused */
+.skip-link {
+  position: absolute;
+  top: -100%;
+  left: 0;
+  z-index: 10000;
+  padding: 0.75rem 1.5rem;
+  background: var(--gold);
+  color: var(--bg);
+  font-family: var(--font-body);
+  font-size: var(--text-sm);
+  font-weight: var(--weight-bold);
+  text-decoration: none;
+  border-radius: 0 0 var(--radius-sm) 0;
+}
+
+.skip-link:focus {
+  top: 0;
+}
