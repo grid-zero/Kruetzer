@@ -9,9 +9,11 @@
 
 @keyframes slideIn {
   from {
+    transform: translateX(60vw);
     translate: 60vw 0;
   }
   to {
+    transform: translateX(0);
     translate: 0 0;
   }
 }
