@@ -21,17 +21,17 @@
   --bg-blue:   #33616d;
   
   --bg:          #070707;
-  /*--bg:          #141414;*/
   --bg-card:     #323236;
-  --bg-cream:    #d6d3c4;
+  --bg-overlay:  20, 20, 24;
 
   --text-blue: #7392c5;
-  --cream:       #f2e8b9;
-  --cream-dim:   rgba(242, 232, 185, 0.55);
-  --cream-faint: rgba(242, 232, 185, 0.12);
+  --cream-rgb:   242, 232, 185;
+  --cream:       rgb(var(--cream-rgb));
+  --cream-dim:   rgba(var(--cream-rgb), 0.55);
+  --cream-faint: rgba(var(--cream-rgb), 0.12);
+  --border-faint: rgba(var(--cream-rgb), 0.07);
   --gold:        #c9a84c;
   --gold-light:  #e2c47a;
-  --dark-red:    #d75466;
 
   --space-xs:  0.5rem;
   --space-sm:  1rem;
@@ -47,20 +47,12 @@
   --radius-lg: 20px;
 
   --ease:   cubic-bezier(0.25, 0.46, 0.45, 0.94);
-  --t-fast: 0.18s;
   --t-mid:  0.35s;
   --t-slow: 0.65s;
 
-  --shadow-md: 0 4px 16px rgba(0,0,0,0.5),
-               0 8px 24px rgba(0,0,0,0.35);
-  --shadow-lg: 0 20px 60px rgba(0,0,0,0.55);
-
-  --border-glow-cream: 0 0 0 1px rgba(242,232,185,0.2),
-                       0 0 12px rgba(242,232,185,0.08);
-  --glow-gold: 0 0 30px rgba(201,168,76,0.25);
 
   --sidebar-width: 240px;
-  --transition: cubic-bezier(0.77, 0, 0.175, 1);
+  --ease-emphatic: cubic-bezier(0.77, 0, 0.175, 1);
 }
 
 @keyframes fadeUp {
@@ -70,14 +62,6 @@
 @keyframes fadeIn {
   from { opacity: 0; }
   to   { opacity: 1; }
-}
-@keyframes slideRight {
-  from { transform: scaleX(0); }
-  to   { transform: scaleX(1); }
-}
-@keyframes pulse-glow {
-  0%, 100% { box-shadow: 0 0 0 0 rgba(201,168,76,0); }
-  50%       { box-shadow: 0 0 18px 4px rgba(201,168,76,0.35); }
 }
 
 @keyframes slideIn {

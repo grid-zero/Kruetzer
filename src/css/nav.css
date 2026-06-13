@@ -1,6 +1,6 @@
 header > nav {
   font-family: Cinzel, serif;
-  background: var(--bg-brand);
+  background: var(--bg);
   position: sticky;
   top: 0;
   width: 100%;
@@ -43,7 +43,6 @@ header > nav > div > ul {
   column-gap: var(--space-md);
   row-gap: 0;
   margin-top: 0px;
-  /*margin-left: var(--space-lg);*/
   animation: fadeIn var(--t-slow) 0.1s var(--ease) both;
 }
 
@@ -67,9 +66,6 @@ header > nav ul a::after {
 
 /* Logo text overlay */
 nav-logo-main {
-  /*position: absolute;
-  left: 50%;
-  transform: translateX(-50%);*/
   font-family: var(--font-script);
   font-size: var(--text-script);
   color: var(--cream);
@@ -95,7 +91,7 @@ header > nav > .btn {
     width: 40px;
     height: 40px;
     background: none;
-    border: 1px solid var(--border);
+    border: 1px solid var(--cream-faint);
     border-radius: 8px;
     cursor: pointer;
     padding: 10px;
@@ -109,7 +105,7 @@ header > nav > .btn {
     height: 1.5px;  
     background: white;
     border-radius: 2px;
-    transition: transform 0.35s var(--transition), opacity 0.25s ease, width 0.25s ease;
+    transition: transform 0.35s var(--ease-emphatic), opacity 0.25s ease, width 0.25s ease;
     transform-origin: center;
   }
  
@@ -136,10 +132,10 @@ header > nav > aside {
   top: 0; left: 0; bottom: 0;
   width: var(--sidebar-width);
   background: var(--bg);
-  border-right: 1px solid var(--border);
+  border-right: 1px solid var(--cream-faint);
   z-index: 200;
   transform: translateX(calc(-1 * var(--sidebar-width)));
-  transition: transform 0.45s var(--transition);
+  transition: transform 0.45s var(--ease-emphatic);
   display: flex;
   flex-direction: column;
   padding: var(--space-lg) 0 2rem;

@@ -1,6 +1,6 @@
 footer {
-  background: var(--bg-raised);
-  border-top: 1px solid rgba(242,232,185,0.07);
+  background: var(--bg);
+  border-top: 1px solid var(--border-faint);
   padding: var(--space-sm) var(--page-pad) var(--space-md);
 }
 
@@ -44,7 +44,7 @@ footer ul a:hover {
 
 footer span {
   display: block;
-  border-top: 1px solid rgba(242,232,185,0.07);
+  border-top: 1px solid var(--border-faint);
   padding-top: var(--space-md);
   max-width: var(--page-max);
   color: var(--cream-dim);

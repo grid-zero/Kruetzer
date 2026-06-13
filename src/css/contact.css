@@ -41,7 +41,7 @@ section[contact-form] {
 .form-group input, 
 .form-group select, 
 .form-group textarea {
-  background: rgba(20, 20, 24, 0.6);
+  background: rgba(var(--bg-overlay), 0.6);
   border: 1px solid var(--cream-faint);
   padding: 0.8rem;
   color: var(--cream);
