@@ -1,0 +1,101 @@
+section[pricing] {
+  background-color: var(--bg-blue);
+  h2 {
+    color: var(--cream);
+  }
+  .pricing-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    gap: var(--space-md);
+    align-items: start;
+  }
+
+  .pricing-grid > div {
+    background: var(--bg-card);
+    border: 1px solid var(--border-faint);
+    border-radius: var(--radius-md);
+    padding: var(--space-lg);
+    position: relative;
+    transition:
+      transform var(--t-mid) var(--ease),
+      border-color var(--t-mid) var(--ease);
+  }
+
+  .pricing-grid > div:hover {
+    transform: translateY(-4px);
+  }
+
+  .pricing-grid > div.featured {
+    border-color: var(--gold);
+  }
+
+  .pricing-grid > div > span {
+    position: absolute;
+    top: -0.75rem;
+    left: 50%;
+    transform: translateX(-50%);
+    background: var(--gold);
+    color: var(--bg);
+    font-size: var(--text-xs);
+    font-weight: var(--weight-bold);
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    padding: 0.2rem 0.9rem;
+    border-radius: 99px;
+    white-space: nowrap;
+  }
+
+    .pricing-grid h3 {
+    font-family: var(--font-display);
+    font-size: var(--text-lg);
+    color: var(--cream);
+    letter-spacing: 0;
+    text-transform: none;
+    margin-bottom: var(--space-xs);
+  }
+
+  .pricing-grid strong {
+    display: block;
+    font-family: var(--font-display);
+    font-size: var(--text-xl);
+    color: var(--gold);
+    line-height: 1;
+    margin-bottom: var(--space-xs);
+    font-weight: var(--weight-regular);
+  }
+
+  .pricing-grid strong span {
+    font-family: var(--font-body);
+    font-size: var(--text-sm);
+    color: var(--cream-dim);
+  }
+
+  .pricing-grid ul {
+    margin-bottom: var(--space-lg);
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-xs);
+  }
+
+  .pricing-grid li {
+    font-size: var(--text-xs);
+    display: flex;
+    gap: 0.6rem;
+    align-items: flex-start;
+  }
+
+ .pricing-grid li::before {
+    content: '✓';
+    color: var(--gold);
+    font-weight: var(--weight-bold);
+    flex-shrink: 0;
+  }
+}
+
+@media (max-width: 768px) {
+  section[pricing] .pricing-grid {
+    grid-template-columns: 1fr;
+    max-width: 400px;
+    margin: 0 auto;
+  }
+}

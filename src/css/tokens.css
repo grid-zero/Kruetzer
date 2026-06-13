@@ -1,0 +1,55 @@
+:root {
+  --font-display:  'DM Serif Display', serif;
+  --font-script:   'Tangerine', cursive;
+  --font-title:    'Cinzel', serif;
+  --font-body:     'Fauna One', serif;
+
+  --text-xs:     clamp(0.75rem,  1vw,    0.875rem);
+  --text-sm:     clamp(0.9rem,   1.2vw,  1rem);
+  --text-base:   clamp(1rem,     1.4vw,  1.125rem);
+  --text-md:     clamp(1.1rem,   1.6vw,  1.375rem);
+  --text-lg:     clamp(1.4rem,   2.5vw,  2rem);
+  --text-xl:     clamp(2rem,     4vw,    3.5rem);
+  --text-2xl:    clamp(2.8rem,   6vw,    5.5rem);
+  --text-script: clamp(2.5rem,   5vw,    4.5rem);
+
+  --weight-regular: 400;
+  --weight-medium:  500;
+  --weight-bold:    700;
+  
+  --bg-blue:   #33616d;
+  
+  --bg:          #070707;
+  --bg-card:     #323236;
+  --bg-overlay:  20, 20, 24;
+
+  --text-blue: #7392c5;
+  --cream-rgb:   242, 232, 185;
+  --cream:       rgb(var(--cream-rgb));
+  --cream-dim:   rgba(var(--cream-rgb), 0.55);
+  --cream-faint: rgba(var(--cream-rgb), 0.12);
+  --border-faint: rgba(var(--cream-rgb), 0.07);
+  --gold:        #c9a84c;
+  --gold-light:  #e2c47a;
+
+  --space-xs:  0.5rem;
+  --space-sm:  1rem;
+  --space-md:  2rem;
+  --space-lg:  4rem;
+  --space-xl:  7rem;
+
+  --page-max: 1280px;
+  --page-pad: clamp(1.25rem, 5vw, 5rem);
+
+  --radius-sm: 6px;
+  --radius-md: 12px;
+  --radius-lg: 20px;
+
+  --ease:   cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  --t-mid:  0.35s;
+  --t-slow: 0.65s;
+
+
+  --sidebar-width: 240px;
+  --ease-emphatic: cubic-bezier(0.77, 0, 0.175, 1);
+}

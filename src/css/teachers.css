@@ -1,0 +1,82 @@
+section[teachers] {
+  justify-content: center;
+  display: grid;
+  gap: var(--space-lg);
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 450px), 1fr));
+
+  .teacher-card-container {
+    background-color: transparent;
+    width: 100%;
+    max-width: 450px;
+    height: 550px;
+    perspective: 1000px;
+    cursor: pointer;
+    margin: 0 auto;
+  }
+
+  .teacher-card-inner {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    transition: transform 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+    transform-style: preserve-3d;
+  }
+
+  .teacher-card-container.is-flipped .teacher-card-inner {
+    transform: rotateY(180deg);
+  }
+
+  .teacher-card-front, .teacher-card-back {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    -webkit-backface-visibility: hidden;
+    backface-visibility: hidden;
+    border-radius: var(--radius-md);
+    overflow: hidden;
+    border: 1px solid var(--cream-faint);
+  }
+
+  .teacher-card-front {
+    background: var(--bg-card);
+  }
+
+  .teacher-front-overlay {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    padding: var(--space-md);
+    background: linear-gradient(to top, rgba(var(--bg-overlay), 0.9), transparent);
+    text-align: center;
+  }
+
+  .teacher-front-overlay span {
+    font-size: var(--text-xs);
+    color: var(--gold);
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+  }
+
+  .teacher-card-back {
+    background: var(--bg-blue);
+    color: var(--cream);
+    transform: rotateY(180deg);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: var(--space-md);
+    text-align: center;
+  }
+
+  .teacher-card-back p {
+    color: inherit;
+  }
+
+  .teacher-card-back .teacher-info h3 {
+    margin-top: var(--space-sm);
+  }
+
+  .teacher-card-back .btn {
+    margin-top: var(--space-sm);
+  }
+}

@@ -1,0 +1,26 @@
+.btn {
+  display: inline-block;
+  background: var(--gold);
+  color: var(--bg);
+  border: 1px solid var(--gold);
+  font-family: var(--font-body);
+  font-size: var(--text-sm);
+  font-weight: var(--weight-bold);
+  letter-spacing: 0.04em;
+  border-radius: var(--radius-sm);
+  padding: 0.5rem 1.3rem;
+}
+.btn:hover {
+  background: transparent;
+  color: var(--gold);
+}
+.btn-clear {
+  background: transparent;
+  color: var(--cream);
+  border-color: var(--cream);
+}
+.btn-clear:hover {
+  background: var(--cream-faint);
+  color: var(--cream);
+  box-shadow: none;
+}

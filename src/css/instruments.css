@@ -1,0 +1,38 @@
+section[instruments] {
+  background: var(--bg-blue);
+
+  & ul {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+    gap: var(--space-sm);
+  }
+
+  & li {
+    background-color: var(--bg);
+    border-radius: var(--radius-lg);
+    padding: 1em;
+  }
+
+  & li p:first-of-type {
+    font-family: var(--font-display);
+    font-size: var(--text-md);
+  }
+
+  & li p:last-child {
+    font-size: var(--text-base);
+    margin-top: 0.35rem;
+    line-height: 1.5;
+  }
+}
+
+@media (max-width: 768px) {
+  section[instruments] ul {
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  }
+}
+
+@media (max-width: 480px) {
+  section[instruments] ul {
+    grid-template-columns: 1fr 1fr;
+  }
+}
