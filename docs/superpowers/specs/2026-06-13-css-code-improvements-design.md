@@ -39,18 +39,33 @@
 
 ## 2. Token consolidation & naming
 
-**`--border-faint`** — add to `root.css`:
+**Cream base triplet** — unify the entire `242, 232, 185` color family behind one raw RGB triplet so every alpha variant derives from a single source. Add to `root.css`:
 
 ```css
---border-faint: rgba(242,232,185,0.07);
+--cream-rgb: 242, 232, 185;
 ```
 
-Replace all 7 literal occurrences of `rgba(242,232,185,0.07)` with `var(--border-faint)`:
+Rewrite the existing cream tokens in `root.css` to derive from it:
 
-- `footer.css` — 2 occurrences (`footer` border-top, `footer span` border-top)
-- `page.css` — 5 occurrences (`section[default]`, `section[about]`, `section[how-it-works]`, `section[contact]`, `.pricing-grid > div`)
+```css
+--cream:       rgb(var(--cream-rgb));        /* was #f2e8b9 */
+--cream-dim:   rgba(var(--cream-rgb), 0.55);  /* was rgba(242, 232, 185, 0.55) */
+--cream-faint: rgba(var(--cream-rgb), 0.12);  /* was rgba(242, 232, 185, 0.12) */
+```
 
-> Note: other alpha variants in the family (`0.05`, `0.1`, `0.12=--cream-faint`) are intentionally **left as-is** to keep this focused. Only the exact `0.07` literal is consolidated.
+Add a semantic token for the most-repeated border (7 uses justify a name), also derived:
+
+```css
+--border-faint: rgba(var(--cream-rgb), 0.07);
+```
+
+Replace literal cream `rgba()` occurrences across the files:
+
+- `rgba(242,232,185,0.07)` → `var(--border-faint)` — 7 occurrences: `footer.css` ×2 (`footer`, `footer span` border-top), `page.css` ×5 (`section[default]`, `section[about]`, `section[how-it-works]`, `section[contact]`, `.pricing-grid > div`)
+- `rgba(242,232,185,0.1)` → `rgba(var(--cream-rgb), 0.1)` — 2 occurrences in `page.css` (`testimonial-reference` border-left line 294; testimonials mobile border-top line 724)
+- `rgba(242, 232, 185, 0.05)` → `rgba(var(--cream-rgb), 0.05)` — 1 occurrence in `page.css` (table cell border, line 616)
+
+> The `0.1`/`0.05` variants are inlined as `rgba(var(--cream-rgb), …)` rather than given their own named tokens — too few uses to justify names, but they still derive from the single triplet. `--border-glow-cream` (the only other holder of cream literals, `0.2`/`0.08`) is deleted as unused in §1, so it needs no conversion.
 
 **`--bg-overlay`** — add a raw RGB triplet to `root.css` so alpha can vary at the call site:
 
@@ -75,7 +90,7 @@ section[testimonials] article > testimonial-reference {
   justify-content: flex-start;
   text-align: left;
   border-left: none;
-  border-top: 1px solid rgba(242,232,185,0.1);
+  border-top: 1px solid rgba(var(--cream-rgb), 0.1);
   padding-left: 0;
   padding-top: var(--space-md);
   align-items: center;
@@ -109,12 +124,12 @@ These deep descendant chains are brittle (positional, break if markup nesting sh
 
 1. **Build:** `npx @11ty/eleventy` completes without error.
 2. **Reference-integrity grep:** after edits, each removed token name (`--shadow-md`, `--shadow-lg`, `--border-glow-cream`, `--glow-gold`, `--bg-cream`, `--dark-red`, `--t-fast`, `--transition`) returns 0 matches across `src/css`; `pulse-glow` and `slideRight` return only their (now-deleted) definitions, i.e. 0 matches.
-3. **Visual regression:** run the dev server and walk every page at 1024 / 768 / 480 px. Confirm no visual change **except** the two intended fixes (testimonials mobile reference block, teachers grid no longer overflowing on narrow screens).
-4. **No-JS check:** confirm `.reveal` content is visible and the loader stays hidden with JS disabled (unchanged behavior).
+3. **Cream-literal grep:** after edits, `rgba(242` returns 0 matches across `src/css` — every cream color now flows through `var(--cream-rgb)`. (`--bg-overlay` likewise leaves 0 `rgba(20` matches.)
+4. **Visual regression:** run the dev server and walk every page at 1024 / 768 / 480 px. Confirm no visual change **except** the two intended fixes (testimonials mobile reference block, teachers grid no longer overflowing on narrow screens).
+5. **No-JS check:** confirm `.reveal` content is visible and the loader stays hidden with JS disabled (unchanged behavior).
 
 ## Out of scope
 
 - Visual/design polish (spacing, hierarchy, color changes).
 - HTML/markup edits (including selector flattening from §4).
 - File reorganization or splitting.
-- Consolidating the other `rgba(242,232,185,*)` alpha variants.
