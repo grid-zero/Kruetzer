@@ -66,6 +66,7 @@ document.querySelectorAll('.reveal').forEach(el => {
 });
 
 
+
 const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
 document.querySelectorAll('[data-count]').forEach(el => {
