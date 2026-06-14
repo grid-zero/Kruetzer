@@ -3,14 +3,62 @@
   transform: none;
 }
 .js .reveal {
-  transform: translateY(28px);
   opacity: 0;
-  transition: opacity 1.65s var(--ease), transform 0.65s var(--ease);
+  transform: translateY(28px);
+  transition:
+    opacity var(--t-reveal) var(--ease),
+    transform var(--t-reveal) var(--ease),
+    filter var(--t-reveal) var(--ease);
 }
 .js .reveal.visible {
-  transform: translateY(0);
   opacity: 1;
+  transform: none;
+  filter: none;
 }
+
+/* Directional */
+.js .reveal--left  { transform: translateX(-40px); }
+.js .reveal--right { transform: translateX(40px); }
+
+/* Blur-to-sharp */
+.js .reveal--blur {
+  filter: blur(12px);
+  transform: scale(1.03);
+}
+
+/* Clip-path wipe — the mask reveals, no fade */
+.js .reveal--wipe {
+  opacity: 1;
+  transform: none;
+  clip-path: inset(0 100% 0 0);
+  transition: clip-path var(--t-wipe) var(--ease);
+}
+.js .reveal--wipe.visible {
+  clip-path: inset(0 0 0 0);
+}
+
+/* Stagger — cascade direct .reveal children of a .reveal-stagger parent */
+.js .reveal-stagger > .reveal:nth-child(2) { transition-delay: 0.08s; }
+.js .reveal-stagger > .reveal:nth-child(3) { transition-delay: 0.16s; }
+.js .reveal-stagger > .reveal:nth-child(4) { transition-delay: 0.24s; }
+.js .reveal-stagger > .reveal:nth-child(5) { transition-delay: 0.32s; }
+.js .reveal-stagger > .reveal:nth-child(6) { transition-delay: 0.40s; }
+
+/* Manual one-off delays (kept for non-stagger cases) */
 .reveal-delay-1 { transition-delay: 0.1s; }
 .reveal-delay-2 { transition-delay: 0.2s; }
 .reveal-delay-3 { transition-delay: 0.3s; }
+
+@media (prefers-reduced-motion: reduce) {
+  .js .reveal,
+  .js .reveal--left,
+  .js .reveal--right,
+  .js .reveal--blur,
+  .js .reveal--wipe {
+    opacity: 1;
+    transform: none;
+    filter: none;
+    clip-path: none;
+    transition: none;
+  }
+}
