@@ -31,6 +31,32 @@ section h3 {
   margin-bottom: var(--space-sm);
 }
 
+/* Shared gold underline-draw — one definition, reused by nav and headings.
+   Triggers: hover, or scroll-reveal (.visible). Nav active state lives in nav.css. */
+.draw-underline {
+  position: relative;
+  padding-bottom: 3px;
+}
+.draw-underline::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 1px;
+  background: var(--gold);
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform var(--t-mid) var(--ease);
+}
+.draw-underline:hover::after,
+.draw-underline.visible::after {
+  transform: scaleX(1);
+}
+@media (prefers-reduced-motion: reduce) {
+  .draw-underline::after { transition: none; }
+}
+
 section[default]{
   border-top: 1px solid var(--border-faint);
 }
