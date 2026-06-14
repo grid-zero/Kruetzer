@@ -23,3 +23,13 @@
   50%  { opacity: 1; }
   100% { opacity: 0.85; }
 }
+
+@keyframes kenBurns {
+  from { transform: scale(1); }
+  to   { transform: scale(1.06); }
+}
+
+@keyframes wordIn {
+  from { opacity: 0; transform: translateY(28px); filter: blur(8px); }
+  to   { opacity: 1; transform: none;             filter: blur(0); }
+}

@@ -29,7 +29,7 @@ Component-based with pragmatic grouping:
 | File | Owns |
 |------|------|
 | `tokens.css` | The `:root` block — every custom property (fonts, fluid type scale, colors, spacing, radii, easings). The single source of design values. |
-| `keyframes.css` | All `@keyframes` (`fadeUp`, `fadeIn`, `slideIn`, `shimmer`). |
+| `keyframes.css` | All `@keyframes` (`fadeUp`, `fadeIn`, `slideIn`, `shimmer`, `kenBurns`, `wordIn`). |
 | `reset.css` | `box-sizing`, `html`/`body`, list/anchor resets, media-element + form-control normalization. |
 | `reveal.css` | The `.reveal` / `.js .reveal` / `.reveal.visible` scroll-reveal progressive-enhancement logic + `.reveal-delay-*`. |
 
