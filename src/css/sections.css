@@ -103,6 +103,7 @@ section[intro] {
   }
   & h1 .word {
     display: inline-block;
+    will-change: filter;
   }
   & p {
     max-width: 560px;
