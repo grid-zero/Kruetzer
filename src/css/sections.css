@@ -137,7 +137,10 @@ section[intro][home]::before {
 
 @media (prefers-reduced-motion: reduce) {
   section[intro][home]::before { animation: none; }
-  section[intro] h1 .word {
+  section[intro] h1 .word,
+  section[intro] h3,
+  section[intro] p,
+  section[intro] .btn {
     animation: none;
     opacity: 1;
     transform: none;
