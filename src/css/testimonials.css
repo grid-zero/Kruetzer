@@ -16,14 +16,6 @@ section[testimonials] {
     border-radius: var(--radius-lg);
   }
 
-  article.reveal{
-    transform: translateY(0);
-  }
-
-  article.reveal.visible {
-    animation: slideIn 1.6s ease-out both;
-  }
-
   & article:nth-child(even) {
     background: var(--bg-blue);
   }

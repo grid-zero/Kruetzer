@@ -11,6 +11,11 @@ section[instruments] {
     background-color: var(--bg);
     border-radius: var(--radius-lg);
     padding: 1em;
+    transition: transform var(--t-mid) var(--ease);
+  }
+
+  & li:hover {
+    transform: translateY(-4px);
   }
 
   & li p:first-of-type {
@@ -35,4 +40,8 @@ section[instruments] {
   section[instruments] ul {
     grid-template-columns: 1fr 1fr;
   }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  section[instruments] li:hover { transform: none; }
 }

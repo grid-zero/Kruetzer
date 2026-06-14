@@ -99,3 +99,7 @@ section[pricing] {
     margin: 0 auto;
   }
 }
+
+@media (prefers-reduced-motion: reduce) {
+  section[pricing] .pricing-grid > div:hover { transform: none; }
+}
