@@ -88,16 +88,44 @@ uppercase eyebrow; `h2` is the teal Cinzel section title; the hero `h1` is cream
 
 ## Motion
 
-- **Hero entrance:** staggered `fadeUp` at `0.3s / 0.45s / 0.6s / 0.75s` using `--ease`.
-- **Scroll reveal:** `.reveal` elements animate in on intersection; `.reveal-delay-*` adds
-  the stagger.
-- **Sidebar:** `slideIn` from `60vw`. **Loader:** `shimmer`. Keyframes in
-  [`keyframes.css`](src/css/keyframes.css); easings `--ease` and `--ease-emphatic` in tokens.
+Motion is a **small, deliberate vocabulary**, not one blanket fade. It extends the
+`IntersectionObserver` + `.reveal` system (visible-by-default, so the site still works with
+JavaScript off) with composable gesture-modifier classes.
 
-**No-JS fallback is load-bearing — preserve it.** `.reveal` content is visible by default;
-only `.js .reveal` hides-then-animates it, and the loader displays only under `.js`. The
-site must read correctly with JavaScript disabled. (Details in
-[`src/css/README.md`](src/css/README.md) and [`CLAUDE.md`](CLAUDE.md).)
+**Reveal vocabulary** (compose a modifier onto `.reveal`), defined in
+[`reveal.css`](src/css/reveal.css):
+
+- `.reveal` — fade + rise (default).
+- `.reveal--left` / `.reveal--right` — directional slide (two-column sections; testimonials alternate).
+- `.reveal--wipe` — clip-path mask reveal. **At most one `h2` per page.**
+- `.reveal--blur` — blur-to-sharp (intro/about contexts).
+- `.reveal-stagger` (on a parent) — cascades its direct `.reveal` children.
+
+**Hero (homepage only, `section[intro][home]`):** the `h1` rises word-by-word out of a
+blur (`wordIn`), over a slow CSS **Ken Burns** drift on the photo (`kenBurns`, a `::before`
+layer). The signature moment — used nowhere else.
+
+**Numbers & accents:** stats count up via a guarded block in
+[`index.js`](src/index.js) (final value lives in the HTML for no-JS; snaps to final under
+reduced-motion). The gold **underline-draw** is a single shared utility,
+`.draw-underline` (defined in [`sections.css`](src/css/sections.css)), reused by the nav and
+by headings — **never copy it; reuse the class.** Nav's active-link underline stays in
+[`nav.css`](src/css/nav.css).
+
+**Micro-interactions** (pure CSS `:hover`): button invert + lift and clear-button
+fill-sweep ([`buttons.css`](src/css/buttons.css)), tile and card lift
+([`instruments.css`](src/css/instruments.css); pricing already lifts).
+
+**Two rules are load-bearing — preserve them:**
+- **No-JS:** content visible and static without JavaScript; the count-up shows the HTML's
+  final number.
+- **`prefers-reduced-motion: reduce`:** every animated component carries its own
+  co-located reduced-motion guard (cascade-safe — it must declare *after* the animation it
+  cancels). `reveal.css` guards the `.reveal*` selectors; each component guards its own
+  hover/keyframe motion.
+
+New keyframes live in [`keyframes.css`](src/css/keyframes.css); motion easings/durations in
+[`tokens.css`](src/css/tokens.css). No timing literals in components.
 
 ## Guardrails — NEVER, in this codebase
 
