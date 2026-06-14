@@ -58,3 +58,18 @@ footer nav {
    gap: var(--space-sm);
    margin-top: var(--space-md); 
 }
+
+@media (max-width: 768px) {
+  footer > div {
+    grid-template-columns: 1fr;
+    text-align: center;
+  }
+
+  footer nav {
+    justify-content: center;
+  }
+
+  footer h4 {
+    margin-bottom: var(--space-xs);
+  }
+}
