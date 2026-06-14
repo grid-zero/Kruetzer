@@ -31,15 +31,30 @@
   scale: 1.03;
 }
 
-/* Clip-path wipe — the mask reveals, no fade or slide */
+/* Mask wipe — a hard-edged mask reveals left→right, no fade or slide.
+   Uses `mask` rather than `clip-path` on purpose: Chrome folds an element's
+   own clip-path into the geometry IntersectionObserver measures, so a
+   start-state clipped to zero width reports a 0 intersection ratio and never
+   crosses the reveal threshold — it stays hidden forever (Firefox ignores it).
+   A mask is paint-only and never affects the observed box, so IO still fires. */
 .js .reveal--wipe {
   opacity: 1;
   translate: none;
-  clip-path: inset(0 100% 0 0);
-  transition: clip-path var(--t-wipe) var(--ease);
+  -webkit-mask-image: linear-gradient(to right, #000 50%, transparent 50%);
+          mask-image: linear-gradient(to right, #000 50%, transparent 50%);
+  -webkit-mask-size: 200% 100%;
+          mask-size: 200% 100%;
+  -webkit-mask-position: 100% 0;
+          mask-position: 100% 0;
+  -webkit-mask-repeat: no-repeat;
+          mask-repeat: no-repeat;
+  transition:
+    -webkit-mask-position var(--t-wipe) var(--ease),
+            mask-position var(--t-wipe) var(--ease);
 }
 .js .reveal--wipe.visible {
-  clip-path: inset(0 0 0 0);
+  -webkit-mask-position: 0 0;
+          mask-position: 0 0;
 }
 
 /* Stagger — cascade direct .reveal children of a .reveal-stagger parent */
@@ -64,7 +79,8 @@
     translate: none;
     scale: none;
     filter: none;
-    clip-path: none;
+    -webkit-mask-image: none;
+            mask-image: none;
     transition: none;
   }
 }
