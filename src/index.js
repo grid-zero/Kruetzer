@@ -60,6 +60,40 @@ document.querySelectorAll('.reveal').forEach(el => {
 });
 
 
+const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+document.querySelectorAll('[data-count]').forEach(el => {
+  const target = parseFloat(el.getAttribute('data-count'));
+  const suffix = el.getAttribute('data-suffix') || '';
+
+  if (reduceMotion || isNaN(target)) {
+    return; // leave the static HTML value in place
+  }
+
+  const countObserver = new IntersectionObserver((entries, obs) => {
+    entries.forEach(entry => {
+      if (!entry.isIntersecting) return;
+      obs.unobserve(entry.target);
+
+      const duration = 1100;
+      let startTime = null;
+      el.textContent = '0' + suffix;
+
+      function step(ts) {
+        if (!startTime) startTime = ts;
+        const p = Math.min((ts - startTime) / duration, 1);
+        const eased = 1 - Math.pow(1 - p, 3);
+        el.textContent = Math.round(eased * target) + suffix;
+        if (p < 1) requestAnimationFrame(step);
+      }
+      requestAnimationFrame(step);
+    });
+  }, { threshold: 0.5 });
+
+  countObserver.observe(el);
+});
+
+
 
 
 document.querySelectorAll('.teacher-card-container').forEach(card => {
