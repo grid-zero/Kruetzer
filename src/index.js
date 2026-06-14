@@ -28,6 +28,8 @@ function step(ts) {
   } else {
     fillInner.style.width  = '100%';
     loaderWrap.classList.add('done');
+    /* Curtain is lifting — let the hero entrance choreography begin now. */
+    document.documentElement.classList.add('loaded');
     /* remove from dom after animation finishes */
     setTimeout(() => {
         loaderWrap.style.display = "none";
@@ -36,6 +38,10 @@ function step(ts) {
 }
 
 requestAnimationFrame(step);
+}
+else {
+  /* No loader on this page — let the hero entrance run immediately. */
+  document.documentElement.classList.add('loaded');
 }
 
 

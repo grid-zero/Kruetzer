@@ -1,6 +1,6 @@
 @keyframes fadeUp {
-  from { opacity: 0; transform: translateY(24px); }
-  to   { opacity: 1; transform: translateY(0); }
+  from { opacity: 0; translate: 0 24px; }
+  to   { opacity: 1; translate: 0 0; }
 }
 @keyframes fadeIn {
   from { opacity: 0; }
@@ -21,4 +21,14 @@
 @keyframes wordIn {
   from { opacity: 0; transform: translateY(28px); filter: blur(8px); }
   to   { opacity: 1; transform: none;             filter: blur(0); }
+}
+
+/* Scroll-scrubbed testimonial reveals (driven by a view() timeline) */
+@keyframes scrubInLeft {
+  from { opacity: 0; translate: -60px 0; }
+  to   { opacity: 1; translate: 0 0; }
+}
+@keyframes scrubInRight {
+  from { opacity: 0; translate: 60px 0; }
+  to   { opacity: 1; translate: 0 0; }
 }

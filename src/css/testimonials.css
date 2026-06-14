@@ -67,6 +67,23 @@ section[testimonials] {
   }
 }
 
+/* Scroll-scrubbed testimonials: reveal progress is tied directly to scroll
+   position via a view() timeline, so scrolling back up progressively hides them.
+   Pure CSS — no observer. Falls back to static-visible where view timelines are
+   unsupported (older Safari) or when the user prefers reduced motion. */
+@supports (animation-timeline: view()) {
+  @media (prefers-reduced-motion: no-preference) {
+    .reveal-scrub {
+      animation: scrubInLeft linear both;
+      animation-timeline: view();
+      animation-range: entry 10% cover 45%;
+    }
+    .reveal-scrub--right {
+      animation-name: scrubInRight;
+    }
+  }
+}
+
 @media (max-width: 768px) {
   section[testimonials] article {
     grid-template-columns: 1fr;

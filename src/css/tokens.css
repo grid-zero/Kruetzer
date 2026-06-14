@@ -55,6 +55,6 @@
 
   --ease-out:   cubic-bezier(0.16, 1, 0.3, 1);
   --t-reveal:   0.7s;
-  --t-wipe:     0.85s;
+  --t-wipe:     1.2s;
   --t-kenburns: 28s;
 }

@@ -86,7 +86,6 @@ section[intro] {
     text-transform: uppercase;
     color: var(--gold);
     margin-bottom: var(--space-md);
-    animation: fadeUp 0.7s 0.3s var(--ease) both;
   }
 
   & h1 {
@@ -104,21 +103,10 @@ section[intro] {
   }
   & h1 .word {
     display: inline-block;
-    animation: wordIn 0.7s var(--ease) both;
   }
-  & h1 .word:nth-of-type(1) { animation-delay: 0.45s; }
-  & h1 .word:nth-of-type(2) { animation-delay: 0.57s; }
-  & h1 .word:nth-of-type(3) { animation-delay: 0.69s; }
-  & h1 .word:nth-of-type(4) { animation-delay: 0.81s; }
-  & h1 .word:nth-of-type(5) { animation-delay: 0.93s; }
   & p {
     max-width: 560px;
     margin: 0 auto var(--space-lg);
-    animation: fadeUp 0.7s 0.6s var(--ease) both;
-  }
-
-  & .btn {
-    animation: fadeUp 0.7s 0.75s var(--ease) both;
   }
 }
 
@@ -132,19 +120,30 @@ section[intro][home]::before {
   background-image: url('../assets/IMG_5717.jpg');
   background-position: 0% 70%;
   background-size: cover;
-  animation: kenBurns var(--t-kenburns) var(--ease) infinite alternate both;
 }
 
-@media (prefers-reduced-motion: reduce) {
-  section[intro][home]::before { animation: none; }
-  section[intro] h1 .word,
-  section[intro] h3,
-  section[intro] p,
-  section[intro] .btn {
-    animation: none;
-    opacity: 1;
-    transform: none;
-    filter: none;
+/* Hero entrance choreography — runs only with JS + motion allowed, and only once
+   the loader has lifted (`.loaded` added to <html> in index.js). Without JS, under
+   reduced-motion, or before the curtain lifts, the hero is simply visible. */
+@media (prefers-reduced-motion: no-preference) {
+  .js section[intro] h3,
+  .js section[intro] p,
+  .js section[intro] .btn,
+  .js section[intro][home] h1 .word { opacity: 0; }
+
+  .js.loaded section[intro] h3   { animation: fadeUp 0.7s 0.3s var(--ease) both; }
+  .js.loaded section[intro] p    { animation: fadeUp 0.7s 0.6s var(--ease) both; }
+  .js.loaded section[intro] .btn { animation: fadeUp 0.7s 0.75s var(--ease) both; }
+
+  .js.loaded section[intro][home] h1 .word { animation: wordIn 0.7s var(--ease) both; }
+  .js.loaded section[intro][home] h1 .word:nth-of-type(1) { animation-delay: 0.45s; }
+  .js.loaded section[intro][home] h1 .word:nth-of-type(2) { animation-delay: 0.57s; }
+  .js.loaded section[intro][home] h1 .word:nth-of-type(3) { animation-delay: 0.69s; }
+  .js.loaded section[intro][home] h1 .word:nth-of-type(4) { animation-delay: 0.81s; }
+  .js.loaded section[intro][home] h1 .word:nth-of-type(5) { animation-delay: 0.93s; }
+
+  .js.loaded section[intro][home]::before {
+    animation: kenBurns var(--t-kenburns) var(--ease) infinite alternate both;
   }
 }
 

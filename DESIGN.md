@@ -96,14 +96,29 @@ JavaScript off) with composable gesture-modifier classes.
 [`reveal.css`](src/css/reveal.css):
 
 - `.reveal` — fade + rise (default).
-- `.reveal--left` / `.reveal--right` — directional slide (two-column sections; testimonials alternate).
+- `.reveal--left` / `.reveal--right` — directional slide (two-column sections).
 - `.reveal--wipe` — clip-path mask reveal. **At most one `h2` per page.**
 - `.reveal--blur` — blur-to-sharp (intro/about contexts).
 - `.reveal-stagger` (on a parent) — cascades its direct `.reveal` children.
 
+Entrance reveals animate the individual **`translate`/`scale`** properties, never the
+`transform` shorthand — that leaves `transform` free for `:hover` lifts on the *same*
+element (buttons, tiles, cards that are both a `.reveal` and have a hover transform).
+Don't reintroduce `transform` into the reveal entrance, or hover lifts on revealed
+elements break.
+
 **Hero (homepage only, `section[intro][home]`):** the `h1` rises word-by-word out of a
 blur (`wordIn`), over a slow CSS **Ken Burns** drift on the photo (`kenBurns`, a `::before`
-layer). The signature moment — used nowhere else.
+layer). The signature moment — used nowhere else. The whole entrance is gated on a
+`.loaded` class that [`index.js`](src/index.js) adds to `<html>` when the loader curtain
+lifts (immediately on pages with no loader), so the choreography plays *after* the curtain
+rather than hidden behind it.
+
+**Testimonials (`.reveal-scrub` / `--right`):** reveal progress is **scroll-scrubbed** —
+tied directly to scroll position via a `view()` timeline (`scrubInLeft`/`scrubInRight` in
+[`keyframes.css`](src/css/keyframes.css)), so scrolling back up progressively hides them.
+Pure CSS, no observer. `@supports (animation-timeline: view())` gates it; unsupported
+browsers (and reduced-motion) get the cards static-visible.
 
 **Numbers & accents:** stats count up via a guarded block in
 [`index.js`](src/index.js) (final value lives in the HTML for no-JS; snaps to final under
@@ -122,7 +137,9 @@ fill-sweep ([`buttons.css`](src/css/buttons.css)), tile and card lift
 - **`prefers-reduced-motion: reduce`:** every animated component carries its own
   co-located reduced-motion guard (cascade-safe — it must declare *after* the animation it
   cancels). `reveal.css` guards the `.reveal*` selectors; each component guards its own
-  hover/keyframe motion.
+  hover/keyframe motion. The hero entrance and the testimonial scrub take the inverse
+  approach — their animation rules live inside `@media (prefers-reduced-motion: no-preference)`,
+  so reduced-motion users simply never get them.
 
 New keyframes live in [`keyframes.css`](src/css/keyframes.css); motion easings/durations in
 [`tokens.css`](src/css/tokens.css). No timing literals in components.
