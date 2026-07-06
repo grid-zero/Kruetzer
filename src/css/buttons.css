@@ -20,29 +20,47 @@
   color: var(--gold);
   transform: translateY(-2px);
 }
-.btn-clear {
-  background: transparent;
-  color: var(--cream);
-  border-color: var(--cream);
-  overflow: hidden;
-  z-index: 0;
-}
-.btn-clear::before {
+
+.btn-slide::before {
   content: '';
   position: absolute;
   inset: 0;
   z-index: -1;
-  background: var(--cream);
+  background: var(--gold);
   transform: translateX(-101%);
   transition: transform var(--t-mid) var(--ease);
 }
-.btn-clear:hover {
-  color: var(--bg);
-  transform: translateY(-2px);
-}
-.btn-clear:hover::before {
+
+.btn-slide:hover::before {
   transform: translateX(0);
 }
+
+
+.btn-cream{
+  background: var(--cream);
+  color: var(--bg);
+  border-color: var(--cream);
+  &.btn-slide::before {
+    background: var(--cream);
+  }
+}
+
+.btn-clear {
+  background: transparent;
+  color: var(--gold);
+  border-color: var(--gold);
+  overflow: hidden;
+  z-index: 0;
+  &.btn-cream {
+    color: var(--cream);
+    border-color: var(--cream);
+  }
+}
+
+.btn-slide:hover {
+  color: var(--bg);
+}
+
 @media (prefers-reduced-motion: reduce) {
   .btn:hover,
   .btn-clear:hover { transform: none; }

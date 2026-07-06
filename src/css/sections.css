@@ -156,13 +156,8 @@ section[about] {
     display: grid;
     grid-template-columns: 1fr 1fr;
     gap: var(--space-xl);
-    align-items: center;
+    align-items: left;
   }
-
-  & p + p {
-    margin-top: var(--space-md);
-  }
-
   & img {
     width: 100%;
     height: auto;
@@ -170,28 +165,14 @@ section[about] {
     object-fit: cover;
   }
 
-  > div > div {
-    display: flex;
-    flex-direction: column;
-    gap: var(--space-lg);
-  }
-
-  & company-stats{
-    display: flex;
-    flex-direction: row;
-    gap: var(--space-md);
-  }
-
-  & company-stats > div {
-    border-left: 2px solid var(--gold);
-    padding-left: var(--space-md);
-  }
-
-  & company-stats > div > div:has(+div){
-    font-family: var(--font-display);
-    font-size: var(--text-xl);
-    color: var(--white);
-    line-height: 1;
+  .why-us {
+    & p:nth-child(even) {
+      color: var(--gold);
+      font-size: var(--text-lg);
+    }
+    & p:nth-child(odd) {
+      margin-bottom: var(--space-md);
+    }
   }
 }
 

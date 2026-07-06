@@ -55,7 +55,7 @@ header > nav  ul a {
 nav-logo-main {
   font-family: var(--font-script);
   font-size: var(--text-script);
-  color: var(--white);
+  color: var(--gold-light);
   pointer-events: none;
   animation: fadeIn var(--t-slow) 0.2s var(--ease) both;
 }
