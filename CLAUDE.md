@@ -19,6 +19,8 @@ npm run build   # eleventy — one-shot build into _site/
 - **There is no test or lint tooling.** Don't go looking for it. "Verification" here
   means: `npm run build` succeeds, then a manual browser check (see below).
 - Node 20 is what CI builds with.
+- **Do not run builds or verify output after making changes.** The user will check results
+  themselves and report issues.
 
 ## Build pipeline (`.eleventy.js`)
 

@@ -1,6 +1,10 @@
 section[instruments] {
   background: var(--bg-blue);
 
+  & h2 {
+    color: var(--bg);
+  }
+
   & ul {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
@@ -9,9 +13,29 @@ section[instruments] {
 
   & li {
     background-color: var(--bg);
+    background-size: cover;
+    background-position: center;
     border-radius: var(--radius-lg);
+    height: 12rem;
     padding: 1em;
+    text-align: center;
+    position: relative;
+    isolation: isolate;
     transition: transform var(--t-mid) var(--ease);
+  }
+
+  & li::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    border-radius: inherit;
+    background: rgba(0, 0, 0, 0.45);
+    z-index: -1;
+  }
+
+  & li p {
+    position: relative;
+    z-index: 1;
   }
 
   & li:hover {
@@ -20,15 +44,11 @@ section[instruments] {
 
   & li p:first-of-type {
     font-family: var(--font-display);
-    font-size: var(--text-md);
+    font-size: var(--text-xl);
     color: var(--white);
+    margin-bottom: 0.25rem;
   }
 
-  & li p:last-child {
-    font-size: var(--text-base);
-    margin-top: 0.35rem;
-    line-height: 1.5;
-  }
 }
 
 @media (max-width: 768px) {
