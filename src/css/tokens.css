@@ -2,7 +2,7 @@
   --font-display:  'DM Serif Display', serif;
   --font-script:   'Tangerine', cursive;
   --font-title:    'Cinzel', serif;
-  --font-body:     'Fauna One', serif;
+  --font-body:     "DM Sans", sans-serif;
 
   --text-xs:     clamp(0.75rem,  1vw,    0.875rem);
   --text-sm:     clamp(0.9rem,   1.2vw,  1rem);
