@@ -48,7 +48,7 @@ section[pricing] {
     .pricing-grid h3 {
     font-family: var(--font-display);
     font-size: var(--text-lg);
-    color: var(--cream);
+    color: var(--white);
     letter-spacing: 0;
     text-transform: none;
     margin-bottom: var(--space-xs);

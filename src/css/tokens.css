@@ -17,20 +17,22 @@
   --weight-medium:  500;
   --weight-bold:    700;
   
-  --bg-blue:   #214a80;
-  
-  --bg:          #08090e;
-  --bg-card:     #1f2533;
-  --bg-overlay:  14, 18, 28;
+  --bg-blue:   #234c72;
+
+  --bg:          #0c0d10;
+  --bg-card:     #1a1c22;
+  --bg-overlay:  12, 13, 17;
 
   --text-blue: #8aa6db;
+  --white:       #f7f7f4;
+  --white-dim:   rgba(255, 255, 255, 0.7);
   --cream-rgb:   242, 232, 185;
   --cream:       rgb(var(--cream-rgb));
   --cream-dim:   rgba(var(--cream-rgb), 0.55);
   --cream-faint: rgba(var(--cream-rgb), 0.12);
   --border-faint: rgba(var(--cream-rgb), 0.07);
   --gold:        #c9a84c;
-  --gold-light:  #e4c67c;
+  --gold-light:  #e2c47a;
 
   --space-xs:  0.5rem;
   --space-sm:  1rem;

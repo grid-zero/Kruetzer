@@ -21,6 +21,7 @@ section[instruments] {
   & li p:first-of-type {
     font-family: var(--font-display);
     font-size: var(--text-md);
+    color: var(--white);
   }
 
   & li p:last-child {

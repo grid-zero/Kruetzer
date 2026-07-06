@@ -59,6 +59,7 @@ section[testimonials] {
     font-family: var(--font-display);
     font-size: var(--text-lg);
     font-style: normal;
+    color: var(--white);
   }
 
   & article > testimonial-reference > span {

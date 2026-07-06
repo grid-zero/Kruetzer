@@ -18,7 +18,7 @@ footer > div {
 footer h3 {
   font-family: var(--font-script);
   font-size: 3rem;
-  color: var(--cream);
+  color: var(--white);
   line-height: 1;
   margin-bottom: var(--space-sm);
 }
