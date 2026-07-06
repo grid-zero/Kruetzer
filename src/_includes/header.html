@@ -5,7 +5,7 @@
         <img desktop src="assets/Kreutzer-源文件2修改颜色-.svg" alt="Kreutzer">
         <img mobile src="assets/Kreutzer-Logo-Only.svg" alt="Kreutzer">
       </a>
-      {% assign navItems = "about,teachers,shop,resources,lessons" | split: "," %}
+      {% assign navItems = "about,teachers,shop,resources" | split: "," %}
       <ul role="list">
         {% for item in navItems %}
         <li><a href="{{ item }}.html" class="draw-underline{% if page.fileSlug == item %} active{% endif %}"{% if page.fileSlug == item %} aria-current="page"{% endif %}>{{ item }}</a></li>
