@@ -172,13 +172,13 @@ section[about] {
 
   > div > div {
     display: flex;
-    flex-direction: row;
+    flex-direction: column;
     gap: var(--space-lg);
   }
 
   & company-stats{
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
     gap: var(--space-md);
   }
 

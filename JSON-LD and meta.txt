@@ -1,0 +1,98 @@
+ These are the two highest-ROI SEO items from the review (findings 2.1 and 2.2). Both are <head> additions — no visible
+ change to the page, but they change how search engines and social platforms understand and present the site.
+
+ 2.2 — Open Graph / Twitter Card meta
+
+ The problem: When someone shares a link to the site — in an Instagram bio, a Facebook post, an iMessage, a WhatsApp
+ message, a Slack channel — the platform scrapes the page's <head> to build a preview card (the box with an image, bold
+ title, and description). Right now base.html has only <title> and <meta name="description">. Those are not what social
+ platforms read for previews. With no Open Graph tags, a shared Kreutzer link renders as a bare, ugly URL with no image
+ — which for a marketing site whose whole job is being shared by happy parents/students is a real miss.
+
+ What it is: Open Graph (og:) is Facebook's metadata protocol that essentially every platform now honours. Twitter/X
+ adds its own twitter: tags on top. They're plain <meta> tags:
+
+ ```html
+   <meta property="og:type" content="website">
+   <meta property="og:title" content="{{ title }}">
+   <meta property="og:description" content="{{ description }}">
+   <meta property="og:url" content="https://yourdomain.com/{{ page.fileSlug | default: 'index' }}.html">
+   <meta property="og:image" content="https://yourdomain.com/assets/social-share.jpg">
+   <meta property="og:site_name" content="Kreutzer Music">
+   <meta name="twitter:card" content="summary_large_image">
+ ```
+
+ Key points for your setup:
+ - These can reuse the per-page title/description you already have in front matter, so it's mostly a one-time edit in
+   base.html.
+ - og:image and og:url must be absolute URLs (full https://…), unlike everything else on the site which is deliberately
+   relative for the GitHub Pages subpath. The scraper runs on Facebook's servers, not the visitor's browser, so a
+   relative path resolves to nothing. You'll need to know the final domain.
+ - og:image wants a real raster image (~1200×630px). You'd add one dedicated share image to assets/.
+
+ 2.1 — Structured data (JSON-LD)
+
+ The problem: Search engines read your prose, but they don't reliably infer "this is a music school in Canberra, here's
+ its phone number, price range, and hours" from paragraphs. Structured data states those facts in a machine-readable
+ format Google explicitly consumes. For a local business this is the single biggest lever, because it feeds Google's
+ local pack (the map + business listings box) and rich results.
+
+ What it is: A <script type="application/ld+json"> block — JSON describing the business using the schema.org
+ vocabulary. It's invisible to users; it exists purely for crawlers. A music studio fits the MusicSchool type (a
+ subtype of LocalBusiness):
+
+ ```html
+   <script type="application/ld+json">
+   {
+     "@context": "https://schema.org",
+     "@type": "MusicSchool",
+     "name": "Kreutzer Music",
+     "description": "Music tuition for all ages and levels in Canberra.",
+     "url": "https://yourdomain.com/",
+     "email": "hello@kreutzer.com.au",
+     "address": {
+       "@type": "PostalAddress",
+       "addressLocality": "Canberra",
+       "addressRegion": "ACT",
+       "addressCountry": "AU"
+     },
+     "areaServed": "Canberra, ACT",
+     "priceRange": "$50–$125"
+   }
+   </script>
+ ```
+
+ Two practical notes:
+ - Only assert facts that are actually true and ideally visible on the page. Google's guidelines say structured data
+   should reflect real page content; inventing a street address or fake review ratings can get you a manual penalty.
+   Since the real studio address is intentionally withheld until booking (per the FAQ), you'd omit streetAddress rather
+   than fake it.
+ - This one block lives once, typically in base.html (or just the homepage).
+
+ The FAQ bonus (also part of 2.1): Your faq.html is already structured as question/answer pairs. Wrapping those in
+ FAQPage schema can make Google show the questions as an expandable rich result directly in search listings — free
+ visibility for queries like "do I need my own instrument for piano lessons Canberra."
+
+ ```html
+   <script type="application/ld+json">
+   {
+     "@context": "https://schema.org",
+     "@type": "FAQPage",
+     "mainEntity": [{
+       "@type": "Question",
+       "name": "How do I book my first free trial lesson?",
+       "acceptedAnswer": { "@type": "Answer", "text": "Head to our contact page and fill out the enquiry form…" }
+     }]
+   }
+   </script>
+ ```
+
+ Why both, and why now
+
+ - Open Graph controls how the site looks when shared (social/word-of-mouth — a studio's main growth channel).
+ - JSON-LD controls how the site is understood and ranked (local search discovery).
+ - Both are pure <head> metadata, mostly centralised in base.html, with zero visual/layout risk — which is why I
+   flagged them as the highest-value, lowest-effort wins.
+
+ One dependency for both: you need the final production domain, since og:url, og:image, and the JSON-LD url all require
+ absolute URLs. That's the only blocker to implementing them today.
