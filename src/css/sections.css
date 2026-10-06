@@ -161,7 +161,7 @@ section[about] {
 
   .about-us{
     display: grid;
-    grid-template-columns: 1fr 1fr;
+    grid-template-columns: repeat(auto-fit, minmax(min(450px, 100%), 1fr));
     gap: var(--space-xl);
     align-items: left;
     margin-bottom: var(--space-lg);

@@ -2,7 +2,7 @@ section[instruments] {
   background: var(--bg-blue);
 
   & h2 {
-    color: var(--bg);
+    color: var(--cream);
   }
 
   & ul {
