@@ -45,12 +45,14 @@ Component-based with pragmatic grouping:
 **Page sections:**
 | File | Owns |
 |------|------|
-| `sections.css` | Base `section` padding + shared `section h2/h3/p` headings, plus the thin wrappers: `section[intro]`, `section[about]`, `section[how-it-works]`, `section[faq]`, `section[contact]`, `section[default]`. |
+| `sections.css` | Base `section` padding, background variants (`[alt]`, `[glow]`, `[navy]`, `[ruled]`), the heading system (`section h2/h3`, `.section-head` + `.center`/`.split`, `.lede`), the hero (`section[intro]`, `[home]`, `[page]`), `section[how-it-works]` `.steps`, `section[contact]` CTA band, `section[stats]`. |
 | `instruments.css` | `section[instruments]` + `.instruments-grid`. |
 | `testimonials.css` | `section[testimonials]` quote/reference cards. |
 | `pricing.css` | `section[pricing]` + `.pricing-grid` + `.featured`. |
-| `teachers.css` | `section[teachers]` flip cards, overlays, backface visibility. |
-| `terms.css` | `.policy-list`, `.table-container`/`table`, `.tagline`, `.disclaimer`. |
+| `teachers.css` | `.teacher-grid` flip cards, monogram placeholders, no-JS hover flip. |
+| `terms.css` | `.policy-layout` (sticky contents rail + numbered clauses), `.policy-list`, `.table-container`/`table`, `.tagline`, `.disclaimer`. |
+| `features.css` | Shared blocks: `.split`, `.frame`, `.stats`, `.pillars`, `.card-grid`/`.card`/`.card-mark`, `.badge`, `.checklist`, `.pull-quote`, `.signature`, `.timeline`, `.info-list`, `.notice`. |
+| `faq.css` | `.faq-layout` and `<details class="faq-item">` accordions (no JS needed). |
 
 ## `@import` order (load-bearing)
 
@@ -59,6 +61,7 @@ The order in `index.css` is **not** alphabetical and must hold:
 ```
 tokens → keyframes → reset → reveal → buttons → nav → footer → loader
 → contact-form → sections → instruments → testimonials → pricing → teachers → terms
+→ features → faq
 ```
 
 Why: `tokens` first (everything references its custom properties); `keyframes` before any

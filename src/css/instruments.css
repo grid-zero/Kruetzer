@@ -1,68 +1,108 @@
 section[instruments] {
-  background: var(--bg-blue);
-
-  & h2 {
-    color: var(--bg);
-  }
+  background:
+    radial-gradient(ellipse 70% 60% at 50% 0%, rgba(var(--gold-rgb), 0.08), transparent 70%),
+    linear-gradient(180deg, var(--bg-blue-deep), var(--bg));
+  border-top: 1px solid var(--border-faint);
 
   & ul {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+    grid-template-columns: repeat(5, 1fr);
     gap: var(--space-sm);
   }
 
   & li {
-    background-color: var(--bg);
-    background-size: cover;
-    background-position: center;
-    border-radius: var(--radius-lg);
-    height: 12rem;
-    padding: 1em;
-    text-align: center;
     position: relative;
     isolation: isolate;
-    transition: transform var(--t-mid) var(--ease);
+    overflow: hidden;
+    border-radius: var(--radius-md);
+    border: 1px solid var(--border-faint);
+    height: clamp(20rem, 34vw, 27rem);
+    background-color: var(--bg-card);
+    background-size: cover;
+    background-position: center;
+    transition: transform var(--t-mid) var(--ease), border-color var(--t-mid) var(--ease);
   }
 
+  /* darkening gradient so the label always reads */
   & li::after {
     content: '';
     position: absolute;
     inset: 0;
-    border-radius: inherit;
-    background: rgba(0, 0, 0, 0.45);
     z-index: -1;
+    background: linear-gradient(180deg, rgba(var(--bg-overlay), 0.1) 20%, rgba(var(--bg-overlay), 0.92) 100%);
+    transition: background var(--t-mid) var(--ease);
+  }
+
+  & li > a {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    padding: var(--space-md) var(--space-sm) var(--space-md) var(--space-md);
   }
 
   & li p {
-    position: relative;
-    z-index: 1;
-  }
-
-  & li:hover {
-    transform: translateY(-4px);
-  }
-
-  & li p:first-of-type {
     font-family: var(--font-display);
-    font-size: var(--text-xl);
+    font-size: clamp(1.8rem, 2.6vw, 2.4rem);
+    line-height: 1;
     color: var(--white);
-    margin-bottom: 0.25rem;
+    margin: 0;
+  }
+  & li span {
+    font-size: var(--text-xs);
+    color: var(--cream-dim);
+    line-height: 1.5;
+    margin-top: var(--space-xs);
+    max-height: 0;
+    opacity: 0;
+    overflow: hidden;
+    transition: max-height var(--t-slow) var(--ease), opacity var(--t-mid) var(--ease);
+  }
+  & li small {
+    font-family: var(--font-title);
+    font-size: 0.6rem;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: var(--space-xs);
   }
 
+  & li:hover,
+  & li:focus-within {
+    transform: translateY(-6px);
+    border-color: var(--gold-line);
+  }
+  & li:hover span,
+  & li:focus-within span { max-height: 6rem; opacity: 1; }
+  & li:hover::after,
+  & li:focus-within::after {
+    background: linear-gradient(180deg, rgba(var(--navy-rgb), 0.25) 0%, rgba(var(--bg-overlay), 0.95) 100%);
+  }
+
+  .instruments-foot {
+    display: flex;
+    justify-content: center;
+    margin-top: var(--space-lg);
+  }
 }
 
-@media (max-width: 768px) {
-  section[instruments] ul {
-    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-  }
+@media (max-width: 1024px) {
+  section[instruments] ul { grid-template-columns: repeat(3, 1fr); }
 }
 
-@media (max-width: 480px) {
-  section[instruments] ul {
-    grid-template-columns: 1fr 1fr;
-  }
+@media (max-width: 640px) {
+  section[instruments] ul { grid-template-columns: 1fr 1fr; }
+  section[instruments] li { height: 15rem; }
+  section[instruments] li span { display: none; }
+}
+
+/* Touch devices have no hover — show descriptions statically */
+@media (hover: none) and (min-width: 641px) {
+  section[instruments] li span { max-height: none; opacity: 1; }
 }
 
 @media (prefers-reduced-motion: reduce) {
-  section[instruments] li:hover { transform: none; }
+  section[instruments] li:hover,
+  section[instruments] li:focus-within { transform: none; }
 }

@@ -22,11 +22,13 @@ commitment (a stray sans-serif, a brighter accent, a generic card grid) is what 
 letter-spaced eyebrows over serif display headings; generous vertical breathing room.
 
 **Color** — Dark, warm. Near-black ground, cream body text, gold accents, a single
-desaturated teal as the secondary. See the palette table below. Never introduce SaaS blue,
+deep navy as the secondary. See the palette table below. Never introduce SaaS blue,
 purple→blue gradients, or a second accent hue.
 
-**Typography** — A four-family, **all-serif** system. No sans-serif anywhere — that is a
-deliberate identity choice, not an omission. See the type table below.
+**Typography** — Four families with strict jobs: Cormorant Garamond for every heading and
+big number, Cinzel only for small engraved caps (eyebrows, nav, labels, buttons),
+Montserrat at light weights for reading text, Tangerine for the wordmark. See the type
+table below.
 
 **Motion** — One orchestrated entrance plus quiet scroll-reveals. The hero stages a
 `fadeUp` cascade; everything below reveals on scroll with a small stagger. Felt, not
@@ -37,11 +39,12 @@ section rhythm, `1280px` centered max-width, fluid page padding. It earns impact
 type and color, not layout drama — symmetric on purpose.
 
 **Backgrounds** — Clean solids plus one photographic hero. The intro section is a full-
-bleed photo; everything else sits on solid near-black or the teal CTA band, divided by
+bleed photo; interior pages open on a navy hero over a faint Debussy-manuscript engraving; everything
+else sits on near-black, a raised near-black (`[alt]`), or the navy CTA band, divided by
 barely-there cream hairlines. No noise/grain overlay — the photo and the type do the work.
 
 **Differentiation** — **Atmosphere + typography-as-art.** The thing a visitor remembers is
-the candlelit dark-gold-cream mood paired with the oversized `DM Serif Display` hero and
+the candlelit dark-gold-cream mood paired with the oversized `Cormorant Garamond` hero and
 `Cinzel` engraved caps — a classical-music identity you almost never see built in code. The
 italic gold `<em>` inside the hero heading ("Inspiring The *Art* Of Music") is the
 signature flourish; keep that pattern.
@@ -54,18 +57,16 @@ literals in component files.
 
 | Token | Value | Role |
 |-------|-------|------|
-| `--bg` | `#070707` | Near-black page ground |
-| `--bg-card` | `#323236` | Raised card surfaces |
-| `--bg-blue` | `#33616d` | Teal CTA band; interior-page hero override |
-| `--bg-overlay` | `20, 20, 24` (rgb triplet) | Base for `rgba()` dark overlays |
+| `--bg` | `#0b0c10` | Near-black page ground |
+| `--bg-raised` | `#101218` | Alternate section ground (`section[alt]`) |
+| `--bg-card` | `#161920` | Card surfaces |
+| `--bg-blue` / `--navy-rgb` | `8, 56, 100` | Navy: heroes, CTA band, featured surfaces |
+| `--bg-blue-deep` | `#04213d` | Top of navy gradients |
 | `--cream-rgb` | `242, 232, 185` | The one source for all cream |
-| `--cream` | `rgb(var(--cream-rgb))` | Body text on dark |
-| `--cream-dim` | cream @ `0.55` | Secondary text |
-| `--cream-faint` | cream @ `0.12` | Faint fills / dividers |
-| `--border-faint` | cream @ `0.07` | Hairline section borders |
-| `--gold` | `#c9a84c` | Eyebrows, accents, rules |
-| `--gold-light` | `#e2c47a` | Hero italic emphasis |
-| `--text-blue` | `#7392c5` | `h2` section headings |
+| `--cream` / `--cream-soft` / `--cream-dim` | 100% / 82% / 55% | Headline-adjacent text / body / secondary |
+| `--gold-rgb` | `201, 168, 76` | The one source for gold; `--gold-line`, `--gold-glow` derive from it |
+| `--gold-light` / `--gold-pale` / `--gold-deep` | | Stops in `--gold-sheen`, the gradient used on `<em>` and the wordmark |
+| `--white` | `#f7f4ec` | Warm white for `h1`/`h2` |
 
 > `var(--surface)` appears in `nav.css` (burger-hover) and is **intentionally undefined** —
 > it resolves to no background, which is the intended look. Don't invent a value for it.
@@ -77,14 +78,16 @@ All serif, four families with distinct jobs. Fluid `clamp()` scale (`--text-xs` 
 
 | Family | Token | Used for |
 |--------|-------|----------|
-| DM Serif Display | `--font-display` | Hero `h1`, stat numbers, pricing prices, testimonial marks, how-it-works numerals |
-| Cinzel | `--font-title` | Section `h2` (teal) and `h3` eyebrows (gold, uppercase, `0.3em` tracking), form labels |
-| Fauna One | `--font-body` | Body copy, paragraphs |
-| Tangerine | `--font-script` | The "Kreutzer" wordmark only ([`nav.css`](src/css/nav.css), [`footer.css`](src/css/footer.css)) |
+| Cormorant Garamond | `--font-display` | Hero `h1`, section `h2`, card `h4`, prices, stats, quotes, numerals |
+| Cinzel | `--font-title` | `h3` eyebrows (gold, uppercase, `0.32em` tracking, with a gold rule), nav, buttons, labels |
+| Montserrat | `--font-body` | Body copy at weight 300 |
+| Tangerine | `--font-script` | The "Kreutzer" wordmark and signatures only |
 
 Heading conventions, set in [`sections.css`](src/css/sections.css): `h3` is a gold
-uppercase eyebrow; `h2` is the teal Cinzel section title; the hero `h1` is cream
-`DM Serif Display` at `--text-2xl` with an italic `--gold-light` `<em>`.
+uppercase eyebrow preceded by a short gold rule; `h2` is a large warm-white Cormorant
+title whose `<em>` turns italic with the gold sheen. Wrap them in `.section-head`
+(`.center` adds a rule on both sides and a ◆ ornament under the title; `.split` puts a
+paragraph beside the title). Cards use `h4` so they never pick up the eyebrow style.
 
 ## Motion
 
@@ -146,12 +149,12 @@ New keyframes live in [`keyframes.css`](src/css/keyframes.css); motion easings/d
 
 ## Guardrails — NEVER, in this codebase
 
-- **No sans-serif** as display or body. The all-serif stack is the identity. No
+- **No sans-serif headings.** Sans-serif is for body text only (Montserrat). No
   Inter/Roboto/Space Grotesk/Geist.
 - **No new color literals** in component files — go through `tokens.css`; derive from the
   cream triplet or a named token. Don't "fix" the intentionally-undefined `--surface`.
-- **No SaaS blue or purple→blue gradients.** The only blues are the muted `--bg-blue` and
-  `--text-blue`.
+- **No SaaS blue or purple→blue gradients.** The only blue is the deep navy
+  (`--navy-rgb` / `--bg-blue`, plus `--text-blue` for rare small accents).
 - **No root-relative paths** (`/css/...`, `/assets/...`). GitHub Pages serves from a project
   subpath; keep every asset and link path relative.
 - **No JS-gated content.** Anything that only appears with `.js` breaks the no-JS guarantee.
@@ -166,5 +169,5 @@ New keyframes live in [`keyframes.css`](src/css/keyframes.css); motion easings/d
 2. Pull every color, font, space, radius, and easing from `tokens.css`. If you feel you
    need a value that isn't there, add it to `tokens.css` — don't inline a literal.
 3. Keep paths relative and content visible without JS.
-4. Match the voice: serif, gold eyebrow → teal Cinzel title → cream body. Restraint over
+4. Match the voice: gold Cinzel eyebrow → Cormorant title with a gold italic `<em>` → cream body. Restraint over
    decoration.

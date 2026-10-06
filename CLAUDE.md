@@ -63,8 +63,16 @@ npm run build   # eleventy — one-shot build into _site/
 Component-based. Single entry point `src/css/index.css` `@import`s the rest **in a
 deliberate cascade order**: `tokens` → `keyframes` → `reset` → then component files
 (reveal, loader, contact-form, buttons, nav, footer, sections, instruments, testimonials,
-pricing, teachers, terms). Order matters — append new components rather than reshuffling.
+pricing, teachers, terms, features, faq). Order matters — append new components rather than reshuffling.
 
+- Shared building blocks live in `features.css` (`.split`, `.frame`, `.stats`, `.pillars`,
+  `.card-grid`/`.card`, `.timeline`, `.pull-quote`, `.checklist`, `.info-list`, `.notice`)
+  and the section-heading pattern (`.section-head` + `.center`/`.split`) in `sections.css`.
+  Compose new pages from these before writing new CSS. Card titles use `<h4>` because
+  `section h3` is globally styled as the gold eyebrow.
+- Interior pages open with `<section intro page="…">`; the `page` value can select a
+  per-page hero photo in `sections.css`. Background variants are boolean attributes on
+  `section`: `alt`, `glow`, `navy`, `ruled`.
 - `tokens.css` holds the entire design system as CSS custom properties: font families, a
   fluid `clamp()` type scale (`--text-*`), color palette (cream is built from the
   `--cream-rgb` triplet so every tint derives from one source), spacing, radii, easings.
@@ -81,11 +89,14 @@ throw on pages that lack those nodes.
 ## Templating conventions
 
 - The nav list is generated in `header.html` from a Liquid array
-  (`about,teachers,shop,resources,lessons`); active link is set via
+  (`about,teachers,lessons,resources,shop`); active link is set via
   `page.fileSlug == item`. The homepage is intentionally not a nav item.
 - The markup uses **custom-element-like tags** (`<section intro>`, `<nav-logo-main>`,
   `<company-story>`) and **boolean attributes** (`<img desktop>`, `<img mobile>`) purely as
   CSS styling hooks. They are not real components or JS — just selectors.
+- `_includes/pricing.html` (package cards) and `_includes/price-table.html` (full fee
+  table) are shared — the fee table appears on both `lessons.html` and `terms.html`, so
+  edit prices there once.
 - `src/phoebe.html` is a real page reached from a "Learn More" link on `teachers.html`,
   not part of the nav. It exists on purpose; don't treat it as an orphan.
 

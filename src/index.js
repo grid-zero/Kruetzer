@@ -104,10 +104,32 @@ document.querySelectorAll('[data-count]').forEach(el => {
 
 
 document.querySelectorAll('.teacher-card-container').forEach(card => {
-  card.addEventListener('click', () => {
-    card.classList.toggle('is-flipped');
+  function flip() {
+    const flipped = card.classList.toggle('is-flipped');
+    card.setAttribute('aria-pressed', String(flipped));
+  }
+  card.addEventListener('click', e => {
+    // let links on the back of the card navigate without flipping first
+    if (e.target.closest('a')) return;
+    flip();
+  });
+  card.addEventListener('keydown', e => {
+    if (e.target !== card) return;
+    if (e.key === 'Enter' || e.key === ' ') {
+      e.preventDefault();
+      flip();
+    }
   });
 });
+
+
+/* Header gains a denser background once the page scrolls (cosmetic only) */
+const siteHeader = document.getElementById('siteHeader');
+if (siteHeader) {
+  const onScroll = () => siteHeader.classList.toggle('scrolled', window.scrollY > 24);
+  onScroll();
+  window.addEventListener('scroll', onScroll, { passive: true });
+}
 
 
 
@@ -145,12 +167,8 @@ document.querySelectorAll('.teacher-card-container').forEach(card => {
     if (e.key === 'Escape' && sidebar.classList.contains('open')) closeSidebar();
   });
  
-  sidebar.querySelectorAll('.sidebar-link').forEach(link => {
-    link.addEventListener('click', () => {
-      sidebar.querySelectorAll('.sidebar-link').forEach(l => l.classList.remove('active'));
-      link.classList.add('active');
-      closeSidebar();
-    });
+  sidebar.querySelectorAll('a').forEach(link => {
+    link.addEventListener('click', closeSidebar);
   });
   }
 
