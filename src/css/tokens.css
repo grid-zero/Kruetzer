@@ -47,7 +47,7 @@
   --cream-rgb:   242, 232, 185;
   --cream:       rgb(var(--cream-rgb));
   --cream-soft:  rgba(var(--cream-rgb), 0.82);
-  --cream-dim:   rgba(var(--cream-rgb), 0.55);
+  --cream-dim:   rgba(var(--cream-rgb), 0.7);
   --cream-faint: rgba(var(--cream-rgb), 0.12);
   --border-faint: rgba(var(--cream-rgb), 0.08);
 

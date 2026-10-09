@@ -12,7 +12,7 @@ body {
   font-family: var(--font-body);
   background-color: var(--bg);
   color: var(--cream-soft);
-  font-weight: var(--weight-light);
+  font-weight: var(--weight-regular);
   font-size: var(--text-base);
   line-height: 1.75;
   overflow-x: hidden;

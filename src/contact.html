@@ -15,11 +15,10 @@ description: "Get in touch with Kreutzer to book a free trial music lesson in Ca
     <div class="contact-aside reveal reveal--left">
       <h3>Contact details</h3>
       <h2>We'd love to <em>hear from you</em></h2>
-      <p>Send us a message and we'll reply within 24 hours to arrange your free trial lesson. Prefer to talk? Give us a call during studio hours.</p>
-      <!-- TODO(content): confirm phone number and studio hours -->
+      <p>Send us a message and we'll reply within 24 hours to arrange your free trial lesson.</p>
+      <!-- TODO(content): confirm studio hours -->
       <dl class="info-list">
         <div><dt>Email</dt><dd><a href="mailto:hello@kreutzer.com.au">hello@kreutzer.com.au</a></dd></div>
-        <div><dt>Phone</dt><dd><a href="tel:+61400000000">0400 000 000</a></dd></div>
         <div><dt>Studio</dt><dd>Canberra, ACT<br><span class="muted">Full address sent on booking</span></dd></div>
         <div><dt>Hours</dt><dd>Mon – Fri · 3pm – 8pm<br>Saturday · 9am – 4pm</dd></div>
       </dl>
@@ -30,6 +29,7 @@ description: "Get in touch with Kreutzer to book a free trial music lesson in Ca
       <h4>Book a free trial lesson</h4>
       <p>Tell us a little about yourself and we'll take care of the rest.</p>
 
+      <!-- TODO(content): replace YOUR_FORM_ID with the real Formspree form ID, or the form submits nowhere -->
       <form action="https://formspree.io/f/YOUR_FORM_ID" method="POST">
         <!-- Honeypot spam protection -->
         <input type="text" name="_gotcha" style="display:none" tabindex="-1" autocomplete="off">
@@ -38,63 +38,30 @@ description: "Get in touch with Kreutzer to book a free trial music lesson in Ca
           <div class="form-row">
             <div class="form-group">
               <label for="name">Full name</label>
-              <input type="text" id="name" name="name" placeholder="Jane Doe" autocomplete="name" required>
+              <input type="text" id="name" name="name" placeholder="Your name" autocomplete="name" required>
             </div>
             <div class="form-group">
-              <label for="student">Student's name <span class="muted">(if different)</span></label>
-              <input type="text" id="student" name="student" placeholder="Optional">
+              <label for="contact">Email or phone number</label>
+              <input type="text" id="contact" name="contact" placeholder="Whichever is easiest to reach you on" autocomplete="email" required>
             </div>
           </div>
-
-          <div class="form-row">
-            <div class="form-group">
-              <label for="email">Email address</label>
-              <input type="email" id="email" name="email" placeholder="jane@example.com" autocomplete="email" required>
-            </div>
-            <div class="form-group">
-              <label for="phone">Phone number</label>
-              <input type="tel" id="phone" name="phone" placeholder="0400 000 000" autocomplete="tel">
-            </div>
-          </div>
-
-          <div class="form-row">
-            <div class="form-group">
-              <label for="instrument">Instrument</label>
-              <select id="instrument" name="instrument" required>
-                <option value="" disabled selected>Select…</option>
-                <option>Piano</option>
-                <option>Violin</option>
-                <option>Cello</option>
-                <option>Flute</option>
-                <option>Voice</option>
-                <option>Theory &amp; musicianship</option>
-                <option>Not sure yet</option>
-              </select>
-            </div>
-            <div class="form-group">
-              <label for="level">Experience level</label>
-              <select id="level" name="level" required>
-                <option value="" disabled selected>Select…</option>
-                <option>Complete beginner</option>
-                <option>Beginner (Prelim – Grade 2)</option>
-                <option>Intermediate (Grades 3 – 6)</option>
-                <option>Advanced (Grades 7 – 8)</option>
-                <option>Diploma</option>
-              </select>
-            </div>
-          </div>
-
-          <fieldset class="form-group">
-            <legend>Preferred lesson times</legend>
-            <div class="chip-row">
-              <label><input type="checkbox" name="times" value="Weekday afternoon"> Weekday afternoon</label>
-              <label><input type="checkbox" name="times" value="Weekday evening"> Weekday evening</label>
-              <label><input type="checkbox" name="times" value="Saturday"> Saturday</label>
-            </div>
-          </fieldset>
 
           <div class="form-group">
-            <label for="message">Your message</label>
+            <label for="instrument">Instrument</label>
+            <select id="instrument" name="instrument" required>
+              <option value="" disabled selected>Select…</option>
+              <option>Piano</option>
+              <option>Violin</option>
+              <option>Cello</option>
+              <option>Flute</option>
+              <option>Voice</option>
+              <option>Theory &amp; musicianship</option>
+              <option>Not sure yet</option>
+            </select>
+          </div>
+
+          <div class="form-group">
+            <label for="message">Your message <span class="muted">(optional)</span></label>
             <textarea id="message" name="message" rows="5" placeholder="Tell us about your musical goals, age of the student, or any questions…"></textarea>
           </div>
 

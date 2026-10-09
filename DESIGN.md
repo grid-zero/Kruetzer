@@ -27,7 +27,7 @@ purple→blue gradients, or a second accent hue.
 
 **Typography** — Four families with strict jobs: Cormorant Garamond for every heading and
 big number, Cinzel only for small engraved caps (eyebrows, nav, labels, buttons),
-Montserrat at light weights for reading text, Tangerine for the wordmark. See the type
+Montserrat at regular weight for reading text, Tangerine for the wordmark. See the type
 table below.
 
 **Motion** — One orchestrated entrance plus quiet scroll-reveals. The hero stages a
@@ -63,7 +63,7 @@ literals in component files.
 | `--bg-blue` / `--navy-rgb` | `8, 56, 100` | Navy: heroes, CTA band, featured surfaces |
 | `--bg-blue-deep` | `#04213d` | Top of navy gradients |
 | `--cream-rgb` | `242, 232, 185` | The one source for all cream |
-| `--cream` / `--cream-soft` / `--cream-dim` | 100% / 82% / 55% | Headline-adjacent text / body / secondary |
+| `--cream` / `--cream-soft` / `--cream-dim` | 100% / 82% / 70% | Headline-adjacent text / body / secondary |
 | `--gold-rgb` | `201, 168, 76` | The one source for gold; `--gold-line`, `--gold-glow` derive from it |
 | `--gold-light` / `--gold-pale` / `--gold-deep` | | Solid gold tints. **Gold text is always solid — never a gradient.** |
 | `--white` | `#f7f4ec` | Warm white for `h1`/`h2` |
@@ -80,7 +80,7 @@ All serif, four families with distinct jobs. Fluid `clamp()` scale (`--text-xs` 
 |--------|-------|----------|
 | Cormorant Garamond | `--font-display` | Hero `h1`, section `h2`, card `h4`, prices, stats, quotes, numerals |
 | Cinzel | `--font-title` | `h3` eyebrows (gold, uppercase, `0.32em` tracking; rules on both sides only when centred), nav, buttons, labels |
-| Montserrat | `--font-body` | Body copy at weight 300 |
+| Montserrat | `--font-body` | Body copy at weight 400 |
 | Tangerine | `--font-script` | The "Kreutzer" wordmark and signatures only |
 
 Heading conventions, set in [`sections.css`](src/css/sections.css): `h3` is a gold

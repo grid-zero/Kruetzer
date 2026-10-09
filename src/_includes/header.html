@@ -1,6 +1,7 @@
 <header id="siteHeader">
   <nav aria-label="Main">
-    {% assign navItems = "about,teachers,lessons,resources,shop" | split: "," %}
+    {% comment %} TODO(content): add "resources" and "shop" back here once those pages are finished. {% endcomment %}
+    {% assign navItems = "about,teachers,lessons" | split: "," %}
     <div>
       <a href="index.html" aria-label="Kreutzer — home">
         <img desktop src="assets/Kreutzer-源文件2修改颜色-.svg" alt="Kreutzer">
@@ -13,7 +14,7 @@
       </ul>
     </div>
     <nav-logo-main aria-hidden="true">Kreutzer</nav-logo-main>
-    <a href="contact.html" class="btn btn-clear btn-slide">Book a trial</a>
+    <a href="contact.html" class="btn">Book a trial</a>
 
     <!-- Mobile Section -->
     <button class="burger-btn" id="burgerBtn" aria-label="Toggle menu" aria-expanded="false" aria-controls="sidebar">

@@ -18,6 +18,9 @@
   /* Loader only shows when JS is present; otherwise the page renders immediately */
   .js .loader-wrap { display: flex; }
 
+  /* Already played this session (class set by the inline head script) */
+  .no-loader .loader-wrap { display: none; }
+
   /* ── Piano mask container ── */
   .piano-mask-wrap {
     position: relative;

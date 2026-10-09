@@ -122,11 +122,16 @@ section[pricing] {
     color: var(--gold);
   }
 
-  .pricing-grid .btn { margin-top: auto; width: 100%; }
+  /* One call-to-action below the cards rather than a button in each */
+  .pricing-cta {
+    display: flex;
+    justify-content: center;
+    margin-top: var(--space-lg);
+  }
 
   .pricing-note {
     text-align: center;
-    margin-top: var(--space-lg);
+    margin-top: var(--space-md);
     font-size: var(--text-sm);
     color: var(--cream-dim);
   }

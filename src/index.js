@@ -1,7 +1,11 @@
 const fillInner   = document.getElementById('fillInner');
 const loaderWrap  = document.getElementById('loaderWrap');
 
-if (fillInner && loaderWrap) {
+const skipLoader = document.documentElement.classList.contains('no-loader');
+
+if (fillInner && loaderWrap && !skipLoader) {
+/* Play the loader once per browser session, then skip it on later visits */
+try { sessionStorage.setItem('kreutzer-intro', '1'); } catch (e) {}
 let current = 0;
 const target = 100;
 
@@ -11,7 +15,7 @@ function easeProgress(t) {
   return t < 0.5 ? 2 * t * t : -1 + (4 - 2 * t) * t;
 }
 
-const duration = 1600; // ms total
+const duration = 900; // ms total
 let startTime = null;
 
 function step(ts) {
@@ -40,7 +44,7 @@ function step(ts) {
 requestAnimationFrame(step);
 }
 else {
-  /* No loader on this page — let the hero entrance run immediately. */
+  /* No loader on this page (or it already played this session) — let the hero entrance run immediately. */
   document.documentElement.classList.add('loaded');
 }
 
