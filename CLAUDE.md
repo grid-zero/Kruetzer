@@ -89,7 +89,7 @@ throw on pages that lack those nodes.
 ## Templating conventions
 
 - The nav list is generated in `header.html` from a Liquid array
-  (`about,teachers,lessons — resources and shop are held back until finished`); active link is set via
+  (`about,teachers,lessons`; resources and shop are held back until finished); active link is set via
   `page.fileSlug == item`. The homepage is intentionally not a nav item.
 - The markup uses **custom-element-like tags** (`<section intro>`, `<nav-logo-main>`,
   `<company-story>`) and **boolean attributes** (`<img desktop>`, `<img mobile>`) purely as
