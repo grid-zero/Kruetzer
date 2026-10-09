@@ -1,31 +1,76 @@
-<section pricing>
+<section pricing id="pricing">
   <div>
-  <h3 class="reveal">Transparent pricing</h3>
-  <h2 id="pricing-heading" class="reveal">Lesson packages</h2>
-  <div class="pricing-grid reveal-stagger">
-    <div class="reveal">
-      <h3>Trial Lesson</h3>
-      <strong>Free</strong>
-      <p>Your first lesson is on us. No commitment required.</p>
-      <ul><li>30-minute introductory lesson</li><li>Level assessment</li><li>Personalised learning plan</li><li>Studio tour</li></ul>
-      <a href="contact.html" class="btn btn-clear" style="width:100%;justify-content:center;">Book Now</a>
-    </div>
-    <div class="featured reveal">
-      <span>Most popular</span>
-      <h3>10 Lesson pack</h3>
-      <strong>$500 <span>$50/ 30 min</span></strong>
-      <p>Pre-purchase a term block and save.</p>
-      <ul><li>Save $100 per term</li><li>Regular lessons</li></ul>
-      <a href="contact.html" class="btn" style="width:100%;justify-content:center;">Enquire</a>
-    </div>
-    <div class="reveal">
-      <h3>Single lessons</h3>
-      <strong>$60 <span>/ 30 min</span></strong>
-      <p>Individual lessons</p>
-      <ul><li>Pay as you go</li><li>Flexible scheduling</li><li>No long-term commitment</li></ul>
-      <a href="contact.html" class="btn btn-clear" style="width:100%;justify-content:center;">Get Started</a>
+    <div class="section-head center">
+      <h3 class="reveal">Transparent pricing</h3>
+      <h2 id="pricing-heading" class="reveal">Lesson <em>packages</em></h2>
+      <p class="reveal reveal-delay-1">Simple, honest fees with no enrolment charges. Your first 30-minute lesson is a free trial — then choose the length and package that suit you.</p>
     </div>
 
-  </div>
+    <!-- Prices mirror _includes/price-table.html — update both together -->
+    <div class="pricing-grid reveal-stagger">
+      <article class="reveal">
+        <header>
+          <h4>30 min lesson</h4>
+          <p class="price-from"><span>from</span> $52</p>
+        </header>
+        <p class="price-label">Packages</p>
+        <ul role="list">
+          <li>1 casual: $63</li>
+          <li>5-lesson: $280<small>On average $56</small></li>
+          <li>10-lesson: $520<small>On average $52</small></li>
+        </ul>
+        <a href="contact.html" class="btn btn-clear btn-slide">Enquire</a>
+      </article>
+
+      <article class="reveal">
+        <header>
+          <h4>45 min lesson</h4>
+          <p class="price-from"><span>from</span> $70</p>
+        </header>
+        <p class="price-label">Packages</p>
+        <ul role="list">
+          <li>1 casual: $85</li>
+          <li>5-lesson: $390<small>On average $78</small></li>
+          <li>10-lesson: $700<small>On average $70</small></li>
+        </ul>
+        <a href="contact.html" class="btn btn-clear btn-slide">Enquire</a>
+      </article>
+
+      <article class="reveal">
+        <header>
+          <h4>60 min lesson</h4>
+          <span class="price-sub">Under Grade 8</span>
+          <p class="price-from"><span>from</span> $98</p>
+        </header>
+        <p class="price-label">Packages</p>
+        <ul role="list">
+          <li>1 casual: $115</li>
+          <li>5-lesson: $525<small>On average $105</small></li>
+          <li>10-lesson: $980<small>On average $98</small></li>
+        </ul>
+        <a href="contact.html" class="btn btn-clear btn-slide">Enquire</a>
+      </article>
+
+      <article class="reveal">
+        <header>
+          <h4>60 min lesson</h4>
+          <span class="price-sub">From Grade 8</span>
+          <p class="price-from"><span>from</span> $112</p>
+        </header>
+        <p class="price-label">Packages</p>
+        <ul role="list">
+          <li>1 casual: $130</li>
+          <li>5-lesson: $600<small>On average $120</small></li>
+          <li>10-lesson: $1,120<small>On average $112</small></li>
+        </ul>
+        <a href="contact.html" class="btn btn-clear btn-slide">Enquire</a>
+      </article>
+    </div>
+
+    {% unless page.fileSlug == "lessons" %}
+    <p class="pricing-note reveal">Diploma-level fees are discussed individually. See the <a href="lessons.html#fees">full fee schedule</a> for details.</p>
+    {% else %}
+    <p class="pricing-note reveal">Diploma-level fees are discussed individually.</p>
+    {% endunless %}
   </div>
 </section>

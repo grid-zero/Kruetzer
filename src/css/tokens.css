@@ -1,62 +1,99 @@
 :root {
-  --font-display:  'DM Serif Display', serif;
+  /* ── Type families ──────────────────────────────────────────────
+     Display: Cormorant Garamond — a high-contrast Garamond with a
+     beautiful italic; carries every heading and big number.
+     Title:   Cinzel — engraved Roman caps, used only for small
+     letter-spaced eyebrows, nav links and labels.
+     Body:    Montserrat — clean reading text at light weights.
+     Script:  Tangerine — the "Kreutzer" wordmark only. */
+  --font-display:  'Cormorant Garamond', 'Times New Roman', serif;
   --font-script:   'Tangerine', cursive;
   --font-title:    'Cinzel', serif;
-  --font-body:     "Montserrat", sans-serif;
+  --font-body:     'Montserrat', system-ui, sans-serif;
 
-  --text-xs:     clamp(0.75rem,  1vw,    0.875rem);
-  --text-sm:     clamp(0.9rem,   1.2vw,  1rem);
-  --text-base:   clamp(1rem,     1.4vw,  1.125rem);
-  --text-md:     clamp(1.2rem,   2vw,  1.5rem);
-  --text-lg:     clamp(1.4rem,   2.5vw,  2rem);
-  --text-xl:     clamp(2rem,     4vw,    3.5rem);
-  --text-2xl:    clamp(2.5rem,   5vw,    4.5rem);
+  /* ── Fluid type scale ── */
+  --text-xs:     clamp(0.72rem,  0.9vw,  0.8rem);
+  --text-sm:     clamp(0.85rem,  1.1vw,  0.95rem);
+  --text-base:   clamp(0.98rem,  1.3vw,  1.08rem);
+  --text-md:     clamp(1.1rem,   1.8vw,  1.3rem);
+  --text-lg:     clamp(1.5rem,   2.6vw,  2.1rem);
+  --text-xl:     clamp(2.4rem,   4.6vw,  4rem);
+  --text-2xl:    clamp(3rem,     7vw,    6.25rem);
+  --text-stat:   clamp(2.8rem,   5vw,    4.5rem);
   --text-script: clamp(2.5rem,   5vw,    4.5rem);
 
+  --weight-light:   300;
   --weight-regular: 400;
   --weight-medium:  500;
+  --weight-semi:    600;
   --weight-bold:    700;
-  
-  --bg-blue:   #083864;
 
-  --bg:          #0c0d10;
-  --bg-card:     #1a1c22;
-  --bg-overlay:  12, 13, 17;
+  /* ── Colour ─────────────────────────────────────────────────────
+     Near-black ground, deep navy as the one secondary, cream text,
+     gold accents. Cream derives from one triplet; gold likewise. */
+  --bg:          #0b0c10;
+  --bg-raised:   #101218;
+  --bg-card:     #161920;
+  --bg-overlay:  11, 12, 16;
 
-  --text-blue: #8aa6db;
-  --white:       #f7f7f4;
-  --white-dim:   rgba(255, 255, 255, 0.7);
+  --navy-rgb:    8, 56, 100;
+  --bg-blue:     rgb(var(--navy-rgb));
+  --bg-blue-deep:#04213d;
+
+  --text-blue:   #8aa6db;
+  --white:       #f7f4ec;
+  --white-dim:   rgba(247, 244, 236, 0.7);
+
   --cream-rgb:   242, 232, 185;
   --cream:       rgb(var(--cream-rgb));
+  --cream-soft:  rgba(var(--cream-rgb), 0.82);
   --cream-dim:   rgba(var(--cream-rgb), 0.55);
   --cream-faint: rgba(var(--cream-rgb), 0.12);
-  --border-faint: rgba(var(--cream-rgb), 0.07);
-  --gold:        #c9a84c;
-  --gold-light:  #e2c47a;
+  --border-faint: rgba(var(--cream-rgb), 0.08);
 
+  --gold-rgb:    201, 168, 76;
+  --gold:        rgb(var(--gold-rgb));
+  --gold-light:  #e2c47a;
+  --gold-pale:   #f3e2ae;
+  --gold-deep:   #9c7c2e;
+  --gold-line:   rgba(var(--gold-rgb), 0.35);
+  --gold-glow:   rgba(var(--gold-rgb), 0.14);
+
+  /* Candle-lit wash used behind key sections */
+  --glow-warm:   radial-gradient(ellipse 70% 60% at 50% 0%, rgba(var(--gold-rgb), 0.09), transparent 70%);
+  --glow-navy:   radial-gradient(ellipse 80% 70% at 85% 10%, rgba(var(--navy-rgb), 0.55), transparent 70%);
+
+  --shadow-card: 0 30px 60px -30px rgba(0, 0, 0, 0.85);
+  --shadow-lift: 0 40px 70px -30px rgba(0, 0, 0, 0.9), 0 0 0 1px var(--gold-line);
+
+  /* ── Space & layout ── */
+  --space-2xs: 0.25rem;
   --space-xs:  0.5rem;
   --space-sm:  1rem;
   --space-md:  2rem;
   --space-lg:  4rem;
-  --space-xl:  7rem;
+  --space-xl:  clamp(4.5rem, 9vw, 8rem);
 
-  --page-max: 1280px;
-  --page-pad: clamp(1.25rem, 5vw, 5rem);
+  --page-max:   1280px;
+  --page-narrow: 820px;
+  --page-pad:   clamp(1.25rem, 5vw, 5rem);
+  --header-h:   6.5rem;
 
-  --radius-sm: 6px;
-  --radius-md: 12px;
-  --radius-lg: 20px;
+  --radius-sm: 4px;
+  --radius-md: 10px;
+  --radius-lg: 18px;
 
+  /* ── Motion ── */
   --ease:   cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  --t-fast: 0.2s;
   --t-mid:  0.35s;
   --t-slow: 0.65s;
 
-
-  --sidebar-width: 240px;
+  --sidebar-width: 280px;
   --ease-emphatic: cubic-bezier(0.77, 0, 0.175, 1);
 
   --ease-out:   cubic-bezier(0.16, 1, 0.3, 1);
-  --t-reveal:   0.7s;
+  --t-reveal:   0.8s;
   --t-wipe:     1.2s;
   --t-kenburns: 28s;
 }

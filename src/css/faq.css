@@ -1,0 +1,92 @@
+/* FAQ — native <details> accordions, so they work with JS off */
+
+.faq-layout {
+  display: grid;
+  grid-template-columns: 260px 1fr;
+  gap: var(--space-xl);
+  align-items: start;
+}
+.faq-layout > aside {
+  position: sticky;
+  top: calc(var(--header-h) + var(--space-md));
+}
+.faq-layout > aside p { color: var(--cream-dim); font-size: var(--text-sm); margin-bottom: var(--space-md); }
+.faq-layout > aside ul {
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+  padding-left: var(--space-sm);
+  border-left: 1px solid var(--gold-line);
+  margin-bottom: var(--space-md);
+}
+.faq-layout > aside a { font-size: var(--text-sm); color: var(--cream-soft); }
+.faq-layout > aside a:hover { color: var(--gold-light); }
+
+.faq-group + .faq-group { margin-top: var(--space-lg); }
+.faq-group > h4 {
+  font-family: var(--font-display);
+  font-style: italic;
+  font-size: var(--text-lg);
+  font-weight: var(--weight-regular);
+  color: var(--gold-light);
+  margin-bottom: var(--space-sm);
+}
+
+.faq-item {
+  border-bottom: 1px solid var(--border-faint);
+}
+.faq-item:first-of-type { border-top: 1px solid var(--border-faint); }
+
+.faq-item summary {
+  list-style: none;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-md);
+  padding: var(--space-md) 0;
+  font-family: var(--font-display);
+  font-size: var(--text-md);
+  font-weight: var(--weight-medium);
+  color: var(--white);
+  transition: color var(--t-fast) var(--ease);
+}
+.faq-item summary::-webkit-details-marker { display: none; }
+.faq-item summary:hover { color: var(--gold-light); }
+
+/* plus → minus marker */
+.faq-item summary::after {
+  content: '';
+  flex-shrink: 0;
+  width: 2rem;
+  height: 2rem;
+  border: 1px solid var(--gold-line);
+  border-radius: 50%;
+  background:
+    linear-gradient(var(--gold), var(--gold)) center / 10px 1px no-repeat,
+    linear-gradient(var(--gold), var(--gold)) center / 1px 10px no-repeat;
+  transition: rotate var(--t-mid) var(--ease), background-color var(--t-mid) var(--ease);
+}
+.faq-item[open] summary::after {
+  rotate: 90deg;
+  background:
+    linear-gradient(var(--gold), var(--gold)) center / 10px 1px no-repeat;
+  background-color: rgba(var(--gold-rgb), 0.12);
+}
+
+.faq-item > p {
+  padding: 0 var(--space-xl) var(--space-md) 0;
+  color: var(--cream-soft);
+  line-height: 1.8;
+}
+.faq-item > p a { color: var(--gold); border-bottom: 1px solid var(--gold-line); }
+
+@media (max-width: 900px) {
+  .faq-layout { grid-template-columns: 1fr; gap: var(--space-lg); }
+  .faq-layout > aside { position: static; }
+  .faq-item > p { padding-right: 0; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .faq-item summary::after { transition: none; }
+}

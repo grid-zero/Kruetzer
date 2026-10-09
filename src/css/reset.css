@@ -5,20 +5,26 @@ html {
   -webkit-text-size-adjust: none;
   text-size-adjust: none;
   scroll-behavior: smooth;
+  scroll-padding-top: var(--header-h);
 }
 
 body {
   font-family: var(--font-body);
   background-color: var(--bg);
-  color: var(--cream);
-  font-weight: var(--weight-regular);
+  color: var(--cream-soft);
+  font-weight: var(--weight-light);
   font-size: var(--text-base);
-  line-height: 1.65;
+  line-height: 1.75;
   overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
 }
 
 ul, ol { list-style: none; }
-a { color: var(--cream); text-decoration: none; cursor: pointer;}
+a { color: var(--cream); text-decoration: none; cursor: pointer; }
+strong { font-weight: var(--weight-medium); color: var(--cream); }
+
+::selection { background: var(--gold); color: var(--bg); }
 
 :where(img, svg, video, canvas, audio, iframe, embed, object) { display: block; }
 :where(img, svg, video) { max-inline-size: 100%; block-size: auto; }
@@ -31,5 +37,29 @@ a { color: var(--cream); text-decoration: none; cursor: pointer;}
 /* Focus visibility */
 :focus-visible {
   outline: 2px solid var(--gold);
-  outline-offset: 2px;
+  outline-offset: 3px;
+}
+
+/* Skip link — hidden until keyboard-focused */
+.skip-link {
+  position: absolute;
+  left: var(--space-sm);
+  top: -4rem;
+  z-index: 10000;
+  background: var(--gold);
+  color: var(--bg);
+  padding: var(--space-xs) var(--space-sm);
+  border-radius: var(--radius-sm);
+  font-weight: var(--weight-medium);
+}
+.skip-link:focus { top: var(--space-sm); }
+
+/* Visually hidden, still read by screen readers */
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  white-space: nowrap;
 }
