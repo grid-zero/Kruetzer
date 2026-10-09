@@ -10,8 +10,9 @@
 }
 .split.reverse > :first-child { order: 2; }
 .split.top { align-items: start; }
+/* A lone text link gets spacing; inside a .btn-row the row already has it */
 .split .btn-row,
-.split .text-link { margin-top: var(--space-md); }
+.split .text-link:not(.btn-row .text-link) { margin-top: var(--space-md); }
 
 /* ── Framed image with offset gold keyline ──────────────────────── */
 .frame {
@@ -106,7 +107,7 @@
 }
 .pillar {
   position: relative;
-  padding: var(--space-lg) var(--space-md) var(--space-md);
+  padding: var(--space-md);
   background: linear-gradient(180deg, var(--bg-card), rgba(var(--bg-overlay), 0.4));
   border: 1px solid var(--border-faint);
   border-radius: var(--radius-md);
@@ -124,16 +125,6 @@
   transition: opacity var(--t-mid) var(--ease);
 }
 .pillar:hover::before { opacity: 1; }
-.pillar > span {
-  display: block;
-  font-family: var(--font-display);
-  font-style: italic;
-  font-size: 3.4rem;
-  line-height: 1;
-  color: var(--gold);
-  opacity: 0.55;
-  margin-bottom: var(--space-sm);
-}
 .pillar h4,
 .card h4 {
   font-family: var(--font-display);

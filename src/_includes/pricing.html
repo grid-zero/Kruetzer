@@ -3,47 +3,74 @@
     <div class="section-head center">
       <h3 class="reveal">Transparent pricing</h3>
       <h2 id="pricing-heading" class="reveal">Lesson <em>packages</em></h2>
-      <p class="reveal reveal-delay-1">Simple, honest fees with no enrolment charges. Start with a free trial, then choose the rhythm that suits you.</p>
+      <p class="reveal reveal-delay-1">Simple, honest fees with no enrolment charges. Your first 30-minute lesson is a free trial — then choose the length and package that suit you.</p>
     </div>
+
+    <!-- Prices mirror _includes/price-table.html — update both together -->
     <div class="pricing-grid reveal-stagger">
-      <div class="reveal">
-        <h4>Trial lesson</h4>
-        <strong>Free <span>30-minute introduction</span></strong>
-        <p>Your first lesson is on us — no commitment, no pressure.</p>
+      <article class="reveal">
+        <header>
+          <h4>30 min lesson</h4>
+          <p class="price-from"><span>from</span> $52</p>
+        </header>
+        <p class="price-label">Packages</p>
         <ul role="list">
-          <li>Meet your teacher</li>
-          <li>Friendly level assessment</li>
-          <li>Personalised learning plan</li>
-          <li>Tour of the studio</li>
+          <li>1 casual: $63</li>
+          <li>5-lesson: $280<small>On average $56</small></li>
+          <li>10-lesson: $520<small>On average $52</small></li>
         </ul>
-        <a href="contact.html" class="btn btn-clear btn-slide">Book a trial</a>
-      </div>
-      <div class="featured reveal">
-        <span>Most popular</span>
-        <h4>10-lesson pack</h4>
-        <strong>$500 <span>$50 per 30-minute lesson</span></strong>
-        <p>A full term of weekly lessons at our best rate.</p>
+        <a href="contact.html" class="btn btn-clear btn-slide">Enquire</a>
+      </article>
+
+      <article class="reveal">
+        <header>
+          <h4>45 min lesson</h4>
+          <p class="price-from"><span>from</span> $70</p>
+        </header>
+        <p class="price-label">Packages</p>
         <ul role="list">
-          <li>Save $100 a term</li>
-          <li>Reserved weekly time slot</li>
-          <li>One make-up lesson per term</li>
-          <li>Priority recital places</li>
+          <li>1 casual: $85</li>
+          <li>5-lesson: $390<small>On average $78</small></li>
+          <li>10-lesson: $700<small>On average $70</small></li>
         </ul>
-        <a href="contact.html" class="btn">Enquire now</a>
-      </div>
-      <div class="reveal">
-        <h4>Single lesson</h4>
-        <strong>$60 <span>per 30-minute lesson</span></strong>
-        <p>Pay as you go, perfect for occasional or adult learners.</p>
+        <a href="contact.html" class="btn btn-clear btn-slide">Enquire</a>
+      </article>
+
+      <article class="reveal">
+        <header>
+          <h4>60 min lesson</h4>
+          <span class="price-sub">Under Grade 8</span>
+          <p class="price-from"><span>from</span> $98</p>
+        </header>
+        <p class="price-label">Packages</p>
         <ul role="list">
-          <li>No long-term commitment</li>
-          <li>Flexible scheduling</li>
-          <li>Ideal for exam top-ups</li>
-          <li>Upgrade to a pack any time</li>
+          <li>1 casual: $115</li>
+          <li>5-lesson: $525<small>On average $105</small></li>
+          <li>10-lesson: $980<small>On average $98</small></li>
         </ul>
-        <a href="contact.html" class="btn btn-clear btn-slide">Get started</a>
-      </div>
+        <a href="contact.html" class="btn btn-clear btn-slide">Enquire</a>
+      </article>
+
+      <article class="reveal">
+        <header>
+          <h4>60 min lesson</h4>
+          <span class="price-sub">From Grade 8</span>
+          <p class="price-from"><span>from</span> $112</p>
+        </header>
+        <p class="price-label">Packages</p>
+        <ul role="list">
+          <li>1 casual: $130</li>
+          <li>5-lesson: $600<small>On average $120</small></li>
+          <li>10-lesson: $1,120<small>On average $112</small></li>
+        </ul>
+        <a href="contact.html" class="btn btn-clear btn-slide">Enquire</a>
+      </article>
     </div>
-    <p class="pricing-note reveal">Longer lessons, 5-lesson packs and Grade 7+ rates are listed on our <a href="lessons.html#fees">full fee schedule</a>.</p>
+
+    {% unless page.fileSlug == "lessons" %}
+    <p class="pricing-note reveal">Diploma-level fees are discussed individually. See the <a href="lessons.html#fees">full fee schedule</a> for details.</p>
+    {% else %}
+    <p class="pricing-note reveal">Diploma-level fees are discussed individually.</p>
+    {% endunless %}
   </div>
 </section>

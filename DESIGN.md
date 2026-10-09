@@ -65,7 +65,7 @@ literals in component files.
 | `--cream-rgb` | `242, 232, 185` | The one source for all cream |
 | `--cream` / `--cream-soft` / `--cream-dim` | 100% / 82% / 55% | Headline-adjacent text / body / secondary |
 | `--gold-rgb` | `201, 168, 76` | The one source for gold; `--gold-line`, `--gold-glow` derive from it |
-| `--gold-light` / `--gold-pale` / `--gold-deep` | | Stops in `--gold-sheen`, the gradient used on `<em>` and the wordmark |
+| `--gold-light` / `--gold-pale` / `--gold-deep` | | Solid gold tints. **Gold text is always solid — never a gradient.** |
 | `--white` | `#f7f4ec` | Warm white for `h1`/`h2` |
 
 > `var(--surface)` appears in `nav.css` (burger-hover) and is **intentionally undefined** —
@@ -79,14 +79,14 @@ All serif, four families with distinct jobs. Fluid `clamp()` scale (`--text-xs` 
 | Family | Token | Used for |
 |--------|-------|----------|
 | Cormorant Garamond | `--font-display` | Hero `h1`, section `h2`, card `h4`, prices, stats, quotes, numerals |
-| Cinzel | `--font-title` | `h3` eyebrows (gold, uppercase, `0.32em` tracking, with a gold rule), nav, buttons, labels |
+| Cinzel | `--font-title` | `h3` eyebrows (gold, uppercase, `0.32em` tracking; rules on both sides only when centred), nav, buttons, labels |
 | Montserrat | `--font-body` | Body copy at weight 300 |
 | Tangerine | `--font-script` | The "Kreutzer" wordmark and signatures only |
 
 Heading conventions, set in [`sections.css`](src/css/sections.css): `h3` is a gold
-uppercase eyebrow preceded by a short gold rule; `h2` is a large warm-white Cormorant
-title whose `<em>` turns italic with the gold sheen. Wrap them in `.section-head`
-(`.center` adds a rule on both sides and a ◆ ornament under the title; `.split` puts a
+uppercase eyebrow (no leading dash; centred ones get a short rule on each side); `h2` is a large warm-white Cormorant
+title whose `<em>` turns solid gold italic. Wrap them in `.section-head`
+(`.center` centres it and adds the two-sided eyebrow rules; `.split` puts a
 paragraph beside the title). Cards use `h4` so they never pick up the eyebrow style.
 
 ## Motion

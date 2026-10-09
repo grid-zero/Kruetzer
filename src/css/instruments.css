@@ -16,7 +16,7 @@ section[instruments] {
     overflow: hidden;
     border-radius: var(--radius-md);
     border: 1px solid var(--border-faint);
-    height: clamp(20rem, 34vw, 27rem);
+    aspect-ratio: 1 / 1;
     background-color: var(--bg-card);
     background-size: cover;
     background-position: center;
@@ -93,7 +93,6 @@ section[instruments] {
 
 @media (max-width: 640px) {
   section[instruments] ul { grid-template-columns: 1fr 1fr; }
-  section[instruments] li { height: 15rem; }
   section[instruments] li span { display: none; }
 }
 

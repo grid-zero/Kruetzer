@@ -12,7 +12,9 @@
 /* ── TERMS / POLICY LAYOUT ──────────────────────────────────────── */
 .policy-layout {
   display: grid;
-  grid-template-columns: 240px 1fr;
+  /* minmax(0, …) lets the column shrink below the fee table's width, so the
+     table scrolls inside .table-container instead of widening the page */
+  grid-template-columns: 240px minmax(0, 1fr);
   gap: var(--space-xl);
   align-items: start;
 }
@@ -60,6 +62,7 @@
   flex-direction: column;
   gap: var(--space-lg);
   max-width: var(--page-narrow);
+  min-width: 0;
 }
 .policy-content > article {
   counter-increment: clause;
@@ -161,6 +164,6 @@ tbody tr:last-child td { border-bottom: none; }
 }
 
 @media (max-width: 900px) {
-  .policy-layout { grid-template-columns: 1fr; gap: var(--space-lg); }
+  .policy-layout { grid-template-columns: minmax(0, 1fr); gap: var(--space-lg); }
   .policy-layout > nav { position: static; }
 }

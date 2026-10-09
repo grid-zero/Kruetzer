@@ -39,16 +39,6 @@ section h1 em {
   font-style: italic;
   color: var(--gold-light);
 }
-@supports (-webkit-background-clip: text) {
-  section h2 em,
-  section h1 em {
-    background: var(--gold-sheen);
-    -webkit-background-clip: text;
-            background-clip: text;
-    color: transparent;
-    padding-right: 0.06em; /* keeps italic overhang from clipping */
-  }
-}
 
 section h3 {
   display: flex;
@@ -62,7 +52,13 @@ section h3 {
   color: var(--gold);
   margin-bottom: var(--space-sm);
 }
-section h3::before {
+/* Centred eyebrows get a gold rule on each side; left-aligned ones stay bare */
+.section-head.center h3::before,
+.section-head.center h3::after,
+section[intro] h3::before,
+section[intro] h3::after,
+section[contact] h3::before,
+section[contact] h3::after {
   content: '';
   width: 2.5rem;
   height: 1px;
@@ -82,25 +78,6 @@ section h3::before {
   margin-right: auto;
   text-align: center;
   & h3 { justify-content: center; }
-  & h3::after {
-    content: '';
-    width: 2.5rem;
-    height: 1px;
-    background: var(--gold);
-  }
-  & h2::after {
-    content: '\25C6';
-    display: block;
-    width: 9rem;
-    margin: 1.4rem auto 0;
-    font-size: 0.45rem;
-    line-height: 1;
-    color: var(--gold);
-    text-align: center;
-    background:
-      linear-gradient(var(--gold-line), var(--gold-line)) left center / 42% 1px no-repeat,
-      linear-gradient(var(--gold-line), var(--gold-line)) right center / 42% 1px no-repeat;
-  }
   & > p { margin-left: auto; margin-right: auto; max-width: 620px; }
 }
 .section-head.split {
@@ -169,12 +146,6 @@ section[intro] {
     letter-spacing: 0.4em;
     color: var(--gold-light);
     margin-bottom: var(--space-md);
-  }
-  & h3::after {
-    content: '';
-    width: 2.5rem;
-    height: 1px;
-    background: var(--gold);
   }
 
   & h1 {
@@ -433,9 +404,3 @@ section[stats] { padding-block: var(--space-lg); }
 
 /* Centred eyebrow inside the CTA band */
 section[contact] h3 { justify-content: center; }
-section[contact] h3::after {
-  content: '';
-  width: 2.5rem;
-  height: 1px;
-  background: var(--gold);
-}

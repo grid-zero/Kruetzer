@@ -83,10 +83,7 @@ nav-logo-main {
   font-size: var(--text-script);
   font-weight: var(--weight-bold);
   line-height: 1;
-  background: var(--gold-sheen);
-  -webkit-background-clip: text;
-          background-clip: text;
-  color: transparent;
+  color: var(--gold-light);
   pointer-events: none;
   animation: fadeIn var(--t-slow) 0.2s var(--ease) both;
 }

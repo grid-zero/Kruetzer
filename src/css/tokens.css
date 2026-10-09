@@ -58,7 +58,6 @@
   --gold-deep:   #9c7c2e;
   --gold-line:   rgba(var(--gold-rgb), 0.35);
   --gold-glow:   rgba(var(--gold-rgb), 0.14);
-  --gold-sheen:  linear-gradient(100deg, var(--gold-deep) 0%, var(--gold-light) 40%, var(--gold-pale) 52%, var(--gold) 100%);
 
   /* Candle-lit wash used behind key sections */
   --glow-warm:   radial-gradient(ellipse 70% 60% at 50% 0%, rgba(var(--gold-rgb), 0.09), transparent 70%);
