@@ -77,11 +77,12 @@ header > nav ul a {
 header > nav ul a:hover,
 header > nav ul a.active { color: var(--gold-light); }
 
-/* Logo text — script wordmark */
+/* Logo text — script wordmark. Regular weight is deliberate: it is the logo,
+   so it must not follow body-weight changes or go bold. */
 nav-logo-main {
   font-family: var(--font-script);
   font-size: var(--text-script);
-  font-weight: var(--weight-bold);
+  font-weight: var(--weight-regular);
   line-height: 1;
   color: var(--gold-light);
   pointer-events: none;
