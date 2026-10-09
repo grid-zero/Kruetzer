@@ -45,13 +45,13 @@ Component-based with pragmatic grouping:
 **Page sections:**
 | File | Owns |
 |------|------|
-| `sections.css` | Base `section` padding, background variants (`[alt]`, `[glow]`, `[navy]`, `[ruled]`), the heading system (`section h2/h3`, `.section-head` + `.center`/`.split`, `.lede`), the hero (`section[intro]`, `[home]`, `[page]`), `section[how-it-works]` `.steps`, `section[contact]` CTA band, `section[stats]`. |
+| `sections.css` | Base `section` padding, background variants (`[alt]`, `[glow]`, `[navy]`, `[ruled]`), the heading system (`section h2/h3`, `.section-head` + `.center`/`.split`, `.lede`), the hero (`section[intro]`, `[home]`, `[page]`), `section[how-it-works]` `.steps`, `section[contact]` CTA band. |
 | `instruments.css` | `section[instruments]` + `.instruments-grid`. |
-| `testimonials.css` | `section[testimonials]` quote/reference cards. |
+| `testimonials.css` | `section[testimonials]` quote/reference cards. **Kept on purpose while no page uses it** — testimonials will be added back once real ones are collected. Don't delete. |
 | `pricing.css` | `section[pricing]` + `.pricing-grid` + `.featured`. |
 | `teachers.css` | `.teacher-grid` flip cards, monogram placeholders, no-JS hover flip. |
 | `terms.css` | `.policy-layout` (sticky contents rail + numbered clauses), `.policy-list`, `.table-container`/`table`, `.tagline`, `.disclaimer`. |
-| `features.css` | Shared blocks: `.split`, `.frame`, `.stats`, `.pillars`, `.card-grid`/`.card`/`.card-mark`, `.badge`, `.checklist`, `.pull-quote`, `.signature`, `.timeline`, `.info-list`, `.notice`. |
+| `features.css` | Shared blocks: `.split`, `.frame`, `.pillars`, `.card-grid`/`.card`/`.card-mark`, `.badge`, `.checklist`, `.pull-quote`, `.signature`, `.timeline`, `.info-list`, `.notice`. |
 | `faq.css` | `.faq-layout` and `<details class="faq-item">` accordions (no JS needed). |
 
 ## `@import` order (load-bearing)
@@ -95,7 +95,7 @@ in the page-sections group — don't reshuffle the existing lines.
 - **`section[default]`'s `border-top` is a separate rule on purpose.** Folding it into the
   base `section` rule would draw a border across the `section[intro]` hero.
 - **Markup hooks are styling-only.** Boolean attributes (`section[intro]`, `section[pricing]`,
-  `img[desktop]`/`img[mobile]`) and custom-element tags (`company-story`, `company-stats`,
+  `img[desktop]`/`img[mobile]`) and custom-element tags (`company-story`,
   `testimonial-quote`, `testimonial-reference`, `nav-logo-main`) carry no JavaScript — they
   exist purely as selectors. Custom elements used as grid/flex items are blockified by the
   layout; that's why e.g. `company-story` works as a column without a `display` rule.

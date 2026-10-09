@@ -19,7 +19,6 @@
   --text-lg:     clamp(1.5rem,   2.6vw,  2.1rem);
   --text-xl:     clamp(2.4rem,   4.6vw,  4rem);
   --text-2xl:    clamp(3rem,     7vw,    6.25rem);
-  --text-stat:   clamp(2.8rem,   5vw,    4.5rem);
   --text-script: clamp(2.5rem,   5vw,    4.5rem);
 
   --weight-light:   300;

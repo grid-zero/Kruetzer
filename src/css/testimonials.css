@@ -1,3 +1,7 @@
+/* KEEP — do not delete this file or its @import in index.css.
+   No page uses testimonials yet (the invented ones were removed because no real
+   testimonials have been collected). They will be added back once real ones exist.
+   The markup pattern is preserved as a comment in index.html. */
 section[testimonials] {
   background: var(--glow-warm), var(--bg);
 

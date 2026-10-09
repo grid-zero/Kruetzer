@@ -399,8 +399,5 @@ section[contact] > div { position: relative; }
   section[contact]::before { font-size: 16rem; }
 }
 
-/* Stats strip sits tighter than a full section */
-section[stats] { padding-block: var(--space-lg); }
-
 /* Centred eyebrow inside the CTA band */
 section[contact] h3 { justify-content: center; }

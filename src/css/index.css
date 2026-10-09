@@ -9,7 +9,7 @@
 @import "footer.css";
 @import "sections.css";
 @import "instruments.css";
-@import "testimonials.css";
+@import "testimonials.css"; /* KEEP: unused until real testimonials are collected */
 @import "pricing.css";
 @import "teachers.css";
 @import "terms.css";

@@ -78,7 +78,7 @@ All serif, four families with distinct jobs. Fluid `clamp()` scale (`--text-xs` 
 
 | Family | Token | Used for |
 |--------|-------|----------|
-| Cormorant Garamond | `--font-display` | Hero `h1`, section `h2`, card `h4`, prices, stats, quotes, numerals |
+| Cormorant Garamond | `--font-display` | Hero `h1`, section `h2`, card `h4`, prices, quotes, numerals |
 | Cinzel | `--font-title` | `h3` eyebrows (gold, uppercase, `0.32em` tracking; rules on both sides only when centred), nav, buttons, labels |
 | Montserrat | `--font-body` | Body copy at weight 400 |
 | Tangerine | `--font-script` | The "Kreutzer" wordmark and signatures only |
@@ -117,15 +117,13 @@ layer). The signature moment — used nowhere else. The whole entrance is gated 
 lifts (immediately on pages with no loader), so the choreography plays *after* the curtain
 rather than hidden behind it.
 
-**Testimonials (`.reveal-scrub` / `--right`):** reveal progress is **scroll-scrubbed** —
+**Testimonials (`.reveal-scrub` / `--right`) — currently not on any page, but kept on purpose so they can return once real ones are collected; don't delete `testimonials.css` or the `scrubIn*` keyframes:** reveal progress is **scroll-scrubbed** —
 tied directly to scroll position via a `view()` timeline (`scrubInLeft`/`scrubInRight` in
 [`keyframes.css`](src/css/keyframes.css)), so scrolling back up progressively hides them.
 Pure CSS, no observer. `@supports (animation-timeline: view())` gates it; unsupported
 browsers (and reduced-motion) get the cards static-visible.
 
-**Numbers & accents:** stats count up via a guarded block in
-[`index.js`](src/index.js) (final value lives in the HTML for no-JS; snaps to final under
-reduced-motion). The gold **underline-draw** is a single shared utility,
+**Accents:** the gold **underline-draw** is a single shared utility,
 `.draw-underline` (defined in [`sections.css`](src/css/sections.css)), reused by the nav and
 by headings — **never copy it; reuse the class.** Nav's active-link underline stays in
 [`nav.css`](src/css/nav.css).
@@ -135,8 +133,7 @@ fill-sweep ([`buttons.css`](src/css/buttons.css)), tile and card lift
 ([`instruments.css`](src/css/instruments.css); pricing already lifts).
 
 **Two rules are load-bearing — preserve them:**
-- **No-JS:** content visible and static without JavaScript; the count-up shows the HTML's
-  final number.
+- **No-JS:** content visible and static without JavaScript.
 - **`prefers-reduced-motion: reduce`:** every animated component carries its own
   co-located reduced-motion guard (cascade-safe — it must declare *after* the animation it
   cancels). `reveal.css` guards the `.reveal*` selectors; each component guards its own
