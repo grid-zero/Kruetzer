@@ -132,6 +132,10 @@ section[intro] {
   background: var(--bg);
   position: relative;
   min-height: calc(100vh - var(--header-h));
+  /* svh = the viewport with mobile browser toolbars showing. Unlike vh/dvh it never
+     changes as the address bar slides in and out, so the hero (and everything below
+     it) stops jumping while you scroll on iOS. vh above is the fallback. */
+  min-height: calc(100svh - var(--header-h));
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -172,6 +176,9 @@ section[intro] {
 }
 
 section[intro] > div { position: relative; z-index: 1; }
+
+/* Keep the hero content clear of the scroll cue (≈6rem tall) however short the screen is */
+section[intro][home] { padding-bottom: max(var(--space-xl), 8rem); }
 
 /* Home hero photograph */
 section[intro][home]::before {
@@ -220,6 +227,7 @@ section[intro] [scroll-cue]::after {
 /* Interior page hero: navy wash over a faint manuscript engraving */
 section[intro][page] {
   min-height: clamp(380px, 56vh, 620px);
+  min-height: clamp(380px, 56svh, 620px); /* stable on mobile, see section[intro] */
   background: linear-gradient(180deg, var(--bg-blue-deep) 0%, var(--bg) 100%);
   border-bottom: 1px solid var(--border-faint);
   & p { margin-bottom: 0; }
