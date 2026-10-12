@@ -36,7 +36,7 @@ Component-based with pragmatic grouping:
 **Shared components:**
 | File | Owns |
 |------|------|
-| `buttons.css` | `.btn`, `.btn-clear`, `.btn-large`, hover states. |
+| `buttons.css` | `.btn` and modifiers (`.btn-clear`, `.btn-cream`, `.btn-slide`, `.btn-large`, `.btn-xl`, `.btn-block`), `.btn-row`, hover states. |
 | `nav.css` | Header nav, burger button, sidebar, overlay — **and all nav responsive queries**. |
 | `footer.css` | Footer layout. |
 | `loader.css` | Piano loading animation (its `@keyframes shimmer` lives in `keyframes.css`). |
@@ -45,13 +45,13 @@ Component-based with pragmatic grouping:
 **Page sections:**
 | File | Owns |
 |------|------|
-| `sections.css` | Base `section` padding, background variants (`[alt]`, `[glow]`, `[navy]`, `[ruled]`), the heading system (`section h2/h3`, `.section-head` + `.center`/`.split`, `.lede`), the hero (`section[intro]`, `[home]`, `[page]`), `section[how-it-works]` `.steps`, `section[contact]` CTA band. |
+| `sections.css` | Base `section` padding, background variants (`[alt]`, `[glow]`, `[navy]`, `[ruled]`), the heading system (`section h2/h3`, `.section-head` + `.center`/`.split`, `.lede`), `.draw-underline`, `.muted`, the hero (`section[intro]`, `[home]`, `[page]`, the per-page hero photos and the people-hero treatment — see gotchas), `section[how-it-works]` `.steps`, `section[contact]` CTA band. |
 | `instruments.css` | `section[instruments]` + `.instruments-grid`. |
 | `testimonials.css` | `section[testimonials]` quote/reference cards. **Kept on purpose while no page uses it** — testimonials will be added back once real ones are collected. Don't delete. |
 | `pricing.css` | `section[pricing]` + `.pricing-grid` + `.featured`. |
-| `teachers.css` | `.teacher-grid` flip cards, monogram placeholders, no-JS hover flip. |
+| `teachers.css` | `.teacher-grid` flip cards, photo + `[monogram]` placeholder fronts, `img[crop-right]` card crop, no-JS hover flip. |
 | `terms.css` | `.policy-layout` (sticky contents rail + numbered clauses), `.policy-list`, `.table-container`/`table`, `.tagline`, `.disclaimer`. |
-| `features.css` | Shared blocks: `.split`, `.frame`, `.pillars`, `.card-grid`/`.card`/`.card-mark`, `.badge`, `.checklist`, `.pull-quote`, `.signature`, `.timeline`, `.info-list`, `.notice`. |
+| `features.css` | Shared blocks: `.split` (+ `.reverse`, `.top`), `.frame` (+ `.portrait`, `img[crop-right]`), `.pillars`, `.card-grid`/`.card`/`.card-mark`, `.badge`, `.checklist`, `.pull-quote`, `.signature`, `.timeline`, `.info-list`, `.notice`. |
 | `faq.css` | `.faq-layout` and `<details class="faq-item">` accordions (no JS needed). |
 
 ## `@import` order (load-bearing)
@@ -59,9 +59,8 @@ Component-based with pragmatic grouping:
 The order in `index.css` is **not** alphabetical and must hold:
 
 ```
-tokens → keyframes → reset → reveal → buttons → nav → footer → loader
-→ contact-form → sections → instruments → testimonials → pricing → teachers → terms
-→ features → faq
+tokens → keyframes → reset → reveal → loader → contact-form → buttons → nav → footer
+→ sections → instruments → testimonials → pricing → teachers → terms → features → faq
 ```
 
 Why: `tokens` first (everything references its custom properties); `keyframes` before any
@@ -72,11 +71,19 @@ in the page-sections group — don't reshuffle the existing lines.
 
 | File | Breakpoints |
 |------|-------------|
-| `nav.css` | 1024px (hide wordmark logo, 2-col grid), 768px (show burger, mobile logo, hide desktop nav), 769px-min (hide sidebar + overlay) |
-| `sections.css` | 1024px (how-it-works column stack), 768px (about column stack) |
+| `nav.css` | 1180px, 900px (burger + mobile logo replace the desktop nav), 901px-min (hide sidebar + overlay) |
+| `sections.css` | 1024px (how-it-works steps stack, `.section-head.split` stacks), 600px (hero buttons stack, smaller CTA glyph), 600px **+ portrait orientation** (upright hero photos for about/lessons/phoebe) |
+| `features.css` | 900px (`.split` and friends stack), 560px |
+| `instruments.css` | 1024px (3-col), 640px (2-col, hide blurbs), hover-none ≥641px (always show blurbs) |
+| `pricing.css` | 1100px (2-col), 600px (1-col) |
+| `contact-form.css` | 960px, 600px |
+| `footer.css` | 900px, 560px |
+| `faq.css` / `terms.css` | 900px (layout stacks) |
+| `teachers.css` | 480px |
 | `testimonials.css` | 768px (1-col articles) |
-| `pricing.css` | 768px (1-col grid, max-width 400px) |
-| `instruments.css` | 480px (2-col grid) |
+
+Most files also carry a `prefers-reduced-motion: reduce` block that switches off their own
+hover lifts/transitions — keep that alongside any new motion.
 
 ## Conventions & gotchas
 
@@ -87,22 +94,28 @@ in the page-sections group — don't reshuffle the existing lines.
 - **`var(--surface)` in `nav.css` (burger-btn hover) is intentionally undefined** — it
   resolves to no background (initial), which is the intended look. Don't "fix" it by
   inventing a value; doing exactly that caused visual regressions in a prior pass. (Earlier
-  undefined vars `--bg-brand`, `--border`, `--bg-raised` have since been cleaned up;
-  `--surface` is the last deliberate one.)
+  undefined vars `--bg-brand` and `--border` have since been cleaned up; `--bg-raised` is
+  now a real token used by `section[alt]`. `--surface` is the last deliberate one.)
 - **The no-JS path lives in `reveal.css` and `loader.css`** — `.reveal` is visible by
   default and only `.js .reveal` hides-then-animates; the loader only displays under `.js`.
   Preserve this when touching either file (the site must work with JavaScript disabled).
 - **`section[default]`'s `border-top` is a separate rule on purpose.** Folding it into the
   base `section` rule would draw a border across the `section[intro]` hero.
-- **Markup hooks are styling-only.** Boolean attributes (`section[intro]`, `section[pricing]`,
-  `img[desktop]`/`img[mobile]`) and custom-element tags (`company-story`,
-  `testimonial-quote`, `testimonial-reference`, `nav-logo-main`) carry no JavaScript — they
-  exist purely as selectors. Custom elements used as grid/flex items are blockified by the
-  layout; that's why e.g. `company-story` works as a column without a `display` rule.
-- **Some `section[how-it-works]` selectors are fragile deep-descendant chains** (e.g.
-  `> div > div > div > :first-child` styles the numbered circle). They depend on exact
-  nesting — adding or removing a wrapper `<div>` in that section can silently break the
-  styling. Flattening them needs HTML class additions and is deferred.
+- **Markup hooks are styling-only.** Attributes (`section[intro]`, `section[pricing]`,
+  `img[desktop]`/`img[mobile]`, `img[crop-right]`, `[scroll-cue]`) and custom-element tags
+  (`nav-logo-main`, plus `testimonial-quote`/`testimonial-reference` in the unused
+  testimonials block) carry no JavaScript — they exist purely as selectors. Custom elements
+  used as grid/flex items are blockified by the layout, so they need no `display` rule.
+- **Interior hero photos come in two strengths** (`sections.css`). Plain `section[intro][page]`
+  is a navy wash over a faint manuscript engraving; `about`/`lessons`/`careers` swap in a faint,
+  desaturated piano-room photo on that same navy wash. Photos of **people** (`teachers`,
+  `phoebe`, `harmoniche`, `angel`) use the people-hero block instead: near-black ground, a
+  dark scrim, photo at ~0.45 opacity (the teachers group shot overrides to 0.6). The navy
+  wash turns warm stage photos muddy, so add new people pages to that selector list rather
+  than giving them a plain `[page]` photo.
+- **`section[how-it-works]` numerals are styled positionally** (`.steps > div > :first-child`
+  is the numbered circle). Keep the first child of each step as the numeral, or the circle
+  styling lands on the wrong element.
 
 ## Adding a new component
 

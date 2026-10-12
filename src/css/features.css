@@ -36,6 +36,8 @@
   box-shadow: var(--shadow-card);
 }
 .frame.portrait img { aspect-ratio: 4 / 5; object-position: top; }
+/* Landscape source whose subject sits right of centre: keep them in a portrait crop */
+.frame.portrait img[crop-right] { object-position: 75% center; }
 .frame figcaption {
   position: absolute;
   left: -0.5rem;

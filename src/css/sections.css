@@ -260,6 +260,12 @@ section[intro][page="lessons"]::before {
   opacity: 0.22;
   filter: grayscale(0.4);
 }
+section[intro][page="careers"]::before {
+  background-image: url('../assets/piano open back.jpg');
+  background-position: center top;
+  opacity: 0.22;
+  filter: grayscale(0.4);
+}
 /* Tall, narrow heroes on phones: the portrait shot keeps the piano in frame */
 @media (max-width: 600px) and (orientation: portrait) {
   section[intro][page="about"]::before,
@@ -268,12 +274,50 @@ section[intro][page="lessons"]::before {
     background-position: center 70%;
   }
 }
-section[intro][page="teachers"]::before,
-section[intro][page="careers"]::before {
-  background-image: url('../assets/IMG_5717.jpg');
-  opacity: 0.55;
-  filter: none;
-  mix-blend-mode: normal;
+
+/* People heroes: a real photograph on a neutral near-black ground. The navy wash
+   behind the manuscript heroes turns warm stage photos muddy, so these swap it for
+   a dark scrim that also keeps the heading legible over a busy image. */
+section[intro][page="teachers"],
+section[intro][page="phoebe"],
+section[intro][page="harmoniche"],
+section[intro][page="angel"] {
+  background: var(--bg);
+  &::before {
+    opacity: 0.45;
+    filter: saturate(0.6);
+    mix-blend-mode: normal;
+  }
+  &::after {
+    background:
+      radial-gradient(ellipse 60% 70% at 50% 45%, rgba(var(--bg-overlay), 0.45), transparent 75%),
+      linear-gradient(180deg, rgba(var(--bg-overlay), 0.3) 0%, transparent 40%, var(--bg) 100%);
+  }
+}
+/* The group shot is mostly flat, evenly lit wall: give it back some depth */
+section[intro][page="teachers"]::before {
+  background-image: url('../assets/Angel Phoebe and Niche.jpg');
+  background-position: center 55%;
+  opacity: 0.6;
+  filter: saturate(0.85) contrast(1.15);
+}
+section[intro][page="phoebe"]::before {
+  background-image: url('../assets/Phoebe playing - Recital.jpg');
+  background-position: center 35%;
+}
+section[intro][page="harmoniche"]::before {
+  background-image: url('../assets/Phoebe and Niche - Recital.jpg');
+  background-position: center 35%;
+}
+section[intro][page="angel"]::before {
+  background-image: url('../assets/Angel and Niche - Recital.jpg');
+  background-position: center 30%;
+}
+@media (max-width: 600px) and (orientation: portrait) {
+  section[intro][page="phoebe"]::before {
+    background-image: url('../assets/Phoebe playing front - Recital.jpg');
+    background-position: center 60%;
+  }
 }
 
 /* Hero entrance choreography — runs only with JS + motion allowed, and only once

@@ -58,6 +58,7 @@ html:not(.js) .teacher-card-container:focus-within .teacher-card-inner {
   object-position: top;
   transition: scale var(--t-slow) var(--ease);
 }
+.teacher-image img[crop-right] { object-position: 75% center; }
 .teacher-card-container:hover .teacher-image img { scale: 1.04; }
 
 /* Monogram placeholder for teachers without a portrait yet */

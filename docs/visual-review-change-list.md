@@ -20,11 +20,11 @@ at commit `14609c1` (plus its uncommitted studio-photo changes).
 
 | # | Change | Severity | Owner | Status |
 |---|---|---|---|---|
-| 1 | Replace/hide placeholder teacher cards | 🔴 Critical | Phoebe → Dev | Open |
+| 1 | Replace/hide placeholder teacher cards | 🔴 Critical | Phoebe → Dev | **Done** (Tyler card kept as placeholder by choice) |
 | 2 | Add a real lesson photo | 🔴 Critical | Phoebe → Dev | Open |
-| 3 | Stop reusing the same photos across pages | 🟡 Moderate | Phoebe → Dev | Open |
+| 3 | Stop reusing the same photos across pages | 🟡 Moderate | Phoebe → Dev | **Done** |
 | 4 | Studio photo reshoot (match moody style) | 🟡 Moderate | Phoebe → Dev | **In progress** (uncommitted) |
-| 5 | Re-crop founder photo (lid reflection) | 🟡 Moderate | Phoebe → Dev | Open |
+| 5 | Re-crop founder photo (lid reflection) | 🟡 Moderate | Phoebe → Dev | **Done** |
 | 6 | Keep a "Book" CTA in the mobile header | 🟡 Moderate | Dev | Open (decision Q3) |
 | 7 | Shorten/limit the loader | 🟡 Moderate | Dev | Open (decision Q1) |
 | 8 | Tighten section spacing & page length | 🟡 Moderate | Dev | Open |
@@ -60,6 +60,11 @@ leaves a lone orphan card.
 - Re-check grid balance once the final count is known (avoid a single orphan card on its own row).
 
 *Blocked by:* Phoebe's to-do §1.
+
+**Status: Done (2026-10-12).** Harmoniche Deng and Angel Zheng have photo cards and full
+profile pages (`teachers/harmoniche.html`, `teachers/angel.html`). Tyler Nguyen's card stays
+as a placeholder on purpose — he is being onboarded soon. See
+`docs/handoffs/2026-10-12-teacher-photos-and-profiles-handoff.md`.
 
 ### 2. No photo of an actual lesson
 **Problem:** The whole site shows concert halls, empty rooms and stock instrument close-ups,
@@ -100,6 +105,11 @@ have yet. It's at odds with the honest "young studio" copy.
 
 *Partly blocked by:* Phoebe's to-do §4.
 
+**Status: Done (2026-10-12).** Concert hall now only on the homepage; Teachers hero is the
+group photo, Careers hero is `piano open back.jpg`, teacher pages use recital photos. Remaining
+reuse (the cropped founder portrait in 4 places, two recital shots on two teacher pages) is
+waiting on more photos — tracked in the 2026-10-12 handoff.
+
 ### 4. Studio photo didn't match the rest
 **Problem:** The original studio photo was bright and flat-lit, with white walls and a
 brown cover draped over the piano. Next to the moody stock photography it looked amateur.
@@ -121,6 +131,9 @@ in #3's table, especially the teacher card and the homepage founder block, where
 reflection is most visible.
 
 *Blocked by:* Phoebe's to-do §5 (uncropped original or new photo).
+
+**Status: Done (2026-10-12).** `assets/phoebe mu cropped.jpg` (reflection cropped out) replaces
+`phoebe mu.jpg` in every placement; the original file is kept in `assets/`.
 
 ### 6. No booking CTA in the mobile header
 **Problem:** Below the mobile breakpoint the header shows only the monogram, wordmark and

@@ -35,14 +35,20 @@ npm run build   # eleventy — one-shot build into _site/
 
 ## Page model — read this before adding/moving a page
 
-- Each page is a **standalone HTML file directly in `src/`** (e.g. `src/about.html`) with
-  Liquid front matter: `title`, `description`, and optional `loader: true`.
-- `src/src.11tydata.js` is a directory data file that applies to every page in `src/`:
-  it sets `layout: base.html` and a computed `permalink` of `<fileSlug || "index">.html`.
-  Result: **pages output flat** (`_site/about.html`), never nested. `fileSlug` is `""`
-  for `index.html`, which is why the `|| "index"` fallback exists — don't remove it.
-- `src/_includes/base.html` is the shell every page renders into: `<head>` + optional
-  loader + header + `<main>{{ content }}</main>` + footer + `index.js`.
+- Each page is a **standalone HTML file** with Liquid front matter: `title`,
+  `description`, and optional `loader: true`. Most live directly in `src/`
+  (e.g. `src/about.html`); individual teacher profiles live in **`src/teachers/`**
+  (`phoebe.html`, `harmoniche.html`, `angel.html`) purely to keep the source tidy.
+- `src/src.11tydata.js` is a directory data file that applies to every page under `src/`
+  (subfolders included): it sets `layout: base.html` and a computed permalink of
+  `<fileSlug || "index">.html`. Result: **pages output flat** (`_site/about.html`,
+  `_site/phoebe.html`), never nested — so a page in `src/teachers/` still uses the same
+  relative `assets/…` / `contact.html` paths as a top-level page. Consequence: **file names
+  must be unique across subfolders.** `fileSlug` is `""` for `index.html`, which is why the
+  `|| "index"` fallback exists — don't remove it.
+- `src/_includes/base.html` is the shell every page renders into: `<head>` (inline script
+  that adds the `js` class and, if the loader already played this session, `no-loader`) +
+  skip link + optional loader + header + `<main>{{ content }}</main>` + footer + `index.js`.
 
 ### Two load-bearing constraints (do not "fix" these)
 
@@ -65,14 +71,24 @@ deliberate cascade order**: `tokens` → `keyframes` → `reset` → then compon
 (reveal, loader, contact-form, buttons, nav, footer, sections, instruments, testimonials,
 pricing, teachers, terms, features, faq). Order matters — append new components rather than reshuffling.
 
-- Shared building blocks live in `features.css` (`.split`, `.frame`, `.stats`, `.pillars`,
-  `.card-grid`/`.card`, `.timeline`, `.pull-quote`, `.checklist`, `.info-list`, `.notice`)
-  and the section-heading pattern (`.section-head` + `.center`/`.split`) in `sections.css`.
-  Compose new pages from these before writing new CSS. Card titles use `<h4>` because
-  `section h3` is globally styled as the gold eyebrow.
-- Interior pages open with `<section intro page="…">`; the `page` value can select a
-  per-page hero photo in `sections.css`. Background variants are boolean attributes on
-  `section`: `alt`, `glow`, `navy`, `ruled`.
+- Shared building blocks live in `features.css` (`.split` + `.reverse`/`.top`, `.frame` +
+  `.portrait`, `.pillars`, `.card-grid`/`.card`, `.timeline`, `.pull-quote`, `.checklist`,
+  `.info-list`, `.notice`) and the section-heading pattern (`.section-head` +
+  `.center`/`.split`) in `sections.css`. Compose new pages from these before writing new
+  CSS. Card titles use `<h4>` because `section h3` is globally styled as the gold eyebrow.
+  `src/css/README.md` documents the CSS folder in more depth (repo-only; Eleventy ignores it).
+- Interior pages open with `<section intro page="…">`. With no value (or an unlisted one)
+  the hero is a navy wash over a faint Debussy-manuscript engraving. A `page` value listed
+  in `sections.css` swaps in a photo:
+  - `about`, `lessons`, `careers` — faint, desaturated piano-room photo over the navy wash.
+  - `teachers`, `phoebe`, `harmoniche`, `angel` — **people heroes**: a stronger photo on a
+    near-black ground with a dark scrim. The navy wash turns warm stage photos muddy, so
+    don't put people photos on the plain `page` treatment.
+  - Phone-portrait swaps (`max-width: 600px` + portrait) give some heroes an upright photo.
+- Background variants are boolean attributes on `section`: `alt`, `glow`, `navy`, `ruled`.
+- Teacher profile pages follow one rhythm: people hero → portrait `.frame.portrait` +
+  lede + `.info-list` (Teaches / Levels / Ages) → alternating `.split` / `.split.reverse`
+  photo sections that break up the bio → a `ruled` two-column text section → `section contact`.
 - `tokens.css` holds the entire design system as CSS custom properties: font families, a
   fluid `clamp()` type scale (`--text-*`), color palette (cream is built from the
   `--cream-rgb` triplet so every tint derives from one source), spacing, radii, easings.
@@ -80,34 +96,58 @@ pricing, teachers, terms, features, faq). Order matters — append new component
 
 ## JavaScript (`src/index.js`)
 
-One vanilla file, no build step, loaded with `defer`. Four independent features: loader
-progress animation, IntersectionObserver scroll-reveal, teacher-card flip, and the mobile
-burger/sidebar menu. **Every block guards for its elements** (`if (btn && sidebar ...)`)
-because not every page has a loader or burger — keep new code element-guarded so it can't
-throw on pages that lack those nodes.
+One vanilla file, no build step, loaded with `defer`. Five independent features:
+- **Loader** progress animation — plays **once per browser session** (sets the
+  `kreutzer-intro` sessionStorage flag, wrapped in try/catch; `base.html` reads it and adds
+  `no-loader`). When the loader finishes, or is skipped, it adds `loaded` to `<html>`, which
+  starts the hero entrance animation in `sections.css`.
+- IntersectionObserver **scroll-reveal** for `.reveal`.
+- **Teacher-card flip** (click / Enter / Space; links on the card back navigate without flipping).
+- **Header scroll state** (`scrolled` class once the page scrolls).
+- Mobile **burger/sidebar** menu.
+
+Every block is safe on pages that lack its elements — either an explicit guard
+(`if (btn && sidebar ...)`) or a `querySelectorAll(...).forEach` that simply finds nothing.
+Keep new code the same way so it can't throw on pages without those nodes.
 
 ## Templating conventions
 
 - The nav list is generated in `header.html` from a Liquid array
   (`about,teachers,lessons`; resources and shop are held back until finished); active link is set via
-  `page.fileSlug == item`. The homepage is intentionally not a nav item.
-- The markup uses **custom-element-like tags** (`<section intro>`, `<nav-logo-main>`,
-  `<company-story>`) and **boolean attributes** (`<img desktop>`, `<img mobile>`) purely as
-  CSS styling hooks. They are not real components or JS — just selectors.
+  `page.fileSlug == item`. The homepage is intentionally not a desktop nav item (the mobile
+  sidebar adds `home` and `contact` links around the same array).
+- The markup uses **custom-element-like tags** (`<nav-logo-main>`) and **attributes**
+  (`<section intro>`, `<img desktop>`, `<img mobile>`, `<img crop-right>`, `[scroll-cue]`)
+  purely as CSS styling hooks. They are not real components or JS — just selectors.
+  `crop-right` shifts a landscape photo's crop rightwards inside a portrait frame or
+  teacher card (used for Angel's photo).
 - `_includes/pricing.html` (package cards) and `_includes/price-table.html` (full fee
   table) are shared — the fee table appears on both `lessons.html` and `terms.html`, so
   edit prices there once.
-- `src/phoebe.html` is a real page reached from a "Learn More" link on `teachers.html`,
-  not part of the nav. It exists on purpose; don't treat it as an orphan.
+- The teacher profiles (`src/teachers/phoebe.html`, `harmoniche.html`, `angel.html`) are
+  real pages reached from each card's **"Full profile"** button on `teachers.html` (and
+  Phoebe's also from "Meet Phoebe" on the homepage). They're not in the nav on purpose;
+  don't treat them as orphans.
+- `resources.html` and `shop.html` are "coming soon" pages held out of the nav.
+- Copy must not overclaim (the studio was founded in 2025). Any "every teacher…" claim on
+  `teachers.html` must be true of every teacher, including ones still being onboarded.
+  Unconfirmed content is marked with `TODO(content)` comments — grep for them.
 
 ## Deploy
 
-`.github/workflows/deploy.yml`: on push to `main`, build with Node 20 and publish `_site/`
+`.github/workflows/deploy.yml`: on push to `main` (and currently also the
+`claude/website-style-overhaul-ee15eb` branch), build with Node 20 and publish `_site/`
 to GitHub Pages. The repo's Pages **Source must be set to "GitHub Actions"** (a one-time
 manual setting in repo Settings → Pages); nothing else triggers a deploy.
 
 ## Project history / paper trail
 
-`docs/superpowers/` contains the specs, plans, and summaries from prior work phases
-(Eleventy migration, CSS reorganization). Consult it for *why* a decision was made, but
-note it can lag the code — when a doc and the source disagree, the source wins.
+- `docs/visual-review-change-list.md` — the current numbered change list from the visual
+  review (status per item); `docs/phoebe-website-to-do.md` is Phoebe's plain-language
+  version of the content she owes.
+- `docs/handoffs/` — session handoff notes; read the newest relevant one when resuming work.
+- `docs/superpowers/` — specs, plans and summaries from earlier phases (Eleventy migration,
+  CSS reorganization).
+
+Consult these for *why* a decision was made, but they can lag the code — when a doc and
+the source disagree, the source wins.
