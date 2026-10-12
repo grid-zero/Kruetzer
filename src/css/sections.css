@@ -255,9 +255,18 @@ section[intro][page]::after {
 /* Per-page hero photographs */
 section[intro][page="about"]::before,
 section[intro][page="lessons"]::before {
-  background-image: url('../assets/piano room.jpg');
+  background-image: url('../assets/piano room wide.jpg');
+  background-position: center 60%;
   opacity: 0.22;
   filter: grayscale(0.4);
+}
+/* Tall, narrow heroes on phones: the portrait shot keeps the piano in frame */
+@media (max-width: 600px) and (orientation: portrait) {
+  section[intro][page="about"]::before,
+  section[intro][page="lessons"]::before {
+    background-image: url('../assets/piano room vertical.jpg');
+    background-position: center 70%;
+  }
 }
 section[intro][page="teachers"]::before,
 section[intro][page="careers"]::before {
