@@ -136,6 +136,16 @@ section[pricing] {
     color: var(--cream-dim);
   }
   .pricing-note a { color: var(--gold); border-bottom: 1px solid var(--gold-line); }
+
+  /* Homepage-only ("compact") line pointing to the other lengths; shown on phones only */
+  .pricing-more {
+    display: none;
+    text-align: center;
+    margin-top: var(--space-md);
+    font-size: var(--text-sm);
+    color: var(--cream-dim);
+  }
+  .pricing-more a { color: var(--gold); border-bottom: 1px solid var(--gold-line); }
 }
 
 @media (max-width: 1100px) {
@@ -148,6 +158,10 @@ section[pricing] {
     max-width: 380px;
     margin: 0 auto;
   }
+
+  /* Homepage on phones: only the 30-min card (the trial length); the rest live on lessons.html */
+  section[pricing][compact] .pricing-grid > article:not(:first-child) { display: none; }
+  section[pricing][compact] .pricing-more { display: block; }
 }
 
 @media (prefers-reduced-motion: reduce) {
