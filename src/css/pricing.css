@@ -14,10 +14,14 @@ section[pricing] {
     align-items: stretch;
   }
 
+  /* Each card spans three shared rows (header panel, label, list) via subgrid,
+     so the panels in a row share one height whether or not they carry a .price-sub */
   .pricing-grid > article {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
+    display: grid;
+    grid-row: span 3;
+    grid-template-rows: subgrid;
+    row-gap: 0;
+    justify-items: center;
     text-align: center;
     background: rgba(var(--bg-overlay), 0.75);
     border: 1px solid var(--border-faint);
@@ -35,12 +39,11 @@ section[pricing] {
 
   /* Inset header panel */
   .pricing-grid header {
-    width: 100%;
+    justify-self: stretch;
     min-height: 11.5rem;
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: center;
     padding: var(--space-md) var(--space-sm);
     border-radius: var(--radius-md);
     background: linear-gradient(180deg, rgba(var(--navy-rgb), 0.85), var(--bg-blue-deep));
@@ -66,7 +69,9 @@ section[pricing] {
     display: flex;
     align-items: baseline;
     gap: 0.5rem;
-    margin-top: var(--space-sm);
+    /* pinned to the panel's foot so prices line up with or without a .price-sub line */
+    margin-top: auto;
+    padding-top: var(--space-sm);
     font-family: var(--font-display);
     font-size: clamp(3rem, 4.4vw, 4rem);
     font-variant-numeric: lining-nums;
