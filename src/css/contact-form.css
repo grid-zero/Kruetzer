@@ -121,6 +121,29 @@ fieldset.form-group { border: none; min-width: 0; }
   text-align: center;
 }
 
+/* Inline send status (JS only; without JS the form posts to Formspree) */
+.form-status {
+  font-size: var(--text-sm);
+  color: var(--cream-dim);
+  text-align: center;
+}
+.form-status:empty { display: none; }
+.form-status.is-success,
+.form-status.is-error {
+  padding: var(--space-sm) var(--space-md);
+  border: 1px solid var(--gold-line);
+  border-radius: var(--radius-sm);
+  background: var(--gold-glow);
+  color: var(--cream);
+}
+.form-status.is-success {
+  font-family: var(--font-display);
+  font-size: var(--text-md);
+}
+.form-status a { color: var(--gold-light); }
+
+.contact-container button[type="submit"]:disabled { opacity: 0.6; cursor: progress; }
+
 @media (max-width: 960px) {
   .contact-layout { grid-template-columns: 1fr; }
 }

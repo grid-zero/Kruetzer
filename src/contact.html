@@ -19,7 +19,7 @@ description: "Get in touch with Kreutzer to book a free trial music lesson in Ca
       <!-- TODO(content): confirm studio hours -->
       <dl class="info-list">
         <div><dt>Email</dt><dd><a href="mailto:hello@kreutzer.com.au">hello@kreutzer.com.au</a></dd></div>
-        <div><dt>Studio</dt><dd>Canberra, ACT<br><span class="muted">Full address sent on booking</span></dd></div>
+        <div><dt>Studio</dt><dd>Woden, Canberra<br><span class="muted">Full address sent on booking</span></dd></div>
         <div><dt>Hours</dt><dd>Mon – Fri · 3pm – 8pm<br>Saturday · 9am – 4pm</dd></div>
       </dl>
       <p class="muted">Looking for quick answers? Visit our <a href="faq.html" class="text-link">FAQ <span class="arrow" aria-hidden="true">→</span></a></p>
@@ -29,8 +29,7 @@ description: "Get in touch with Kreutzer to book a free trial music lesson in Ca
       <h4>Book a free trial lesson</h4>
       <p>Tell us a little about yourself and we'll take care of the rest.</p>
 
-      <!-- TODO(content): replace YOUR_FORM_ID with the real Formspree form ID, or the form submits nowhere -->
-      <form action="https://formspree.io/f/YOUR_FORM_ID" method="POST">
+      <form action="https://formspree.io/f/mzedqwyy" method="POST" id="enquiryForm">
         <!-- Honeypot spam protection -->
         <input type="text" name="_gotcha" style="display:none" tabindex="-1" autocomplete="off">
 
@@ -67,6 +66,7 @@ description: "Get in touch with Kreutzer to book a free trial music lesson in Ca
 
           <button type="submit" class="btn btn-large">Send enquiry <span class="arrow" aria-hidden="true">→</span></button>
           <p class="form-note">We'll never share your details. Expect a reply within 24 hours.</p>
+          <p class="form-status" id="formStatus" role="status" aria-live="polite"></p>
         </div>
       </form>
     </div>

@@ -141,3 +141,36 @@ if (siteHeader) {
   });
   }
 
+
+  // Enquiry form: submit in place so the visitor stays on-site.
+  // Without JS the form still posts straight to Formspree.
+  const enquiryForm = document.getElementById('enquiryForm');
+  const formStatus = document.getElementById('formStatus');
+  if (enquiryForm && formStatus && window.fetch) {
+    const submitBtn = enquiryForm.querySelector('button[type="submit"]');
+
+    enquiryForm.addEventListener('submit', async e => {
+      e.preventDefault();
+      formStatus.className = 'form-status';
+      formStatus.textContent = 'Sending…';
+      if (submitBtn) submitBtn.disabled = true;
+
+      try {
+        const res = await fetch(enquiryForm.action, {
+          method: 'POST',
+          body: new FormData(enquiryForm),
+          headers: { Accept: 'application/json' }
+        });
+        if (!res.ok) throw new Error(res.status);
+
+        enquiryForm.reset();
+        formStatus.classList.add('is-success');
+        formStatus.textContent = "Thank you — your enquiry is on its way. We'll be in touch within 24 hours to arrange your free trial.";
+      } catch (err) {
+        formStatus.classList.add('is-error');
+        formStatus.innerHTML = 'Sorry, your message didn\'t send. Please try again, or email us at <a href="mailto:hello@kreutzer.com.au">hello@kreutzer.com.au</a>.';
+      } finally {
+        if (submitBtn) submitBtn.disabled = false;
+      }
+    });
+  }
