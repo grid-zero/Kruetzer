@@ -19,8 +19,9 @@ npm run build   # eleventy — one-shot build into _site/
 - **There is no test or lint tooling.** Don't go looking for it. "Verification" here
   means: `npm run build` succeeds, then a manual browser check (see below).
 - Node 20 is what CI builds with.
-- **Do not run builds or verify output after making changes.** The user will check results
-  themselves and report issues.
+- **After making changes, build and check the result.** Run `npm run build`, then look at
+  the affected pages in a browser (e.g. serve `_site/` locally and take Playwright screenshots
+  at desktop and mobile widths). Fix what you find before reporting back.
 
 ## Build pipeline (`.eleventy.js`)
 
@@ -96,7 +97,7 @@ pricing, teachers, terms, features, faq). Order matters — append new component
 
 ## JavaScript (`src/index.js`)
 
-One vanilla file, no build step, loaded with `defer`. Five independent features:
+One vanilla file, no build step, loaded with `defer`. Six independent features:
 - **Loader** progress animation — plays **once per browser session** (sets the
   `kreutzer-intro` sessionStorage flag, wrapped in try/catch; `base.html` reads it and adds
   `no-loader`). When the loader finishes, or is skipped, it adds `loaded` to `<html>`, which
@@ -105,6 +106,9 @@ One vanilla file, no build step, loaded with `defer`. Five independent features:
 - **Teacher-card flip** (click / Enter / Space; links on the card back navigate without flipping).
 - **Header scroll state** (`scrolled` class once the page scrolls).
 - Mobile **burger/sidebar** menu.
+- **Enquiry form** on `contact.html`: submits to Formspree with `fetch`, then sends the
+  visitor to `thanks.html`; on failure shows an inline error with the email address. Without
+  JS the form posts straight to Formspree.
 
 Every block is safe on pages that lack its elements — either an explicit guard
 (`if (btn && sidebar ...)`) or a `querySelectorAll(...).forEach` that simply finds nothing.

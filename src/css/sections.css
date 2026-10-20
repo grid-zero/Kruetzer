@@ -409,6 +409,11 @@ section[how-it-works] {
     margin: 0 auto;
     color: var(--cream-dim);
   }
+  /* optional note under the steps (thanks page) */
+  .steps + p {
+    margin-top: var(--space-xl);
+    text-align: center;
+  }
 }
 
 /* ── CONTACT CTA ──────────────────────────────────────────────── */

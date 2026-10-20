@@ -142,7 +142,7 @@ if (siteHeader) {
   }
 
 
-  // Enquiry form: submit in place so the visitor stays on-site.
+  // Enquiry form: submit with fetch, then go to the thank-you page.
   // Without JS the form still posts straight to Formspree.
   const enquiryForm = document.getElementById('enquiryForm');
   const formStatus = document.getElementById('formStatus');
@@ -163,13 +163,10 @@ if (siteHeader) {
         });
         if (!res.ok) throw new Error(res.status);
 
-        enquiryForm.reset();
-        formStatus.classList.add('is-success');
-        formStatus.textContent = "Thank you — your enquiry is on its way. We'll be in touch within 24 hours to arrange your free trial.";
+        window.location.href = 'thanks.html';
       } catch (err) {
         formStatus.classList.add('is-error');
         formStatus.innerHTML = 'Sorry, your message didn\'t send. Please try again, or email us at <a href="mailto:hello@kreutzer.com.au">hello@kreutzer.com.au</a>.';
-      } finally {
         if (submitBtn) submitBtn.disabled = false;
       }
     });
