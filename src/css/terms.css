@@ -14,7 +14,7 @@
   display: grid;
   /* minmax(0, …) lets the column shrink below the fee table's width, so the
      table scrolls inside .table-container instead of widening the page */
-  grid-template-columns: 240px minmax(0, 1fr);
+  grid-template-columns: 15rem minmax(0, 1fr);
   gap: var(--space-xl);
   align-items: start;
 }
@@ -111,6 +111,16 @@
   position: absolute;
   left: 0;
   top: 0.95em;
+}
+
+/* Two columns that read across in rows (Phoebe's qualifications) */
+.policy-list.two-col {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--space-sm) var(--space-lg);
+}
+@media (max-width: 700px) {
+  .policy-list.two-col { grid-template-columns: 1fr; }
 }
 
 /* TABLE STYLING */

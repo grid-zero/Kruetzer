@@ -39,9 +39,7 @@
   --bg-blue:     rgb(var(--navy-rgb));
   --bg-blue-deep:#04213d;
 
-  --text-blue:   #8aa6db;
   --white:       #f7f4ec;
-  --white-dim:   rgba(247, 244, 236, 0.7);
 
   --cream-rgb:   242, 232, 185;
   --cream:       rgb(var(--cream-rgb));
@@ -53,8 +51,6 @@
   --gold-rgb:    201, 168, 76;
   --gold:        rgb(var(--gold-rgb));
   --gold-light:  #e2c47a;
-  --gold-pale:   #f3e2ae;
-  --gold-deep:   #9c7c2e;
   --gold-line:   rgba(var(--gold-rgb), 0.35);
   --gold-glow:   rgba(var(--gold-rgb), 0.14);
 
@@ -63,24 +59,22 @@
   --glow-navy:   radial-gradient(ellipse 80% 70% at 85% 10%, rgba(var(--navy-rgb), 0.55), transparent 70%);
 
   --shadow-card: 0 30px 60px -30px rgba(0, 0, 0, 0.85);
-  --shadow-lift: 0 40px 70px -30px rgba(0, 0, 0, 0.9), 0 0 0 1px var(--gold-line);
 
   /* ── Space & layout ── */
-  --space-2xs: 0.25rem;
   --space-xs:  0.5rem;
   --space-sm:  1rem;
   --space-md:  2rem;
   --space-lg:  4rem;
   --space-xl:  clamp(4.5rem, 9vw, 8rem);
 
-  --page-max:   1280px;
-  --page-narrow: 820px;
+  --page-max:   80rem;
+  --page-narrow: 51.25rem;
   --page-pad:   clamp(1.25rem, 5vw, 5rem);
   --header-h:   6.5rem;
 
-  --radius-sm: 4px;
-  --radius-md: 10px;
-  --radius-lg: 18px;
+  --radius-sm: 0.25rem;
+  --radius-md: 0.625rem;
+  --radius-lg: 1.125rem;
 
   /* ── Motion ── */
   --ease:   cubic-bezier(0.25, 0.46, 0.45, 0.94);
@@ -91,7 +85,6 @@
   --sidebar-width: 280px;
   --ease-emphatic: cubic-bezier(0.77, 0, 0.175, 1);
 
-  --ease-out:   cubic-bezier(0.16, 1, 0.3, 1);
   --t-reveal:   0.8s;
   --t-wipe:     1.2s;
   --t-kenburns: 28s;

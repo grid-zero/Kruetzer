@@ -74,7 +74,6 @@
   padding: 1.15rem;
   margin-top: var(--space-sm);
 }
-.btn-block { width: 100%; }
 
 /* Primary call-to-action: the "Book a free trial" button in heroes, the
    pricing foot and the closing band. Same gold as .btn, just bigger. */

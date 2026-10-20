@@ -14,7 +14,7 @@ description: "Private piano, violin, cello, flute, voice and theory lessons in C
   </div>
 </section>
 
-<section id="instruments">
+<section id="instruments" instruments>
   <div>
     <div class="section-head split">
       <div>
@@ -23,50 +23,7 @@ description: "Private piano, violin, cello, flute, voice and theory lessons in C
       </div>
       <p class="reveal reveal-delay-1">All lessons are private and tailored to the student. Beginners are welcome on every instrument — no prior experience needed.</p>
     </div>
-    <div class="card-grid reveal-stagger">
-      <article class="card reveal" id="piano">
-        <img src="assets/piano.jpg" alt="Close-up of piano keys" loading="lazy">
-        <div>
-          <h3>Piano</h3>
-          <p class="meta"><span><b>Ages</b> any</span></p>
-        </div>
-      </article>
-      <article class="card reveal" id="violin">
-        <img src="assets/violin.jpg" alt="A violin resting on sheet music" loading="lazy">
-        <div>
-          <h3>Violin</h3>
-          <p class="meta"><span><b>Ages</b> 5+</span></p>
-        </div>
-      </article>
-      <article class="card reveal" id="cello">
-        <img src="assets/cello.jpg" alt="A cello in a warmly lit room" loading="lazy">
-        <div>
-          <h3>Cello</h3>
-          <p class="meta"><span><b>Ages</b> 6+</span></p>
-        </div>
-      </article>
-      <article class="card reveal" id="flute">
-        <img src="assets/flute.jpg" alt="A silver flute" loading="lazy">
-        <div>
-          <h3>Flute</h3>
-          <p class="meta"><span><b>Ages</b> 7+</span></p>
-        </div>
-      </article>
-      <article class="card reveal" id="voice">
-        <img src="assets/voice.jpg" alt="A studio microphone" loading="lazy">
-        <div>
-          <h3>Voice</h3>
-          <p class="meta"><span><b>Ages</b> any</span></p>
-        </div>
-      </article>
-      <article class="card reveal" id="theory">
-        <div class="card-mark" aria-hidden="true">&#9837;&#9839;</div>
-        <div>
-          <h3>Theory &amp; Musicianship</h3>
-          <p class="meta"><span><b>Ages</b> any</span><span><b>Levels</b> Grade 1 – Grade 6</span><span class="taught-by"><b>Taught by</b> <a href="phoebe.html">Phoebe</a></span></p>
-        </div>
-      </article>
-    </div>
+    {% include "instruments-list.html" %}
   </div>
 </section>
 

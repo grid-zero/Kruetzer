@@ -1,0 +1,14 @@
+{% comment %}
+  Instrument tiles, shared by the homepage and lessons.html (styled by section[instruments]).
+  Pass `linked: true` to make each tile link to the lessons page (the homepage does);
+  on the lessons page itself the tiles are plain blocks.
+{% endcomment %}
+{% if linked %}{% assign tag = "a" %}{% assign href = ' href="lessons.html"' %}{% else %}{% assign tag = "div" %}{% assign href = "" %}{% endif %}
+<ul class="instruments-grid reveal-stagger" role="list">
+  <li class="reveal" style="background-image: url('assets/piano.jpg');"><{{ tag }}{{ href }}><small>Keyboard</small><p>Piano</p><span>From any age</span></{{ tag }}></li>
+  <li class="reveal" style="background-image: url('assets/violin.jpg');"><{{ tag }}{{ href }}><small>Strings</small><p>Violin</p><span>From ages 5+</span></{{ tag }}></li>
+  <li class="reveal" style="background-image: url('assets/cello.jpg');"><{{ tag }}{{ href }}><small>Strings</small><p>Cello</p><span>From ages 6+</span></{{ tag }}></li>
+  <li class="reveal" style="background-image: url('assets/flute.jpg');"><{{ tag }}{{ href }}><small>Woodwind</small><p>Flute</p><span>From ages 7+</span></{{ tag }}></li>
+  <li class="reveal" style="background-image: url('assets/voice.jpg');"><{{ tag }}{{ href }}><small>Voice</small><p>Singing</p><span>From any age</span></{{ tag }}></li>
+  <li class="reveal" style="background-image: url('assets/trebble.jpg');"><{{ tag }}{{ href }}><small>Musicianship</small><p>Theory</p><span>From any age</span></{{ tag }}></li>
+</ul>

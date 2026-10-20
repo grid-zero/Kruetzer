@@ -163,6 +163,18 @@ if (siteHeader) {
   }
 
 
+  // Instrument chips: at least one must be ticked. Browsers can't require a checkbox
+  // group natively, so flag the first box until one is checked (blocks submit as usual).
+  const instrumentBoxes = document.querySelectorAll('#instrumentGroup input[type="checkbox"]');
+  if (instrumentBoxes.length) {
+    const checkInstruments = () => {
+      const anyTicked = [...instrumentBoxes].some(box => box.checked);
+      instrumentBoxes[0].setCustomValidity(anyTicked ? '' : 'Please choose at least one instrument, or "Still deciding".');
+    };
+    instrumentBoxes.forEach(box => box.addEventListener('change', checkInstruments));
+    checkInstruments();
+  }
+
   // Enquiry form: submit with fetch, then go to the thank-you page.
   // Without JS the form still posts straight to Formspree.
   const enquiryForm = document.getElementById('enquiryForm');

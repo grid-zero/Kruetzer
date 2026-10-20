@@ -70,7 +70,7 @@
   border-radius: var(--radius-sm);
   font-family: var(--font-body);
   font-weight: var(--weight-light);
-  transition: border-color 0.3s ease, box-shadow 0.3s ease, background 0.3s ease;
+  transition: border-color 0.3s ease, background 0.3s ease;
 }
 .form-group input::placeholder,
 .form-group textarea::placeholder { color: rgba(var(--cream-rgb), 0.3); }
@@ -86,11 +86,15 @@
   outline: none;
   border-color: var(--gold);
   background: rgba(var(--bg-overlay), 0.95);
-  box-shadow: 0 0 0 3px var(--gold-glow);
 }
 
-/* Preferred-time chips (checkboxes styled as pills) */
+/* Required-field marker, and the "* Required" key above the fields */
+.form-group .req { color: var(--gold); }
+.form-note.form-key { text-align: left; margin-bottom: calc(var(--space-sm) * -1); }
+
+/* Instrument chips (checkboxes styled as pills) */
 fieldset.form-group { border: none; min-width: 0; }
+fieldset.form-group legend { margin-bottom: 0.5rem; }
 .chip-row { display: flex; flex-wrap: wrap; gap: var(--space-xs); }
 .chip-row label {
   font-family: var(--font-body);
@@ -108,12 +112,14 @@ fieldset.form-group { border: none; min-width: 0; }
   cursor: pointer;
   transition: border-color var(--t-fast) var(--ease), background var(--t-fast) var(--ease);
 }
+.chip-row label:hover { border-color: var(--gold-line); }
 .chip-row input { accent-color: var(--gold); }
 .chip-row label:has(input:checked) {
   border-color: var(--gold);
   background: rgba(var(--gold-rgb), 0.12);
   color: var(--cream);
 }
+.chip-row label:has(input:focus-visible) { outline: 2px solid var(--gold); outline-offset: 2px; }
 
 .form-note {
   font-size: var(--text-xs) !important;

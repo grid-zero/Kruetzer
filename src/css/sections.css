@@ -67,7 +67,7 @@ section[contact] .eyebrow::after {
 
 /* Section header block */
 .section-head {
-  max-width: 760px;
+  max-width: 47.5rem;
   margin-bottom: var(--space-lg);
   & > p:where(:not(.eyebrow)) { font-size: var(--text-md); color: var(--cream-dim); }
   & > h2:last-child { margin-bottom: 0; }
@@ -77,7 +77,7 @@ section[contact] .eyebrow::after {
   margin-right: auto;
   text-align: center;
   & .eyebrow { justify-content: center; }
-  & > p:where(:not(.eyebrow)) { margin-left: auto; margin-right: auto; max-width: 620px; }
+  & > p:where(:not(.eyebrow)) { margin-left: auto; margin-right: auto; max-width: 38.75rem; }
 }
 .section-head.split {
   max-width: none;
@@ -124,8 +124,6 @@ section[contact] .eyebrow::after {
   .draw-underline::after { transition: none; }
 }
 
-section[default] { border-top: 1px solid var(--border-faint); }
-
 /* ── INTRO / HERO ──────────────────────────────────────────────── */
 section[intro] {
   background: var(--bg);
@@ -166,7 +164,7 @@ section[intro] {
     will-change: filter;
   }
   & p:where(:not(.eyebrow)) {
-    max-width: 580px;
+    max-width: 36.25rem;
     margin: 0 auto var(--space-lg);
     font-size: var(--text-md);
     color: var(--cream-soft);
@@ -176,11 +174,7 @@ section[intro] {
 
 section[intro] > div { position: relative; z-index: 1; }
 
-/* Keep the hero content clear of the scroll cue (≈6rem tall) however short the screen is */
-/*section[intro][home] { padding-bottom: max(var(--space-xl), 8rem); }
-
-/* Home hero photograph: Phoebe at the Steinway. The bright stage shot is muted
-   (saturation, brightness) so the gold-and-cream type stays the loudest thing.
+/* Home hero photograph: Phoebe at the Steinway.
    NOTE: swap for a photo of a student being taught once one exists; that tells a
    first-time visitor more about lessons here than a recital shot does. */
 section[intro][home]::before {
@@ -191,14 +185,6 @@ section[intro][home]::before {
   background-image: url('../assets/IMG_5717.jpg');
   background-position: 30% 60%;
   background-size: cover;
-  
-}
-section[intro][home]::after {
-  content: '';
-  position: absolute;
-  inset: 0;
-  z-index: -1;
-  
 }
 
 /* Scroll cue at the foot of the home hero */
@@ -227,8 +213,8 @@ section[intro] [scroll-cue]::after {
 
 /* Interior page hero: navy wash over a faint manuscript engraving */
 section[intro][page] {
-  min-height: clamp(380px, 56vh, 620px);
-  min-height: clamp(380px, 56svh, 620px); /* stable on mobile, see section[intro] */
+  min-height: clamp(23.75rem, 56vh, 38.75rem);
+  min-height: clamp(23.75rem, 56svh, 38.75rem); /* stable on mobile, see section[intro] */
   background: linear-gradient(180deg, var(--bg-blue-deep) 0%, var(--bg) 100%);
   border-bottom: 1px solid var(--border-faint);
   & p:where(:not(.eyebrow)) { margin-bottom: 0; }
@@ -429,7 +415,7 @@ section[contact] {
   & h2 { margin-bottom: var(--space-md); }
 
   & p:where(:not(.eyebrow)) {
-    max-width: 540px;
+    max-width: 33.75rem;
     margin: 0 auto var(--space-lg);
     color: var(--cream-soft);
     font-size: var(--text-md);
@@ -454,7 +440,7 @@ section[contact] > div { position: relative; }
 @media (max-width: 1024px) {
   section[how-it-works] .steps {
     grid-template-columns: 1fr;
-    max-width: 480px;
+    max-width: 30rem;
     margin: 0 auto;
   }
   section[how-it-works] .steps::before { display: none; }

@@ -88,16 +88,18 @@ pricing, teachers, terms, features, faq). Order matters — append new component
   - Phone-portrait swaps (`max-width: 600px` + portrait) give some heroes an upright photo.
 - Background variants are boolean attributes on `section`: `alt`, `glow`, `navy`, `ruled`.
 - Teacher profile pages follow one rhythm: people hero → portrait `.frame.portrait` +
-  lede + `.info-list` (Teaches / Levels / Ages) → alternating `.split` / `.split.reverse`
+  bio paragraph (plain text, no `.lede`) + `.info-list` (Teaches / Levels / Ages) → alternating `.split` / `.split.reverse`
   photo sections that break up the bio → a `ruled` two-column text section → `section contact`.
 - `tokens.css` holds the entire design system as CSS custom properties: font families, a
   fluid `clamp()` type scale (`--text-*`), color palette (cream is built from the
   `--cream-rgb` triplet so every tint derives from one source), spacing, radii, easings.
   **Theme/scale changes go here, not as literals in component files.**
+- The overall site scale is `html { font-size: 80% }` in `reset.css` (phones ≤600px stay at
+  100%). Layout sizes are in `rem` so they follow it; write new sizes in `rem`, not `px`.
 
 ## JavaScript (`src/index.js`)
 
-One vanilla file, no build step, loaded with `defer`. Six independent features:
+One vanilla file, no build step, loaded with `defer`. Seven independent features:
 - **Loader** progress animation — plays **once per browser session** (sets the
   `kreutzer-intro` sessionStorage flag, wrapped in try/catch; `base.html` reads it and adds
   `no-loader`). When the loader finishes, or is skipped, it adds `loaded` to `<html>`, which
@@ -111,6 +113,8 @@ One vanilla file, no build step, loaded with `defer`. Six independent features:
 - **Enquiry form** on `contact.html`: submits to Formspree with `fetch`, then sends the
   visitor to `thanks.html`; on failure shows an inline error with the email address. Without
   JS the form posts straight to Formspree.
+- **Instrument chips** on the enquiry form: blocks submit until at least one instrument
+  checkbox is ticked (`setCustomValidity` on the first box). Without JS that rule isn't enforced.
 
 Every block is safe on pages that lack its elements — either an explicit guard
 (`if (btn && sidebar ...)`) or a `querySelectorAll(...).forEach` that simply finds nothing.
@@ -134,6 +138,8 @@ Keep new code the same way so it can't throw on pages without those nodes.
 - `_includes/pricing.html` (package cards) and `_includes/price-table.html` (full fee
   table) both hold the prices — the package cards are on `lessons.html`, the fee table on
   `terms.html` — so update both together.
+- `_includes/instruments-list.html` holds the instrument tiles shown on both the homepage
+  (`linked: true` — each tile links to `lessons.html`) and `lessons.html` (plain tiles).
 - The teacher profiles (`src/teachers/phoebe.html`, `harmoniche.html`, `angel.html`) are
   real pages reached from each card's **"Full profile"** button on `teachers.html` (and
   Phoebe's also from "Meet Phoebe" on the homepage). They're not in the nav on purpose;

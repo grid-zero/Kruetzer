@@ -24,8 +24,6 @@ header#siteHeader.scrolled::before { background: rgba(var(--bg-overlay), 0.95); 
 header > nav {
   font-family: var(--font-title);
   width: 100%;
-  max-width: 1600px;
-  margin: 0 auto;
   display: grid;
   grid-template-columns: 1fr auto 1fr;
   align-items: center;
@@ -59,7 +57,7 @@ header > nav > div > a {
 }
 header > nav > div > a img {
   flex-shrink: 0;
-  height: 194%;   /* mark fills the middle ~52% of the A4 SVG's height */
+  height: 154%;   /* mark fills the middle ~52% of the A4 SVG's height */
   width: auto;
   max-width: none;
 }

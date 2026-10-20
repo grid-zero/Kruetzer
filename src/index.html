@@ -12,24 +12,18 @@ loader: true
       <a href="about.html" class="btn btn-clear btn-slide btn-cream">About</a>
     </div>
   </div>
-  <a scroll-cue href="#story">Scroll</a>
+  <a scroll-cue href="#instruments">Scroll</a>
 </section>
 
-<section instruments>
+<section id="instruments" instruments>
   <div>
     <div class="section-head center">
       <h2 id="instruments-heading" class="reveal reveal--wipe">What we teach</h2>
       <p class="reveal reveal-delay-1">Goal-oriented one-on-one lessons for all ages and all levels</p>
     </div>
-    <ul class="instruments-grid reveal-stagger" role="list">
-      <li class="reveal" style="background-image: url('assets/piano.jpg');"><a href="lessons.html#piano"><small>Keyboard</small><p>Piano</p><span>Classical technique, sight-reading and repertoire from Bach to Debussy.</span></a></li>
-      <li class="reveal" style="background-image: url('assets/violin.jpg');"><a href="lessons.html#violin"><small>Strings</small><p>Violin</p><span>Posture, tone and bowing built carefully from the very first lesson.</span></a></li>
-      <li class="reveal" style="background-image: url('assets/cello.jpg');"><a href="lessons.html#cello"><small>Strings</small><p>Cello</p><span>Rich, resonant and wonderfully rewarding for young and adult learners.</span></a></li>
-      <li class="reveal" style="background-image: url('assets/flute.jpg');"><a href="lessons.html#flute"><small>Woodwind</small><p>Flute</p><span>Breath control, tone colour and a repertoire spanning centuries.</span></a></li>
-      <li class="reveal" style="background-image: url('assets/voice.jpg');"><a href="lessons.html#voice"><small>Voice</small><p>Singing</p><span>Healthy technique for classical, musical theatre and contemporary styles.</span></a></li>
-    </ul>
+    {% include "instruments-list.html", linked: true %}
     <div class="instruments-foot reveal">
-      <a href="lessons.html" class="text-link">Explore all lessons <span class="arrow" aria-hidden="true">→</span></a>
+      <a href="lessons.html" class="text-link">Learn more <span class="arrow" aria-hidden="true">→</span></a>
     </div>
   </div>
 </section>

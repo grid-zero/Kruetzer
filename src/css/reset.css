@@ -1,11 +1,18 @@
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
 html {
+  /* The whole site is sized in rem, so this one value sets its overall scale
+     (80% reads like the browser zoomed out to 80%). Phones keep full size below. */
+  font-size: 80%;
   -moz-text-size-adjust: none;
   -webkit-text-size-adjust: none;
   text-size-adjust: none;
   scroll-behavior: smooth;
   scroll-padding-top: var(--header-h);
+}
+
+@media (max-width: 600px) {
+  html { font-size: 100%; }
 }
 
 body {

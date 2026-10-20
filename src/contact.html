@@ -34,34 +34,73 @@ description: "Get in touch with Kreutzer to book a free trial music lesson in Ca
         <input type="text" name="_gotcha" style="display:none" tabindex="-1" autocomplete="off">
 
         <div class="form-grid">
+          <p class="form-note form-key"><span aria-hidden="true">*</span> Required</p>
+
           <div class="form-row">
             <div class="form-group">
-              <label for="name">Full name</label>
-              <input type="text" id="name" name="name" placeholder="Your name" autocomplete="name" required>
+              <label for="student-name">Student(s)' full name <span class="req" aria-hidden="true">*</span></label>
+              <input type="text" id="student-name" name="Student name(s)" required>
             </div>
             <div class="form-group">
-              <label for="contact">Email or phone number</label>
-              <input type="text" id="contact" name="contact" placeholder="Whichever is easiest to reach you on" autocomplete="email" required>
+              <label for="student-age">Student(s)' age <span class="req" aria-hidden="true">*</span></label>
+              <input type="text" id="student-age" name="Student age(s)" placeholder="e.g. 8, or 8 and 11" required>
             </div>
           </div>
 
           <div class="form-group">
-            <label for="instrument">Instrument</label>
-            <select id="instrument" name="instrument" required>
-              <option value="" disabled selected>Select…</option>
-              <option>Piano</option>
-              <option>Violin</option>
-              <option>Cello</option>
-              <option>Flute</option>
-              <option>Voice</option>
-              <option>Theory &amp; musicianship</option>
-              <option>Not sure yet</option>
-            </select>
+            <label for="parent-name">Parent name <span class="muted">(if applicable)</span></label>
+            <input type="text" id="parent-name" name="Parent name" autocomplete="name">
+          </div>
+
+          <div class="form-row">
+            <div class="form-group">
+              <label for="email">Email <span class="req" aria-hidden="true">*</span></label>
+              <input type="email" id="email" name="email" autocomplete="email" required>
+            </div>
+            <div class="form-group">
+              <label for="phone">Phone number <span class="req" aria-hidden="true">*</span></label>
+              <input type="tel" id="phone" name="Phone" autocomplete="tel" required>
+            </div>
+          </div>
+
+          <fieldset class="form-group" id="instrumentGroup">
+            <legend>Instrument <span class="req" aria-hidden="true">*</span> <span class="muted">(choose any)</span></legend>
+            <div class="chip-row">
+              <label><input type="checkbox" name="Instrument[]" value="Piano"> Piano</label>
+              <label><input type="checkbox" name="Instrument[]" value="Violin"> Violin</label>
+              <label><input type="checkbox" name="Instrument[]" value="Cello"> Cello</label>
+              <label><input type="checkbox" name="Instrument[]" value="Flute"> Flute</label>
+              <label><input type="checkbox" name="Instrument[]" value="Voice"> Voice</label>
+              <label><input type="checkbox" name="Instrument[]" value="Theory"> Theory</label>
+              <label><input type="checkbox" name="Instrument[]" value="Deciding"> Still deciding</label>
+            </div>
+          </fieldset>
+
+          <div class="form-row">
+            <div class="form-group">
+              <label for="teacher">Teacher <span class="muted">(optional)</span></label>
+              <select id="teacher" name="Teacher">
+                <option value="">No preference</option>
+                <option>Phoebe Mu</option>
+                <option>Harmoniche Deng</option>
+                <option>Angel Zheng</option>
+                <option>Tyler Nguyen</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label for="availability">Availability <span class="muted">(optional)</span></label>
+              <input type="text" id="availability" name="Availability" placeholder="e.g. weekdays after 4pm">
+            </div>
           </div>
 
           <div class="form-group">
-            <label for="message">Your message <span class="muted">(optional)</span></label>
-            <textarea id="message" name="message" rows="5" placeholder="Tell us about your musical goals, age of the student, or any questions…"></textarea>
+            <label for="experience">Previous experience <span class="muted">(optional)</span></label>
+            <input type="text" id="experience" name="Previous experience" placeholder="e.g. 2 years of piano, AMEB Grade 3">
+          </div>
+
+          <div class="form-group">
+            <label for="message">Message <span class="req" aria-hidden="true">*</span></label>
+            <textarea id="message" name="message" rows="5" placeholder="Tell us about your musical goals, or ask us anything…" required></textarea>
           </div>
 
           <button type="submit" class="btn btn-large">Send enquiry <span class="arrow" aria-hidden="true">→</span></button>
