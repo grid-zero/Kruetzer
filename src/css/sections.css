@@ -36,7 +36,6 @@ section h2 {
 }
 section h2 em,
 section h1 em {
-  font-style: italic;
   color: var(--gold-light);
 }
 
