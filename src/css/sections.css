@@ -34,6 +34,11 @@ section h2 {
   margin-bottom: var(--space-md);
   text-wrap: balance;
 }
+section h2 em,
+section h1 em {
+  font-style: italic;
+  color: var(--gold-light);
+}
 section .eyebrow {
   display: flex;
   align-items: center;
@@ -129,7 +134,7 @@ section[intro] {
   /* svh = the viewport with mobile browser toolbars showing. Unlike vh/dvh it never
      changes as the address bar slides in and out, so the hero (and everything below
      it) stops jumping while you scroll on iOS. vh above is the fallback. */
-  min-height: calc(100svh - var(--header-h));
+  min-height: calc(90svh - var(--header-h));
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -172,7 +177,7 @@ section[intro] {
 section[intro] > div { position: relative; z-index: 1; }
 
 /* Keep the hero content clear of the scroll cue (≈6rem tall) however short the screen is */
-section[intro][home] { padding-bottom: max(var(--space-xl), 8rem); }
+/*section[intro][home] { padding-bottom: max(var(--space-xl), 8rem); }
 
 /* Home hero photograph: Phoebe at the Steinway. The bright stage shot is muted
    (saturation, brightness) so the gold-and-cream type stays the loudest thing.
@@ -184,7 +189,7 @@ section[intro][home]::before {
   inset: 0;
   z-index: -2;
   background-image: url('../assets/IMG_5717.jpg');
-  background-position: 30% 40%;
+  background-position: 30% 60%;
   background-size: cover;
   
 }
@@ -415,8 +420,8 @@ section[how-it-works] {
 /* ── CONTACT CTA ──────────────────────────────────────────────── */
 section[contact] {
   background:
-    radial-gradient(ellipse 60% 80% at 50% 100%, rgba(var(--gold-rgb), 0.12), transparent 70%),
-    linear-gradient(180deg, var(--bg-blue-deep), var(--bg-blue));
+    radial-gradient(ellipse 70% 60% at 50% 0%, rgba(var(--gold-rgb), 0.08), transparent 70%),
+    linear-gradient(180deg, var(--bg-blue-deep), var(--bg-card));
   border-top: 1px solid var(--gold-line);
   text-align: center;
   overflow: hidden;
