@@ -132,8 +132,8 @@ Keep new code the same way so it can't throw on pages without those nodes.
   `crop-right` shifts a landscape photo's crop rightwards inside a portrait frame or
   teacher card (used for Angel's photo).
 - `_includes/pricing.html` (package cards) and `_includes/price-table.html` (full fee
-  table) are shared — the fee table appears on both `lessons.html` and `terms.html`, so
-  edit prices there once.
+  table) both hold the prices — the package cards are on `lessons.html`, the fee table on
+  `terms.html` — so update both together.
 - The teacher profiles (`src/teachers/phoebe.html`, `harmoniche.html`, `angel.html`) are
   real pages reached from each card's **"Full profile"** button on `teachers.html` (and
   Phoebe's also from "Meet Phoebe" on the homepage). They're not in the nav on purpose;

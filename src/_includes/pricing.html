@@ -64,7 +64,7 @@
     </div>
 
     {% if compact %}
-    <p class="pricing-more reveal">45 and 60-minute lessons also available. <a href="lessons.html#fees">See all fees <span class="arrow" aria-hidden="true">→</span></a></p>
+    <p class="pricing-more reveal">45 and 60-minute lessons also available. <a href="lessons.html#pricing">See all fees <span class="arrow" aria-hidden="true">→</span></a></p>
     {% endif %}
 
     <div class="pricing-cta reveal">
@@ -72,9 +72,15 @@
     </div>
 
     {% unless page.fileSlug == "lessons" %}
-    <p class="pricing-note reveal">Diploma-level fees are discussed individually. See the <a href="lessons.html#fees">full fee schedule</a> for details.</p>
+    <p class="pricing-note reveal">Diploma-level fees are discussed individually. See the <a href="terms.html#payment">full fee schedule</a> for details.</p>
     {% else %}
-    <p class="pricing-note reveal">Diploma-level fees are discussed individually.</p>
+    <div class="notice reveal">
+      <div>
+        <h3>Policies &amp; payment</h3>
+        <p>Diploma-level fees are discussed individually. Cancellation, make-up lesson and payment details are set out in our terms and conditions.</p>
+      </div>
+      <a href="terms.html" class="btn btn-clear btn-slide">Read the terms</a>
+    </div>
     {% endunless %}
   </div>
 </section>
