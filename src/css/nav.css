@@ -53,7 +53,7 @@ header > nav > div > a {
   overflow: hidden;
   height: calc(var(--header-h) * 0.72);
   aspect-ratio: 1.3;
-  margin-left: calc(var(--page-pad) * -0.5);
+  margin-left: calc(var(--page-pad) * -0.7);
   flex-shrink: 0;
   animation: fadeIn var(--t-slow) var(--ease) both;
 }
