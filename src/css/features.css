@@ -143,6 +143,15 @@
   margin-top: var(--space-xs);
 }
 .card .meta b { font-weight: var(--weight-medium); color: var(--gold-light); }
+.card .meta .taught-by { flex-basis: 100%; }
+.card .meta a {
+  color: var(--cream-soft);
+  text-decoration: underline;
+  text-decoration-color: var(--gold-line);
+  text-underline-offset: 0.2em;
+  transition: color var(--t-fast) var(--ease);
+}
+.card .meta a:hover { color: var(--gold-light); }
 .card .price {
   font-family: var(--font-display);
   font-size: var(--text-lg);
