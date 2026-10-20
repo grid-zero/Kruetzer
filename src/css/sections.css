@@ -34,11 +34,6 @@ section h2 {
   margin-bottom: var(--space-md);
   text-wrap: balance;
 }
-section h2 em,
-section h1 em {
-  color: var(--gold-light);
-}
-
 section .eyebrow {
   display: flex;
   align-items: center;
@@ -188,19 +183,17 @@ section[intro][home]::before {
   position: absolute;
   inset: 0;
   z-index: -2;
-  background-image: url('../assets/Phoebe playing Steinway.jpg');
+  background-image: url('../assets/IMG_5717.jpg');
   background-position: 30% 40%;
   background-size: cover;
-  filter: saturate(0.55) brightness(0.55);
+  
 }
 section[intro][home]::after {
   content: '';
   position: absolute;
   inset: 0;
   z-index: -1;
-  background:
-    radial-gradient(ellipse 55% 55% at 50% 50%, rgba(var(--bg-overlay), 0.55), transparent 75%),
-    linear-gradient(180deg, rgba(var(--bg-overlay), 0.45) 0%, rgba(var(--bg-overlay), 0.15) 35%, rgba(var(--bg-overlay), 0.65) 80%, var(--bg) 100%);
+  
 }
 
 /* Scroll cue at the foot of the home hero */
