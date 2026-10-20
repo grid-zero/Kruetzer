@@ -1,5 +1,5 @@
 /* Reusable content building blocks shared across pages.
-   Card titles use <h4> so they never inherit the section <h3> eyebrow. */
+   Card titles are <h3> under each section <h2>; eyebrows are p.eyebrow, not headings. */
 
 /* ── Split: text beside media ───────────────────────────────────── */
 .split {
@@ -88,8 +88,8 @@
   transition: opacity var(--t-mid) var(--ease);
 }
 .pillar:hover::before { opacity: 1; }
-.pillar h4,
-.card h4 {
+.pillar h3,
+.card h3 {
   font-family: var(--font-display);
   font-size: var(--text-lg);
   font-weight: var(--weight-medium);
@@ -320,7 +320,7 @@
   color: var(--gold-light);
   margin-bottom: var(--space-xs);
 }
-.timeline h4 {
+.timeline h3 {
   font-family: var(--font-title);
   font-size: var(--text-sm);
   letter-spacing: 0.12em;
@@ -367,7 +367,7 @@
   background: linear-gradient(120deg, rgba(var(--navy-rgb), 0.45), var(--bg-card));
   margin-top: var(--space-lg);
 }
-.notice h4 {
+.notice h3 {
   font-family: var(--font-display);
   font-size: var(--text-lg);
   font-weight: var(--weight-medium);

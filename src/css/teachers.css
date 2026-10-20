@@ -90,7 +90,7 @@ html:not(.js) .teacher-card-container:focus-within .teacher-card-inner {
   background: linear-gradient(to top, rgba(var(--bg-overlay), 0.98) 30%, transparent);
   text-align: center;
 }
-.teacher-front-overlay h4 {
+.teacher-front-overlay h3 {
   font-family: var(--font-display);
   font-size: var(--text-xl);
   font-weight: var(--weight-regular);
@@ -133,13 +133,13 @@ html:not(.js) .teacher-card-container:focus-within .teacher-card-inner {
   align-items: center;
   gap: var(--space-xs);
 }
-.teacher-info h4 {
+.teacher-info h3 {
   font-family: var(--font-display);
   font-size: var(--text-lg);
   font-weight: var(--weight-regular);
   color: var(--white);
 }
-.teacher-info h5 {
+.teacher-info h4 {
   font-family: var(--font-title);
   font-size: 0.65rem;
   letter-spacing: 0.28em;

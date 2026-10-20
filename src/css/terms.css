@@ -70,8 +70,11 @@
   border-top: 1px solid var(--border-faint);
 }
 .policy-content > article:first-child { padding-top: 0; border-top: none; }
-.policy-content h4 {
+.policy-content h2 {
   font-family: var(--font-display);
+  line-height: inherit;   /* opt out of the big section h2 title metrics */
+  letter-spacing: normal;
+  text-wrap: wrap;
   font-size: var(--text-lg);
   font-weight: var(--weight-medium);
   color: var(--white);
@@ -80,7 +83,7 @@
   align-items: baseline;
   gap: var(--space-sm);
 }
-.policy-content h4::before {
+.policy-content h2::before {
   content: counter(clause, upper-roman) '.';
   font-style: italic;
   color: var(--gold);

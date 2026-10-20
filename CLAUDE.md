@@ -106,7 +106,8 @@ One vanilla file, no build step, loaded with `defer`. Six independent features:
 - **Teacher-card flip**: hover previews the back on pointer devices (CSS); click / Enter / Space
   pins it flipped until clicked again. Links on the card back navigate without flipping.
 - **Header scroll state** (`scrolled` class once the page scrolls).
-- Mobile **burger/sidebar** menu.
+- Mobile **burger/sidebar** menu: the closed sidebar is `inert`; opening moves focus to its
+  first link and Tab cycles burger ↔ menu; Esc / closing returns focus to the burger.
 - **Enquiry form** on `contact.html`: submits to Formspree with `fetch`, then sends the
   visitor to `thanks.html`; on failure shows an inline error with the email address. Without
   JS the form posts straight to Formspree.
@@ -121,6 +122,10 @@ Keep new code the same way so it can't throw on pages without those nodes.
   (`about,teachers,lessons`; resources and shop are held back until finished); active link is set via
   `page.fileSlug == item`. The homepage is intentionally not a desktop nav item (the mobile
   sidebar adds `home` and `contact` links around the same array).
+- **Heading levels never skip.** The small gold label above a title is `<p class="eyebrow">`,
+  not a heading. Each page has one `<h1>`; section titles are `<h2>`; card and item titles
+  inside a section are `<h3>` (then `<h4>`). Page-wide `p` rules in `sections.css` exclude
+  `.eyebrow` with `:where(:not(.eyebrow))`, which keeps their specificity unchanged.
 - The markup uses **custom-element-like tags** (`<nav-logo-main>`) and **attributes**
   (`<section intro>`, `<img desktop>`, `<img mobile>`, `<img crop-right>`, `[scroll-cue]`)
   purely as CSS styling hooks. They are not real components or JS — just selectors.

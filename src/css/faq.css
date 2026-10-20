@@ -10,7 +10,7 @@
   position: sticky;
   top: calc(var(--header-h) + var(--space-md));
 }
-.faq-layout > aside p { color: var(--cream-dim); font-size: var(--text-sm); margin-bottom: var(--space-md); }
+.faq-layout > aside p:where(:not(.eyebrow)) { color: var(--cream-dim); font-size: var(--text-sm); margin-bottom: var(--space-md); }
 .faq-layout > aside ul {
   display: flex;
   flex-direction: column;
@@ -23,8 +23,11 @@
 .faq-layout > aside a:hover { color: var(--gold-light); }
 
 .faq-group + .faq-group { margin-top: var(--space-lg); }
-.faq-group > h4 {
+.faq-group > h2 {
   font-family: var(--font-display);
+  line-height: inherit;   /* opt out of the big section h2 title metrics */
+  letter-spacing: normal;
+  text-wrap: wrap;
   font-style: italic;
   font-size: var(--text-lg);
   font-weight: var(--weight-regular);

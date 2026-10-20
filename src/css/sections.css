@@ -13,7 +13,7 @@ section p {
   color: var(--cream-soft);
   font-size: var(--text-base);
 }
-section p + p { margin-top: 1em; }
+section p + p:where(:not(.eyebrow)) { margin-top: 1em; }
 
 /* Background variants (boolean attributes, like the other hooks) */
 section[alt]   { background: var(--bg-raised); }
@@ -40,7 +40,7 @@ section h1 em {
   color: var(--gold-light);
 }
 
-section h3 {
+section .eyebrow {
   display: flex;
   align-items: center;
   gap: 0.9rem;
@@ -53,12 +53,12 @@ section h3 {
   margin-bottom: var(--space-sm);
 }
 /* Centred eyebrows get a gold rule on each side; left-aligned ones stay bare */
-.section-head.center h3::before,
-.section-head.center h3::after,
-section[intro] h3::before,
-section[intro] h3::after,
-section[contact] h3::before,
-section[contact] h3::after {
+.section-head.center .eyebrow::before,
+.section-head.center .eyebrow::after,
+section[intro] .eyebrow::before,
+section[intro] .eyebrow::after,
+section[contact] .eyebrow::before,
+section[contact] .eyebrow::after {
   content: '';
   width: 2.5rem;
   height: 1px;
@@ -70,15 +70,15 @@ section[contact] h3::after {
 .section-head {
   max-width: 760px;
   margin-bottom: var(--space-lg);
-  & > p { font-size: var(--text-md); color: var(--cream-dim); }
+  & > p:where(:not(.eyebrow)) { font-size: var(--text-md); color: var(--cream-dim); }
   & > h2:last-child { margin-bottom: 0; }
 }
 .section-head.center {
   margin-left: auto;
   margin-right: auto;
   text-align: center;
-  & h3 { justify-content: center; }
-  & > p { margin-left: auto; margin-right: auto; max-width: 620px; }
+  & .eyebrow { justify-content: center; }
+  & > p:where(:not(.eyebrow)) { margin-left: auto; margin-right: auto; max-width: 620px; }
 }
 .section-head.split {
   max-width: none;
@@ -144,7 +144,7 @@ section[intro] {
   overflow: hidden;
   isolation: isolate;
 
-  & h3 {
+  & .eyebrow {
     justify-content: center;
     font-size: var(--text-xs);
     letter-spacing: 0.4em;
@@ -166,7 +166,7 @@ section[intro] {
     display: inline-block;
     will-change: filter;
   }
-  & p {
+  & p:where(:not(.eyebrow)) {
     max-width: 580px;
     margin: 0 auto var(--space-lg);
     font-size: var(--text-md);
@@ -234,7 +234,7 @@ section[intro][page] {
   min-height: clamp(380px, 56svh, 620px); /* stable on mobile, see section[intro] */
   background: linear-gradient(180deg, var(--bg-blue-deep) 0%, var(--bg) 100%);
   border-bottom: 1px solid var(--border-faint);
-  & p { margin-bottom: 0; }
+  & p:where(:not(.eyebrow)) { margin-bottom: 0; }
   & .btn-row { margin-top: var(--space-md); }
 }
 section[intro][page]::before {
@@ -328,7 +328,7 @@ section[intro][page="angel"]::before {
    the loader has lifted (`.loaded` added to <html> in index.js). Without JS, under
    reduced-motion, or before the curtain lifts, the hero is simply visible. */
 @media (prefers-reduced-motion: no-preference) {
-  .js section[intro] h3,
+  .js section[intro] .eyebrow,
   .js section[intro] h1,
   .js section[intro] p,
   .js section[intro] .btn,
@@ -336,7 +336,7 @@ section[intro][page="angel"]::before {
   .js section[intro][home] h1 { opacity: 1; }
   .js section[intro][home] h1 .word { opacity: 0; }
 
-  .js.loaded section[intro] h3   { animation: fadeUp 0.7s 0.2s var(--ease) both; }
+  .js.loaded section[intro] .eyebrow { animation: fadeUp 0.7s 0.2s var(--ease) both; }
   .js.loaded section[intro] h1   { animation: fadeUp 0.8s 0.35s var(--ease) both; }
   .js.loaded section[intro] p    { animation: fadeUp 0.7s 0.55s var(--ease) both; }
   .js.loaded section[intro] .btn { animation: fadeUp 0.7s 0.75s var(--ease) both; }
@@ -431,7 +431,7 @@ section[contact] {
 
   & h2 { margin-bottom: var(--space-md); }
 
-  & p {
+  & p:where(:not(.eyebrow)) {
     max-width: 540px;
     margin: 0 auto var(--space-lg);
     color: var(--cream-soft);
@@ -470,4 +470,4 @@ section[contact] > div { position: relative; }
 }
 
 /* Centred eyebrow inside the CTA band */
-section[contact] h3 { justify-content: center; }
+section[contact] .eyebrow { justify-content: center; }

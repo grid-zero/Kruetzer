@@ -110,23 +110,33 @@ if (siteHeader) {
   const sidebar = document.getElementById('sidebar');
   const overlay = document.getElementById('overlay');
   if (btn && sidebar && overlay) {
- 
+
+  // A closed sidebar is only slid off-screen, so `inert` keeps its links out of
+  // the tab order and away from screen readers until it opens.
+  sidebar.inert = true;
+
   function openSidebar() {
+    sidebar.inert = false;
     sidebar.classList.add('open');
     overlay.style.display = 'block';
     requestAnimationFrame(() => overlay.classList.add('active'));
     btn.classList.add('open');
     btn.setAttribute('aria-expanded', 'true');
     sidebar.setAttribute('aria-hidden', 'false');
+    const firstLink = sidebar.querySelector('a');
+    if (firstLink) firstLink.focus();
   }
- 
+
   function closeSidebar() {
+    const hadFocus = sidebar.contains(document.activeElement);
+    sidebar.inert = true;
     sidebar.classList.remove('open');
     overlay.classList.remove('active');
     btn.classList.remove('open');
     btn.setAttribute('aria-expanded', 'false');
     sidebar.setAttribute('aria-hidden', 'true');
     setTimeout(() => { overlay.style.display = 'none'; }, 400);
+    if (hadFocus) btn.focus();
   }
  
   btn.addEventListener('click', () => {
@@ -136,7 +146,15 @@ if (siteHeader) {
   overlay.addEventListener('click', closeSidebar);
  
   document.addEventListener('keydown', e => {
-    if (e.key === 'Escape' && sidebar.classList.contains('open')) closeSidebar();
+    if (!sidebar.classList.contains('open')) return;
+    if (e.key === 'Escape') { closeSidebar(); return; }
+    // keep Tab cycling between the burger and the menu while it's open
+    if (e.key === 'Tab') {
+      const items = [btn, ...sidebar.querySelectorAll('a')];
+      const first = items[0], last = items[items.length - 1];
+      if (e.shiftKey && document.activeElement === first) { e.preventDefault(); last.focus(); }
+      else if (!e.shiftKey && document.activeElement === last) { e.preventDefault(); first.focus(); }
+    }
   });
  
   sidebar.querySelectorAll('a').forEach(link => {
