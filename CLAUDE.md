@@ -103,7 +103,8 @@ One vanilla file, no build step, loaded with `defer`. Six independent features:
   `no-loader`). When the loader finishes, or is skipped, it adds `loaded` to `<html>`, which
   starts the hero entrance animation in `sections.css`.
 - IntersectionObserver **scroll-reveal** for `.reveal`.
-- **Teacher-card flip** (click / Enter / Space; links on the card back navigate without flipping).
+- **Teacher-card flip**: hover previews the back on pointer devices (CSS); click / Enter / Space
+  pins it flipped until clicked again. Links on the card back navigate without flipping.
 - **Header scroll state** (`scrolled` class once the page scrolls).
 - Mobile **burger/sidebar** menu.
 - **Enquiry form** on `contact.html`: submits to Formspree with `fetch`, then sends the

@@ -22,8 +22,15 @@
   transform-style: preserve-3d;
 }
 
+/* Click pins the card flipped; hover previews the back on pointer devices.
+   .hover-off suppresses the preview right after a click un-pins the card. */
 .teacher-card-container.is-flipped .teacher-card-inner {
   transform: rotateY(180deg);
+}
+@media (hover: hover) {
+  .teacher-card-container:not(.hover-off):hover .teacher-card-inner {
+    transform: rotateY(180deg);
+  }
 }
 /* Without JS there's no click handler — flip on hover/focus instead */
 html:not(.js) .teacher-card-container:hover .teacher-card-inner,
@@ -100,8 +107,8 @@ html:not(.js) .teacher-card-container:focus-within .teacher-card-inner {
 }
 .teacher-hint {
   display: inline-block;
-  font-size: var(--text-xs);
-  color: var(--cream-dim);
+  font-size: var(--text-sm);
+  color: var(--cream-soft);
   letter-spacing: 0.08em;
   border-top: 1px solid var(--gold-line);
   padding-top: var(--space-xs);

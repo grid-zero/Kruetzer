@@ -76,7 +76,10 @@ document.querySelectorAll('.teacher-card-container').forEach(card => {
   function flip() {
     const flipped = card.classList.toggle('is-flipped');
     card.setAttribute('aria-pressed', String(flipped));
+    // un-pinning while hovered should still turn the card back over
+    card.classList.toggle('hover-off', !flipped);
   }
+  card.addEventListener('mouseleave', () => card.classList.remove('hover-off'));
   card.addEventListener('click', e => {
     // let links on the back of the card navigate without flipping first
     if (e.target.closest('a')) return;
