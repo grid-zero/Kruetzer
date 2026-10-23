@@ -131,10 +131,8 @@ Keep new code the same way so it can't throw on pages without those nodes.
   inside a section are `<h3>` (then `<h4>`). Page-wide `p` rules in `sections.css` exclude
   `.eyebrow` with `:where(:not(.eyebrow))`, which keeps their specificity unchanged.
 - The markup uses **custom-element-like tags** (`<nav-logo-main>`) and **attributes**
-  (`<section intro>`, `<img desktop>`, `<img mobile>`, `<img crop-right>`, `[scroll-cue]`)
+  (`<section intro>`, `<img desktop>`, `<img mobile>`, `[scroll-cue]`)
   purely as CSS styling hooks. They are not real components or JS — just selectors.
-  `crop-right` shifts a landscape photo's crop rightwards inside a portrait frame or
-  teacher card (used for Angel's photo).
 - `_includes/pricing.html` (package cards) and `_includes/price-table.html` (full fee
   table) both hold the prices — the package cards are on `lessons.html`, the fee table on
   `terms.html` — so update both together.

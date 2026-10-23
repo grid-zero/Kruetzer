@@ -65,22 +65,8 @@ html:not(.js) .teacher-card-container:focus-within .teacher-card-inner {
   object-position: top;
   transition: scale var(--t-slow) var(--ease);
 }
-.teacher-image img[crop-right] { object-position: 75% center; }
 .teacher-card-container:hover .teacher-image img { scale: 1.04; }
 
-/* Monogram placeholder for teachers without a portrait yet */
-.teacher-image[monogram] {
-  display: grid;
-  place-items: center;
-  background:
-    radial-gradient(ellipse at 50% 30%, rgba(var(--gold-rgb), 0.16), transparent 60%),
-    linear-gradient(170deg, var(--bg-blue-deep), var(--bg-card));
-  font-family: var(--font-display);
-  font-style: italic;
-  font-size: 5rem;
-  color: var(--gold-light);
-  padding-bottom: 4rem;
-}
 
 .teacher-front-overlay {
   position: absolute;

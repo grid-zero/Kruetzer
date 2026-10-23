@@ -22,7 +22,7 @@
     {% if loader %}{% include "loader.html" %}{% endif %}
     {% include "header.html" %}
     <main id="main">
-      {{ content }}
+      {{ content | raw}}
     </main>
     {% include "footer.html" %}
     <script src="index.js" defer></script>

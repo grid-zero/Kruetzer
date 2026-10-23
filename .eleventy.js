@@ -8,6 +8,10 @@ module.exports = function (eleventyConfig) {
   eleventyConfig.addPassthroughCopy("src/assets");
   eleventyConfig.addPassthroughCopy("src/index.js");
 
+  eleventyConfig.setLiquidOptions({
+    outputEscape: "escape"
+  });
+
   // Developer docs co-located with the CSS — keep them in the repo, not the built site
   eleventyConfig.ignores.add("src/css/README.md");
 
@@ -26,6 +30,6 @@ module.exports = function (eleventyConfig) {
   return {
     dir: { input: "src", output: "_site", includes: "_includes" },
     htmlTemplateEngine: "liquid",
-    markdownTemplateEngine: "liquid",
+    markdownTemplateEngine: "liquid"
   };
 };

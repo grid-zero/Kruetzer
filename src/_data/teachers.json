@@ -1,0 +1,27 @@
+[
+    {
+        "name": "Phoebe Mu",
+        "image": "assets/phoebe mu cropped.jpg",
+        "instruments": "Piano, Cello & Theory",
+        "title": "Founder",
+        "bio": "Phoebe provides high-quality, one-on-one piano and theory tuition, guiding students from their very first lesson through to AMEB diploma level.",
+        "qualifications": "LTCL & LMusA — Licentiate diplomas in Piano Performance (Trinity College London & AMEB)",
+        "profile": "phoebe.html"
+    },
+    {
+        "name": "Harmoniche Deng",
+        "image": "assets/Harmoniche Deng.jpg",
+        "instruments": "Piano",
+        "bio": "Harmoniche teaches one-on-one piano. Originally from Perth, he studied with Luciano Trebse and is now studying medicine at the Australian National University.",
+        "qualifications": "AMEB Grade 8 Piano",
+        "profile": "harmoniche.html"
+    },
+    {
+        "name": "Angel Zheng",
+        "image": "assets/Angel Zheng.jpg",
+        "instruments": "Flute, Piano & Voice",
+        "bio": "Angel teaches one-on-one flute, piano and voice. A pianist, flautist and chorister, she is studying Political Science and Music, majoring in Piano Performance, at the Australian National University.",
+        "qualifications": "ATCL diploma in Flute",
+        "profile": "angel.html"
+    }
+]

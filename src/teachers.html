@@ -26,100 +26,31 @@ description: "Meet the Kreutzer teachers — performers and dedicated educators 
 
     <div class="teacher-grid reveal-stagger">
 
-      <div class="teacher-card-container reveal" tabindex="0" role="button" aria-pressed="false" aria-label="Phoebe Mu — show biography">
-        <div class="teacher-card-inner">
-          <div class="teacher-card-front">
-            <div class="teacher-image">
-              <img src="assets/phoebe mu cropped.jpg" alt="Phoebe Mu">
+      {% for teacher in teachers %}
+        <div class="teacher-card-container reveal" tabindex="0" role="button" aria-pressed="false" aria-label="{{ teacher.name }} - show biography">
+          <div class="teacher-card-inner">
+            <div class="teacher-card-front">
+              <div class="teacher-image">
+                <img src="{{ teacher.image }}" alt="{{ teacher.name }}">
+              </div>
+              <div class="teacher-front-overlay">
+                <span class="teacher-role">{{ teacher.instruments }}</span>
+                <h3>{{ teacher.name}}</h3>
+                <span class="teacher-hint">{{ teacher.title }}{% if teacher.title %} · {% endif %}View bio ⟳</span>
+              </div>
             </div>
-            <div class="teacher-front-overlay">
-              <span class="teacher-role">Piano, Cello &amp; Theory</span>
-              <h3>Phoebe Mu</h3>
-              <span class="teacher-hint">Founder · View bio ⟳</span>
-            </div>
-          </div>
-          <div class="teacher-card-back">
-            <div class="teacher-info">
-              <h3>Phoebe Mu</h3>
-              <p>Phoebe provides high-quality, one-on-one piano and theory tuition, guiding students from their very first lesson through to AMEB diploma level.</p>
-              <h4>Qualifications</h4>
-              <p>LTCL &amp; LMusA — Licentiate diplomas in Piano Performance (Trinity College London &amp; AMEB)</p>
-              <a href="phoebe.html" class="btn">Full profile</a>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <div class="teacher-card-container reveal" tabindex="0" role="button" aria-pressed="false" aria-label="Harmoniche Deng — show biography">
-        <div class="teacher-card-inner">
-          <div class="teacher-card-front">
-            <div class="teacher-image">
-              <img src="assets/Harmoniche Deng.jpg" alt="Harmoniche Deng">
-            </div>
-            <div class="teacher-front-overlay">
-              <span class="teacher-role">Piano</span>
-              <h3>Harmoniche Deng</h3>
-              <span class="teacher-hint">View bio ⟳</span>
-            </div>
-          </div>
-          <div class="teacher-card-back">
-            <div class="teacher-info">
-              <h3>Harmoniche Deng</h3>
-              <p>Harmoniche teaches one-on-one piano. Originally from Perth, he studied with Luciano Trebse and is now studying medicine at the Australian National University.</p>
-              <h4>Qualifications</h4>
-              <p>AMEB Grade 8 Piano</p>
-              <a href="harmoniche.html" class="btn">Full profile</a>
+            <div class="teacher-card-back">
+              <div class="teacher-info">
+                <h3>{{ teacher.name }}</h3>
+                <p>{{ teacher.bio }}</p>
+                <h4>Qualifications</h4>
+                <p>{{ teacher.qualifications }}</p>
+                <a href="{{ teacher.profile }}" class="btn">Full profile</a>
+              </div>
             </div>
           </div>
         </div>
-      </div>
-
-      <div class="teacher-card-container reveal" tabindex="0" role="button" aria-pressed="false" aria-label="Angel Zheng — show biography">
-        <div class="teacher-card-inner">
-          <div class="teacher-card-front">
-            <div class="teacher-image">
-              <img src="assets/Angel Zheng.jpg" alt="Angel Zheng" crop-right>
-            </div>
-            <div class="teacher-front-overlay">
-              <span class="teacher-role">Flute, Piano &amp; Voice</span>
-              <h3>Angel Zheng</h3>
-              <span class="teacher-hint">View bio ⟳</span>
-            </div>
-          </div>
-          <div class="teacher-card-back">
-            <div class="teacher-info">
-              <h3>Angel Zheng</h3>
-              <p>Angel teaches one-on-one flute, piano and voice. A pianist, flautist and chorister, she is studying Political Science and Music, majoring in Piano Performance, at the Australian National University.</p>
-              <h4>Qualifications</h4>
-              <p>ATCL diploma in Flute</p>
-              <a href="angel.html" class="btn">Full profile</a>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <!-- TODO(content): Tyler Nguyen — add instrument(s), bio, qualifications and a photo (swap the monogram for an <img> like Phoebe's) -->
-      <div class="teacher-card-container reveal" tabindex="0" role="button" aria-pressed="false" aria-label="Tyler Nguyen — show biography">
-        <div class="teacher-card-inner">
-          <div class="teacher-card-front">
-            <div class="teacher-image" monogram aria-hidden="true">TN</div>
-            <div class="teacher-front-overlay">
-              <span class="teacher-role">Instrument TBC</span>
-              <h3>Tyler Nguyen</h3>
-              <span class="teacher-hint">View bio ⟳</span>
-            </div>
-          </div>
-          <div class="teacher-card-back">
-            <div class="teacher-info">
-              <h3>Tyler Nguyen</h3>
-              <p>Biography coming soon.</p>
-              <h4>Qualifications</h4>
-              <p>Coming soon.</p>
-              <a href="contact.html" class="btn">Book a free trial</a>
-            </div>
-          </div>
-        </div>
-      </div>
+      {% endfor %}
 
     </div>
   </div>

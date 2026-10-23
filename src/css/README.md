@@ -49,7 +49,7 @@ Component-based with pragmatic grouping:
 | `instruments.css` | `section[instruments]` + `.instruments-grid`. |
 | `testimonials.css` | `section[testimonials]` quote/reference cards. **Kept on purpose while no page uses it** — testimonials will be added back once real ones are collected. Don't delete. |
 | `pricing.css` | `section[pricing]` + `.pricing-grid` + `.featured`. |
-| `teachers.css` | `.teacher-grid` flip cards, photo + `[monogram]` placeholder fronts, `img[crop-right]` card crop, no-JS hover flip. |
+| `teachers.css` | `.teacher-grid` flip cards, photo, no-JS hover flip. |
 | `terms.css` | `.policy-layout` (sticky contents rail + numbered clauses), `.policy-list`, `.table-container`/`table`, `.tagline`, `.disclaimer`. |
 | `features.css` | Shared blocks: `.split` (+ `.reverse`, `.top`), `.frame` (+ `.portrait`, `img[crop-right]`), `.pillars`, `.card-grid`/`.card`/`.card-mark`, `.badge`, `.checklist`, `.pull-quote`, `.signature`, `.timeline`, `.info-list`, `.notice`. |
 | `faq.css` | `.faq-layout` and `<details class="faq-item">` accordions (no JS needed). |
