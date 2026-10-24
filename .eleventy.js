@@ -7,6 +7,8 @@ module.exports = function (eleventyConfig) {
   eleventyConfig.addPassthroughCopy("src/css/*.css");
   eleventyConfig.addPassthroughCopy("src/assets");
   eleventyConfig.addPassthroughCopy("src/index.js");
+  eleventyConfig.addPassthroughCopy("src/admin");
+  eleventyConfig.addPassthroughCopy("src/_data");
 
   eleventyConfig.setLiquidOptions({
     outputEscape: "escape"

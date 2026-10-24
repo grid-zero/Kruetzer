@@ -1,0 +1,22 @@
+# yaml-language-server: $schema=https://unpkg.com/@sveltia/cms/schema/sveltia-cms.json
+
+backend:
+  name: github
+  repo: grid-zero/Kruetzer
+
+media_folder: assets
+public_folder: /src/assets
+collections:
+  - name: teachers
+    label: teachers
+    file: src/_data/teachers.json
+    widget: list
+    identifier_field: name
+    fields:
+      - {label: Name, name: name, widget: string, }
+      - {label: "Profile Image", name: image, widget: image }
+      - {label: Intruments, name: instruments, widget: string }
+      - {label: Title, name: title, widget: string, required: false}
+      - {label: "Short Biography", name: bio, widget: text }
+      - {label: Qualifications, name: qualifications, widget: string }
+      - {label: "Page link", name: profile, widget: string }
