@@ -3,6 +3,8 @@
 backend:
   name: github
   repo: grid-zero/Kruetzer
+  branch: main
+  base_url: https://sveltia-cms-auth.azzhussain-9be.workers.dev
 
 media_folder: src/assets
 public_folder: /assets
