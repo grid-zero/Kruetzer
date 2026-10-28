@@ -27,9 +27,18 @@ npm run build   # eleventy — one-shot build into _site/
 
 - Input `src/` → output `_site/`; includes dir is `src/_includes`. Both HTML and
   Markdown render through **Liquid**.
-- `css/`, `assets/`, and `index.js` are **passthrough-copied** verbatim (not processed
-  by Eleventy).
-- The **only** build-time transform: an `afterBuild` hook runs `postcss-import` over the
+- `css/`, `assets/`, `index.js` and `admin/` are **passthrough-copied** verbatim (not
+  processed by Eleventy). `src/admin/index.html` is also in `eleventyConfig.ignores` —
+  passthrough alone doesn't stop Eleventy templating it, which would wrap it in
+  `base.html` and publish a stray `admin.html`.
+- **Output is escaped by default**: `setLiquidOptions({ outputEscape: "escape" })`, so
+  every `{{ }}` HTML-escapes its value. The only intended `| raw` is `{{ content | raw }}`
+  in `base.html`. Don't store markup in variables to get around it — keep markup literal
+  in the template and let variables hold data only (see `instruments-list.html`).
+- Custom filter **`relativePath`** strips a leading `/`. It exists because the CMS stores
+  image paths as `/assets/…` (see Content editing below). It throws on a missing value,
+  so an entry without an image fails the build.
+- The only post-build step: an `afterBuild` hook runs `postcss-import` over the
   copied `_site/css/index.css`, inlining all its `@import`s into one file. So at runtime
   the browser loads a single bundled stylesheet, but in `src/` the CSS stays split into
   components. Edit the component files in `src/css/`, never `_site/`.
@@ -146,6 +155,20 @@ Keep new code the same way so it can't throw on pages without those nodes.
 - Copy must not overclaim (the studio was founded in 2025). Any "every teacher…" claim on
   `teachers.html` must be true of every teacher, including ones still being onboarded.
   Unconfirmed content is marked with `TODO(content)` comments — grep for them.
+
+## Content editing (Sveltia CMS)
+
+- `src/admin/index.html` loads Sveltia CMS; `src/admin/config.yml` describes the content.
+  Both ship to `_site/admin/` as-is. Local editing uses Sveltia's "Work with Local
+  Repository" mode (Chrome/Edge).
+- **Teacher cards** on `teachers.html` render from `src/_data/teachers.json` — a top-level
+  array, edited in the CMS as a single-file collection (each teacher is an entry; drag to
+  reorder, which reorders the JSON and the cards). Edit cards there, not in the template.
+- **Image paths:** `media_folder: src/assets`, `public_folder: /assets`. Sveltia always
+  writes root-relative paths (`/assets/x.jpg`) and needs them to show thumbnails, so the
+  data keeps the slash and templates output CMS image fields through `| relativePath`.
+  Don't strip the slash in the data — the CMS would lose its previews.
+- The profile pages (`src/teachers/*.html`) are still hand-written HTML.
 
 ## Deploy
 

@@ -15,6 +15,11 @@ module.exports = function (eleventyConfig) {
 
   // Developer docs co-located with the CSS — keep them in the repo, not the built site
   eleventyConfig.ignores.add("src/css/README.md");
+  eleventyConfig.ignores.add("src/admin/index.html");
+
+  eleventyConfig.addFilter("relativePath", function(value){
+    return value.replace(/^\//, "");
+  });
 
   // Bundle CSS @imports into single file after passthrough copy
   eleventyConfig.on('afterBuild', () => {

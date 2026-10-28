@@ -31,7 +31,7 @@ description: "Meet the Kreutzer teachers — performers and dedicated educators 
           <div class="teacher-card-inner">
             <div class="teacher-card-front">
               <div class="teacher-image">
-                <img src="{{ teacher.image }}" alt="{{ teacher.name }}">
+                <img src="{{ teacher.image | relativePath}}" alt="{{ teacher.name }}">
               </div>
               <div class="teacher-front-overlay">
                 <span class="teacher-role">{{ teacher.instruments }}</span>
