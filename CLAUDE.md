@@ -183,9 +183,9 @@ Keep new code the same way so it can't throw on pages without those nodes.
 
 ## Deploy
 
-`.github/workflows/deploy.yml`: on push to `main` (and currently also the
-`claude/website-style-overhaul-ee15eb` branch), build with Node 20 and publish `_site/`
-to GitHub Pages. The repo's Pages **Source must be set to "GitHub Actions"** (a one-time
+`.github/workflows/deploy.yml`: on push to `main`, build with Node 20 and publish `_site/`
+to GitHub Pages. The CMS also commits to `main` (`backend.branch` in `config.yml`), so a
+CMS save triggers a deploy. The repo's Pages **Source must be set to "GitHub Actions"** (a one-time
 manual setting in repo Settings → Pages); nothing else triggers a deploy.
 
 ## Project history / paper trail
