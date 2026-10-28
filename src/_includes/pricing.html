@@ -6,61 +6,23 @@
       <p class="reveal reveal-delay-1">Simple, honest fees with no enrolment charges. Your first 30-minute lesson is a free trial — then choose the length and package that suit you.</p>
     </div>
 
-    <!-- Prices mirror _includes/price-table.html — update both together -->
+    <!-- Prices come from src/_data/pricing.json (edited in the CMS); price-table.html reads the same data -->
     <div class="pricing-grid reveal-stagger">
+      {% for option in pricing %}
       <article class="reveal">
         <header>
-          <h3>30 min lesson</h3>
-          <p class="price-from"><span>from</span> $52</p>
+          <h3>{{ option.title }}</h3>
+          {% if option.level != blank %}<span class="price-sub">{{ option.level }}</span>{% endif %}
+          <p class="price-from"><span>from</span> {{ option.pack10 | divided_by: 10 | aud }}</p>
         </header>
         <p class="price-label">Packages</p>
         <ul role="list">
-          <li>1 casual: $63</li>
-          <li>5-lesson: $280<small>On average $56</small></li>
-          <li>10-lesson: $520<small>On average $52</small></li>
+          <li>1 casual: {{ option.casual | aud }}</li>
+          <li>5-lesson: {{ option.pack5 | aud }}<small>On average {{ option.pack5 | divided_by: 5 | aud }}</small></li>
+          <li>10-lesson: {{ option.pack10 | aud }}<small>On average {{ option.pack10 | divided_by: 10 | aud }}</small></li>
         </ul>
       </article>
-
-      <article class="reveal">
-        <header>
-          <h3>45 min lesson</h3>
-          <p class="price-from"><span>from</span> $70</p>
-        </header>
-        <p class="price-label">Packages</p>
-        <ul role="list">
-          <li>1 casual: $85</li>
-          <li>5-lesson: $390<small>On average $78</small></li>
-          <li>10-lesson: $700<small>On average $70</small></li>
-        </ul>
-      </article>
-
-      <article class="reveal">
-        <header>
-          <h3>60 min lesson</h3>
-          <span class="price-sub">Under Grade 8</span>
-          <p class="price-from"><span>from</span> $98</p>
-        </header>
-        <p class="price-label">Packages</p>
-        <ul role="list">
-          <li>1 casual: $115</li>
-          <li>5-lesson: $525<small>On average $105</small></li>
-          <li>10-lesson: $980<small>On average $98</small></li>
-        </ul>
-      </article>
-
-      <article class="reveal">
-        <header>
-          <h3>60 min lesson</h3>
-          <span class="price-sub">From Grade 8</span>
-          <p class="price-from"><span>from</span> $112</p>
-        </header>
-        <p class="price-label">Packages</p>
-        <ul role="list">
-          <li>1 casual: $130</li>
-          <li>5-lesson: $600<small>On average $120</small></li>
-          <li>10-lesson: $1,120<small>On average $112</small></li>
-        </ul>
-      </article>
+      {% endfor %}
     </div>
 
     {% if compact %}

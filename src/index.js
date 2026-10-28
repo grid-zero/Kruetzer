@@ -199,7 +199,13 @@ if (siteHeader) {
         window.location.href = 'thanks.html';
       } catch (err) {
         formStatus.classList.add('is-error');
-        formStatus.innerHTML = 'Sorry, your message didn\'t send. Please try again, or email us at <a href="mailto:hello@kreutzer.com.au">hello@kreutzer.com.au</a>.';
+        // The address comes from the form's data-email (studio.json), so build the link
+        // with DOM APIs rather than splicing it into innerHTML.
+        const email = enquiryForm.dataset.email || 'hello@kreutzer.com.au';
+        const link = document.createElement('a');
+        link.href = 'mailto:' + email;
+        link.textContent = email;
+        formStatus.replaceChildren('Sorry, your message didn\'t send. Please try again, or email us at ', link, '.');
         if (submitBtn) submitBtn.disabled = false;
       }
     });

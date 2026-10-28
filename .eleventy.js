@@ -1,3 +1,4 @@
+const markdownIt = require('markdown-it');
 const postcss = require('postcss');
 const postcssImport = require('postcss-import');
 const fs = require('fs');
@@ -19,6 +20,19 @@ module.exports = function (eleventyConfig) {
 
   eleventyConfig.addFilter("relativePath", function(value){
     return value.replace(/^\//, "");
+  });
+
+  // Whole dollars stay whole ($1,120); anything with cents shows two places ($57.50)
+  eleventyConfig.addFilter("aud", function (value) {
+    const cents = Number.isInteger(value) ? 0 : 2;
+    return "$" + value.toLocaleString("en-AU", { minimumFractionDigits: cents, maximumFractionDigits: cents });
+  });
+
+  // CMS markdown fields (e.g. FAQ answers). html: false escapes any raw HTML typed into
+  // the CMS, so the output is safe to print with `| raw`.
+  const md = markdownIt({ html: false });
+  eleventyConfig.addFilter("markdown", function (value) {
+    return md.render(value || "");
   });
 
   // Bundle CSS @imports into single file after passthrough copy

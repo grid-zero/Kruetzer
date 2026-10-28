@@ -1,0 +1,13 @@
+{
+  "email": "hello@kreutzer.com.au",
+  "area": "Woden, Canberra",
+  "area_note": "Full address sent on booking",
+  "footer_location": "Canberra, ACT",
+  "hours": [
+    { "days": "Mon – Fri", "times": "3pm – 8pm" },
+    { "days": "Saturday", "times": "9am – 4pm" }
+  ],
+  "instagram": "",
+  "facebook": "",
+  "youtube": ""
+}

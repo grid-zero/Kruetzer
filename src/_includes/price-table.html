@@ -1,36 +1,29 @@
+{% comment %} Per-lesson fees, from the same src/_data/pricing.json as the package cards in pricing.html {% endcomment %}
 <div class="table-container">
   <table>
     <caption class="sr-only">Lesson fees by package and lesson length</caption>
     <thead>
       <tr>
         <th scope="col">Package</th>
-        <th scope="col">30 min</th>
-        <th scope="col">45 min</th>
-        <th scope="col">60 min</th>
-        <th scope="col">60 min (G8+)</th>
+        {% for option in pricing %}<th scope="col">{{ option.column }}</th>
+        {% endfor %}
       </tr>
     </thead>
     <tbody>
       <tr>
         <td>1 lesson</td>
-        <td>$63</td>
-        <td>$85</td>
-        <td>$115</td>
-        <td>$130</td>
+        {% for option in pricing %}<td>{{ option.casual | aud }}</td>
+        {% endfor %}
       </tr>
       <tr>
         <td>5 lessons</td>
-        <td>$56</td>
-        <td>$78</td>
-        <td>$105</td>
-        <td>$120</td>
+        {% for option in pricing %}<td>{{ option.pack5 | divided_by: 5 | aud }}</td>
+        {% endfor %}
       </tr>
       <tr>
         <td>10 lessons</td>
-        <td>$52</td>
-        <td>$70</td>
-        <td>$98</td>
-        <td>$112</td>
+        {% for option in pricing %}<td>{{ option.pack10 | divided_by: 10 | aud }}</td>
+        {% endfor %}
       </tr>
     </tbody>
   </table>

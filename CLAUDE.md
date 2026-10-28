@@ -32,12 +32,14 @@ npm run build   # eleventy — one-shot build into _site/
   passthrough alone doesn't stop Eleventy templating it, which would wrap it in
   `base.html` and publish a stray `admin.html`.
 - **Output is escaped by default**: `setLiquidOptions({ outputEscape: "escape" })`, so
-  every `{{ }}` HTML-escapes its value. The only intended `| raw` is `{{ content | raw }}`
-  in `base.html`. Don't store markup in variables to get around it — keep markup literal
+  every `{{ }}` HTML-escapes its value. The only intended `| raw`s are `{{ content | raw }}`
+  in `base.html` and `| markdown | raw` (the markdown filter escapes any HTML in its input). Don't store markup in variables to get around it — keep markup literal
   in the template and let variables hold data only (see `instruments-list.html`).
 - Custom filter **`relativePath`** strips a leading `/`. It exists because the CMS stores
   image paths as `/assets/…` (see Content editing below). It throws on a missing value,
   so an entry without an image fails the build.
+- Filter **`aud`** formats a number as dollars (`$1,120`; cents only when needed, `$57.50`).
+  Filter **`markdown`** renders CMS markdown fields with `markdown-it` (`html: false`).
 - The only post-build step: an `afterBuild` hook runs `postcss-import` over the
   copied `_site/css/index.css`, inlining all its `@import`s into one file. So at runtime
   the browser loads a single bundled stylesheet, but in `src/` the CSS stays split into
@@ -142,9 +144,10 @@ Keep new code the same way so it can't throw on pages without those nodes.
 - The markup uses **custom-element-like tags** (`<nav-logo-main>`) and **attributes**
   (`<section intro>`, `<img desktop>`, `<img mobile>`, `[scroll-cue]`)
   purely as CSS styling hooks. They are not real components or JS — just selectors.
-- `_includes/pricing.html` (package cards) and `_includes/price-table.html` (full fee
-  table) both hold the prices — the package cards are on `lessons.html`, the fee table on
-  `terms.html` — so update both together.
+- `_includes/pricing.html` (package cards, on `lessons.html`) and `_includes/price-table.html`
+  (per-lesson fee table, on `terms.html`) both loop over `src/_data/pricing.json`. The data
+  holds package **totals** only; per-lesson averages and the "from" price (10-pack ÷ 10) are
+  computed in the templates, so the two can't disagree.
 - `_includes/instruments-list.html` holds the instrument tiles shown on both the homepage
   (`linked: true` — each tile links to `lessons.html`) and `lessons.html` (plain tiles).
 - The teacher profiles (`src/teachers/phoebe.html`, `harmoniche.html`, `angel.html`) are
@@ -168,6 +171,14 @@ Keep new code the same way so it can't throw on pages without those nodes.
   writes root-relative paths (`/assets/x.jpg`) and needs them to show thumbnails, so the
   data keeps the slash and templates output CMS image fields through `| relativePath`.
   Don't strip the slash in the data — the CMS would lose its previews.
+- **Prices** (`pricing.json`), **FAQ** (`faq.json`) and **Studio details** (`studio.json`)
+  are a file collection called "Site content". FAQ topic anchors are `slugify`'d from the
+  topic name, so renaming a topic changes its `#anchor`; answers are markdown.
+  `studio.json` feeds the email everywhere (including `mailto:` links and, via the enquiry
+  form's `data-email`, the error message in `index.js`), the contact-page area/hours, and
+  the footer location/hours/social icons (each icon shows only when its URL is filled in).
+- The FAQ answer "How much do lessons cost?" quotes prices as plain text — it does not
+  update from `pricing.json`.
 - The profile pages (`src/teachers/*.html`) are still hand-written HTML.
 
 ## Deploy

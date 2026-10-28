@@ -1,0 +1,34 @@
+[
+  {
+    "title": "30 min lesson",
+    "level": "",
+    "column": "30 min",
+    "casual": 63,
+    "pack5": 280,
+    "pack10": 520
+  },
+  {
+    "title": "45 min lesson",
+    "level": "",
+    "column": "45 min",
+    "casual": 85,
+    "pack5": 390,
+    "pack10": 700
+  },
+  {
+    "title": "60 min lesson",
+    "level": "Under Grade 8",
+    "column": "60 min",
+    "casual": 115,
+    "pack5": 525,
+    "pack10": 980
+  },
+  {
+    "title": "60 min lesson",
+    "level": "From Grade 8",
+    "column": "60 min (G8+)",
+    "casual": 130,
+    "pack5": 600,
+    "pack10": 1120
+  }
+]

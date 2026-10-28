@@ -20,3 +20,68 @@ collections:
       - {label: "Short Biography", name: bio, widget: text }
       - {label: Qualifications, name: qualifications, widget: string }
       - {label: "Page link", name: profile, widget: string }
+  - name: site
+    label: Site content
+    files:
+      - name: pricing
+        label: Lesson prices
+        file: src/_data/pricing.json
+        description: >-
+          Prices shown on the Lessons page cards and the Terms fee table. Enter package
+          totals; per-lesson averages and "from" prices are worked out automatically.
+          The FAQ answer "How much do lessons cost?" quotes prices too, so update it as well.
+        fields:
+          - name: options
+            label: Lesson options
+            label_singular: lesson option
+            widget: list
+            root: true
+            summary: "{{fields.title}} {{fields.level}}"
+            fields:
+              - {label: Card title, name: title, widget: string, hint: "e.g. 30 min lesson"}
+              - {label: Level, name: level, widget: string, required: false, hint: "Optional line under the title, e.g. Under Grade 8"}
+              - {label: Fee table heading, name: column, widget: string, hint: "Short column heading in the Terms fee table, e.g. 60 min (G8+)"}
+              - {label: Single lesson ($), name: casual, widget: number, value_type: float, min: 0}
+              - {label: 5-lesson pack total ($), name: pack5, widget: number, value_type: float, min: 0}
+              - {label: 10-lesson pack total ($), name: pack10, widget: number, value_type: float, min: 0}
+
+      - name: faq
+        label: FAQ
+        file: src/_data/faq.json
+        fields:
+          - name: topics
+            label: Topics
+            label_singular: topic
+            widget: list
+            root: true
+            summary: "{{fields.topic}}"
+            fields:
+              - {label: Topic, name: topic, widget: string, hint: "Heading for this group of questions, also listed in the sidebar"}
+              - name: questions
+                label: Questions
+                label_singular: question
+                widget: list
+                summary: "{{fields.question}}"
+                fields:
+                  - {label: Question, name: question, widget: string}
+                  - {label: Answer, name: answer, widget: markdown, minimal: true, buttons: [bold, italic, link, bulleted-list, numbered-list], editor_components: []}
+
+      - name: studio
+        label: Studio details
+        file: src/_data/studio.json
+        fields:
+          - {label: Email, name: email, widget: string, hint: "Used on every page, in the footer and in the enquiry form's error message"}
+          - {label: Studio area, name: area, widget: string, hint: "Shown on the Contact page, e.g. Woden, Canberra"}
+          - {label: Studio area note, name: area_note, widget: string, required: false, hint: "Small line under the area, e.g. Full address sent on booking"}
+          - {label: Footer location, name: footer_location, widget: string, hint: "Short location in the footer; it also links to Google Maps"}
+          - name: hours
+            label: Opening hours
+            label_singular: time slot
+            widget: list
+            summary: "{{fields.days}} · {{fields.times}}"
+            fields:
+              - {label: Days, name: days, widget: string, hint: "e.g. Mon – Fri"}
+              - {label: Times, name: times, widget: string, hint: "e.g. 3pm – 8pm"}
+          - {label: Instagram URL, name: instagram, widget: string, required: false, hint: "Leave empty to hide the icon"}
+          - {label: Facebook URL, name: facebook, widget: string, required: false, hint: "Leave empty to hide the icon"}
+          - {label: YouTube URL, name: youtube, widget: string, required: false, hint: "Leave empty to hide the icon"}

@@ -16,11 +16,11 @@ description: "Get in touch with Kreutzer to book a free trial music lesson in Ca
       <p class="eyebrow">Contact details</p>
       <h2>We'd love to hear from you</h2>
       <p>Send us a message and we'll reply within 24 hours to arrange your free trial lesson.</p>
-      <!-- TODO(content): confirm studio hours -->
+      <!-- TODO(content): confirm studio hours (edit them in the CMS under Studio details) -->
       <dl class="info-list">
-        <div><dt>Email</dt><dd><a href="mailto:hello@kreutzer.com.au">hello@kreutzer.com.au</a></dd></div>
-        <div><dt>Studio</dt><dd>Woden, Canberra<br><span class="muted">Full address sent on booking</span></dd></div>
-        <div><dt>Hours</dt><dd>Mon – Fri · 3pm – 8pm<br>Saturday · 9am – 4pm</dd></div>
+        <div><dt>Email</dt><dd><a href="mailto:{{ studio.email }}">{{ studio.email }}</a></dd></div>
+        <div><dt>Studio</dt><dd>{{ studio.area }}{% if studio.area_note != blank %}<br><span class="muted">{{ studio.area_note }}</span>{% endif %}</dd></div>
+        <div><dt>Hours</dt><dd>{% for slot in studio.hours %}{{ slot.days }} · {{ slot.times }}{% unless forloop.last %}<br>{% endunless %}{% endfor %}</dd></div>
       </dl>
       <p class="muted">Looking for quick answers? Visit our <a href="faq.html" class="text-link">FAQ <span class="arrow" aria-hidden="true">→</span></a></p>
     </div>
@@ -29,7 +29,7 @@ description: "Get in touch with Kreutzer to book a free trial music lesson in Ca
       <h3>Book a free trial lesson</h3>
       <p>Tell us a little about yourself and we'll take care of the rest.</p>
 
-      <form action="https://formspree.io/f/mzedqwyy" method="POST" id="enquiryForm">
+      <form action="https://formspree.io/f/mzedqwyy" method="POST" id="enquiryForm" data-email="{{ studio.email }}">
         <!-- Honeypot spam protection -->
         <input type="text" name="_gotcha" style="display:none" tabindex="-1" autocomplete="off">
 

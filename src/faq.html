@@ -15,74 +15,27 @@ description: "Frequently asked questions about Kreutzer music lessons in Canberr
     <aside class="reveal reveal--left">
       <p class="eyebrow">Topics</p>
       <ul role="list">
-        <li><a href="#getting-started">Getting started</a></li>
-        <li><a href="#lessons">Lessons &amp; learning</a></li>
-        <li><a href="#fees">Fees &amp; policies</a></li>
+        {% for group in faq %}<li><a href="#{{ group.topic | slugify }}">{{ group.topic }}</a></li>
+        {% endfor %}
       </ul>
       <p>Still curious? We're happy to chat.</p>
       <a href="contact.html" class="btn btn-clear btn-slide">Ask a question</a>
     </aside>
 
     <div>
-      <div class="faq-group reveal" id="getting-started">
-        <h2>Getting started</h2>
-        <details class="faq-item" open>
-          <summary>How do I book my free trial lesson?</summary>
-          <p>Head to our <a href="contact.html">contact page</a> and fill out the short enquiry form. We'll get back to you within 24 hours to find a time that suits you at our Canberra studio.</p>
+      {% comment %} Questions come from src/_data/faq.json (edited in the CMS). Answers are markdown. {% endcomment %}
+      {% for group in faq %}
+      {% assign first_group = forloop.first %}
+      <div class="faq-group reveal" id="{{ group.topic | slugify }}">
+        <h2>{{ group.topic }}</h2>
+        {% for item in group.questions %}
+        <details class="faq-item"{% if first_group and forloop.first %} open{% endif %}>
+          <summary>{{ item.question }}</summary>
+          {{ item.answer | markdown | raw }}
         </details>
-        <details class="faq-item">
-          <summary>What instruments do you teach?</summary>
-          <p>We currently offer private lessons in piano, violin, cello, flute and voice, as well as music theory and musicianship. See our <a href="lessons.html">lessons page</a> for details on each.</p>
-        </details>
-        <details class="faq-item">
-          <summary>What age can my child start?</summary>
-          <p>Most children are ready for piano or violin from around five years old. Flute is usually best from about eight, and voice from around ten. Adults are always welcome — it's never too late to start.</p>
-        </details>
-        <details class="faq-item">
-          <summary>Do I need my own instrument?</summary>
-          <p>For your trial lesson we can usually provide an instrument in the studio. For regular lessons you'll need one at home to practise on — we're happy to advise on buying or renting good-quality instruments.</p>
-        </details>
-        <details class="faq-item">
-          <summary>Where are lessons held?</summary>
-          <p>Our dedicated studio is in Canberra. Once your lesson is confirmed we'll send you the full address and parking details. Online lessons are also available.</p>
-        </details>
+        {% endfor %}
       </div>
-
-      <div class="faq-group reveal" id="lessons">
-        <h2>Lessons &amp; learning</h2>
-        <details class="faq-item">
-          <summary>Do students have to sit exams?</summary>
-          <p>Not at all. Many students enjoy the structure of AMEB or Trinity exams, but they're entirely optional. We'll set goals that motivate you, whether that's a certificate, a performance or a favourite piece.</p>
-        </details>
-        <details class="faq-item">
-          <summary>How much should I practise?</summary>
-          <p>Little and often is best. Young beginners might practise 10–15 minutes a day; advanced students closer to an hour. Your teacher will give you a clear, realistic practice plan each week.</p>
-        </details>
-        <details class="faq-item">
-          <summary>Can parents sit in on lessons?</summary>
-          <p>Yes — especially for young beginners, a parent in the room helps practice at home. There's also a comfortable waiting area if you'd prefer to step out.</p>
-        </details>
-        <details class="faq-item">
-          <summary>Are there performance opportunities?</summary>
-          <p>Kreutzer is a young studio, and organising our first student recital is one of our goals. Ask your teacher about performance goals that suit you.</p>
-        </details>
-      </div>
-
-      <div class="faq-group reveal" id="fees">
-        <h2>Fees &amp; policies</h2>
-        <details class="faq-item">
-          <summary>How much do lessons cost?</summary>
-          <p>A 30-minute lesson is $63 on its own, or as little as $52 per lesson when booked as a 10-lesson pack. See the <a href="terms.html#payment">full fee schedule</a> for longer lessons and advanced rates.</p>
-        </details>
-        <details class="faq-item">
-          <summary>What if I need to cancel a lesson?</summary>
-          <p>Please give at least 24 hours' notice to reschedule a lesson. Full details are in our <a href="terms.html">terms and conditions</a>.</p>
-        </details>
-        <details class="faq-item">
-          <summary>How do I pay?</summary>
-          <p>Lessons are paid in advance by bank transfer, PayID or cash. We'll send an invoice with each package.</p>
-        </details>
-      </div>
+      {% endfor %}
     </div>
   </div>
 </section>
