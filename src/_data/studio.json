@@ -4,8 +4,14 @@
   "area_note": "Full address sent on booking",
   "footer_location": "Canberra, ACT",
   "hours": [
-    { "days": "Mon – Fri", "times": "3pm – 8pm" },
-    { "days": "Saturday", "times": "9am – 4pm" }
+    {
+      "days": "Mon – Fri",
+      "times": "2pm – 10pm"
+    },
+    {
+      "days": "Sat - Sun",
+      "times": "10am – 10pm"
+    }
   ],
   "instagram": "",
   "facebook": "",
