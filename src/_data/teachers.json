@@ -23,5 +23,13 @@
     "bio": "Angel teaches one-on-one flute, piano and voice. A pianist, flautist and chorister, she is studying Political Science and Music, majoring in Piano Performance, at the Australian National University.",
     "qualifications": "ATCL diploma in Flute",
     "profile": "angel.html"
+  },
+  {
+    "name": "Tyler Nguyen",
+    "image": "/assets/Tyler Nguyen cropped.jpg",
+    "instruments": "Piano",
+    "bio": "Tyler teaches one-on-one piano. A Canberra-based pianist and arranger, he is studying Economics and Music, majoring in Piano Performance, at the Australian National University.",
+    "qualifications": "AMEB Certificate of Performance (Piano)",
+    "profile": "tyler.html"
   }
 ]
