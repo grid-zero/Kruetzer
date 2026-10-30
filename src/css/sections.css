@@ -268,7 +268,8 @@ section[intro][page="careers"]::before {
 section[intro][page="teachers"],
 section[intro][page="phoebe"],
 section[intro][page="harmoniche"],
-section[intro][page="angel"] {
+section[intro][page="angel"],
+section[intro][page="tyler"] {
   background: var(--bg);
   &::before {
     opacity: 0.45;
@@ -300,11 +301,19 @@ section[intro][page="angel"]::before {
   background-image: url('../assets/Angel and Niche - Recital.jpg');
   background-position: center 30%;
 }
+/* Tyler is at the piano on the left; zoom past the clarinettist so he leads the frame */
+section[intro][page="tyler"]::before {
+  background-image: url('../assets/Tyler accompanying - Recital.jpg');
+  background-size: 165% auto;
+  background-position: 0% 62%;
+}
 @media (max-width: 600px) and (orientation: portrait) {
   section[intro][page="phoebe"]::before {
     background-image: url('../assets/Phoebe playing front - Recital.jpg');
     background-position: center 60%;
   }
+  /* Tyler sits at the left-hand piano; keep him in a narrow crop */
+  section[intro][page="tyler"]::before { background-size: cover; background-position: 12% center; }
 }
 
 /* Hero entrance choreography — runs only with JS + motion allowed, and only once

@@ -101,7 +101,7 @@ pricing, teachers, terms, features, faq). Order matters — append new component
   the hero is a navy wash over a faint Debussy-manuscript engraving. A `page` value listed
   in `sections.css` swaps in a photo:
   - `about`, `lessons`, `careers` — faint, desaturated piano-room photo over the navy wash.
-  - `teachers`, `phoebe`, `harmoniche`, `angel` — **people heroes**: a stronger photo on a
+  - `teachers`, `phoebe`, `harmoniche`, `angel`, `tyler` — **people heroes**: a stronger photo on a
     near-black ground with a dark scrim. The navy wash turns warm stage photos muddy, so
     don't put people photos on the plain `page` treatment.
   - Phone-portrait swaps (`max-width: 600px` + portrait) give some heroes an upright photo.
