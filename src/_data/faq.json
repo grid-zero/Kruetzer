@@ -1,26 +1,26 @@
 [
   {
-    "topic": "Getting started",
+    "topic": "Get Started!",
     "questions": [
       {
         "question": "How do I book my free trial lesson?",
-        "answer": "Head to our [contact page](contact.html) and fill out the short enquiry form. We'll get back to you within 24 hours to find a time that suits you at our Canberra studio."
+        "answer": "Head to our [contact page](contact.html) and fill out the short enquiry form. We'll get back to you within 24 hours to find a teacher and time that suits you."
       },
       {
         "question": "What instruments do you teach?",
-        "answer": "We currently offer private lessons in piano, violin, cello, flute and voice, as well as music theory and musicianship. See our [lessons page](lessons.html) for details on each."
+        "answer": "We currently offer private lessons in piano, violin and cello, as well as music theory. Send us a message and we can give you further options! We also offer the ABRSM, Trinity and AMEB examination syllabus. See our [lessons page](lessons.html) for details on each."
       },
       {
         "question": "What age can my child start?",
-        "answer": "Most children are ready for piano or violin from around five years old. Flute is usually best from about eight, and voice from around ten. Adults are always welcome — it's never too late to start."
+        "answer": "We recommend piano to children 4+, violin and cello to ages 6+. Woodwind instruments 8+ (for breath control!) Definitely send us a message either way because we are very flexible in considering individual circumstances. Adults are always welcome- it's never too late to start."
       },
       {
         "question": "Do I need my own instrument?",
-        "answer": "For your trial lesson we can usually provide an instrument in the studio. For regular lessons you'll need one at home to practise on — we're happy to advise on buying or renting good-quality instruments."
+        "answer": "For your trial lesson we can usually provide an instrument in the studio. For regular lessons you'll need one at home to practise on- we're happy to advise on buying or renting good-quality instruments."
       },
       {
         "question": "Where are lessons held?",
-        "answer": "Our dedicated studio is in Canberra. Once your lesson is confirmed we'll send you the full address and parking details. Online lessons are also available."
+        "answer": "Our studio is in a home in Woden. Once your lesson is confirmed we'll send you the full address and parking details."
       }
     ]
   },
@@ -29,19 +29,19 @@
     "questions": [
       {
         "question": "Do students have to sit exams?",
-        "answer": "Not at all. Many students enjoy the structure of AMEB or Trinity exams, but they're entirely optional. We'll set goals that motivate you, whether that's a certificate, a performance or a favourite piece."
+        "answer": "Not at all. Many students enjoy the structure of AMEB or Trinity exams, but they're entirely optional. We mainly aim to set goals that motivate you, whether that's a certificate, a performance or a favourite piece."
       },
       {
         "question": "How much should I practise?",
-        "answer": "Little and often is best. Young beginners might practise 10–15 minutes a day; advanced students closer to an hour. Your teacher will give you a clear, realistic practice plan each week."
-      },
-      {
-        "question": "Can parents sit in on lessons?",
-        "answer": "Yes — especially for young beginners, a parent in the room helps practice at home. There's also a comfortable waiting area if you'd prefer to step out."
+        "answer": "Practice is extremely important to your learning! Each practice schedule depends on the student and the teacher, but as a general guideline I would recommend 4-5 times a week 15-20 minutes each session. Advanced students (Grade 7+) should aim to practice at least an hour."
       },
       {
         "question": "Are there performance opportunities?",
-        "answer": "Kreutzer is a young studio, and organising our first student recital is one of our goals. Ask your teacher about performance goals that suit you."
+        "answer": "Kreutzer is a young studio, and organising our first student recital is one of our goals for 2027. Ask your teacher about performance goals that suit you."
+      },
+      {
+        "question": "Can parents sit in on lessons?",
+        "answer": "Yes, especially for young beginners, a parent in the room helps practice at home. There's also a comfortable waiting area if you'd prefer to step out."
       }
     ]
   },
@@ -50,7 +50,7 @@
     "questions": [
       {
         "question": "How much do lessons cost?",
-        "answer": "A 30-minute lesson is $63 on its own, or as little as $52 per lesson when booked as a 10-lesson pack. See the [full fee schedule](terms.html#payment) for longer lessons and advanced rates."
+        "answer": "See the [full fee schedule](terms.html#payment) for longer lessons and advanced rates."
       },
       {
         "question": "What if I need to cancel a lesson?",
@@ -58,7 +58,7 @@
       },
       {
         "question": "How do I pay?",
-        "answer": "Lessons are paid in advance by bank transfer, PayID or cash. We'll send an invoice with each package."
+        "answer": "Lessons are paid in advance by bank transfer or cash. We'll send an invoice with each package."
       }
     ]
   }
