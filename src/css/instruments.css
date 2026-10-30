@@ -6,7 +6,7 @@ section[instruments] {
 
   & ul {
     display: grid;
-    grid-template-columns: repeat(6, 1fr);
+    grid-template-columns: repeat(5, 1fr);
     gap: var(--space-sm);
   }
 
@@ -88,12 +88,19 @@ section[instruments] {
   }
 }
 
+/* Three per row on a six-column track, so a two-tile last row can sit centred */
 @media (max-width: 1024px) {
-  section[instruments] ul { grid-template-columns: repeat(3, 1fr); }
+  section[instruments] ul { grid-template-columns: repeat(6, 1fr); }
+  section[instruments] li { grid-column: span 2; }
+  section[instruments] li:nth-last-child(2):nth-child(3n+1) { grid-column: 2 / span 2; }
 }
 
+/* Two per row; an odd last tile stretches across as a wide banner */
 @media (max-width: 640px) {
   section[instruments] ul { grid-template-columns: 1fr 1fr; }
+  section[instruments] li,
+  section[instruments] li:nth-last-child(2):nth-child(3n+1) { grid-column: auto; }
+  section[instruments] li:last-child:nth-child(odd) { grid-column: 1 / -1; aspect-ratio: 2 / 1; }
   section[instruments] li span { display: none; }
 }
 
