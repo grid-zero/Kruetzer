@@ -51,6 +51,18 @@ section .eyebrow {
   color: var(--gold);
   margin-bottom: var(--space-sm);
 }
+/* A section titled by a single word or two: the eyebrow's gold small caps, sized up
+   between the eyebrow and the big white title. Still a real <h2> for the outline. */
+section h2.label {
+  font-family: var(--font-title);
+  font-size: var(--text-md);
+  font-weight: var(--weight-semi);
+  letter-spacing: 0.2em;
+  line-height: 1.3;
+  text-transform: uppercase;
+  color: var(--gold);
+  margin-bottom: var(--space-sm);
+}
 /* Centred eyebrows get a gold rule on each side; left-aligned ones stay bare */
 .section-head.center .eyebrow::before,
 .section-head.center .eyebrow::after,

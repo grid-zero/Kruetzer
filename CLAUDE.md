@@ -94,7 +94,9 @@ pricing, teachers, terms, features, faq). Order matters — append new component
 - Shared building blocks live in `features.css` (`.split` + `.reverse`/`.top`, `.frame` +
   `.portrait`, `.pillars`, `.card-grid`/`.card`, `.timeline`, `.pull-quote`, `.checklist`,
   `.info-list`, `.notice`) and the section-heading pattern (`.section-head` +
-  `.center`/`.split`) in `sections.css`. Compose new pages from these before writing new
+  `.center`/`.split`) in `sections.css`. A section titled by a single word uses
+  `<h2 class="label">` (gold small caps, sized between the eyebrow and a full title) instead of
+  an eyebrow + white `<h2>` pair. Compose new pages from these before writing new
   CSS. Card titles use `<h4>` because `section h3` is globally styled as the gold eyebrow.
   `src/css/README.md` documents the CSS folder in more depth (repo-only; Eleventy ignores it).
 - Interior pages open with `<section intro page="…">`. With no value (or an unlisted one)
