@@ -58,6 +58,14 @@ npm run build   # eleventy — one-shot build into _site/
   relative `assets/…` / `contact.html` paths as a top-level page. Consequence: **file names
   must be unique across subfolders.** `fileSlug` is `""` for `index.html`, which is why the
   `|| "index"` fallback exists — don't remove it.
+- **Link previews:** `base.html` emits Open Graph tags for every page, using absolute URLs
+  built from `studio.site_url` (the one place the live address lives; crawlers can't
+  resolve relative paths). A page gets a preview image by setting `share_image`
+  (+ `share_image_alt`) in its front matter; the teacher profiles point at 1200×630 crops in
+  `assets/share/`. A new profile needs its own crop there.
+- **Favicon:** `assets/Kreutzer-Favicon.svg` is the logo on a dark rounded tile (the bare
+  `Kreutzer-Icon.svg` is pale gold on transparent and vanishes on light-mode tabs), with
+  `favicon-32.png` and `apple-touch-icon.png` as raster fallbacks.
 - `src/_includes/base.html` is the shell every page renders into: `<head>` (inline script
   that adds the `js` class and, if the loader already played this session, `no-loader`) +
   skip link + optional loader + header + `<main>{{ content }}</main>` + footer + `index.js`.
