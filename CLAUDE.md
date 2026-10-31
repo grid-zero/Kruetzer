@@ -58,11 +58,13 @@ npm run build   # eleventy — one-shot build into _site/
   relative `assets/…` / `contact.html` paths as a top-level page. Consequence: **file names
   must be unique across subfolders.** `fileSlug` is `""` for `index.html`, which is why the
   `|| "index"` fallback exists — don't remove it.
-- **Link previews:** `base.html` emits Open Graph tags for every page, using absolute URLs
-  built from `studio.site_url` (the one place the live address lives; crawlers can't
-  resolve relative paths). A page gets a preview image by setting `share_image`
-  (+ `share_image_alt`) in its front matter; the teacher profiles point at 1200×630 crops in
-  `assets/share/`. A new profile needs its own crop there.
+- **Link previews:** `base.html` emits Open Graph tags and a canonical link for every page,
+  using absolute URLs from the `absoluteUrl` filter + `studio.site_url` (the one place the live
+  address lives; crawlers can't resolve relative paths). The filter adds a missing trailing slash
+  and **fails the build** if `site_url` is blank or not a web address. A page sets its preview
+  image with `share_image` (+ `share_image_alt`) in front matter; pages without one get
+  `assets/share/default.jpg` (the logo card). The image size is hard-coded as 1200×630 in
+  `base.html`, so **every share image must be a 1200×630 JPEG** — a new profile needs its own crop.
 - **Favicon:** `assets/Kreutzer-Favicon.svg` is the logo on a dark rounded tile (the bare
   `Kreutzer-Icon.svg` is pale gold on transparent and vanishes on light-mode tabs), with
   `favicon-32.png` and `apple-touch-icon.png` as raster fallbacks.

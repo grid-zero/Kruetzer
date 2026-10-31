@@ -11,18 +11,29 @@
     <meta name="description" content="{{ description }}">
     <meta name="theme-color" content="#0b0c10">
     <title>{{ title }}</title>
-    {% comment %} Link previews: crawlers need absolute URLs, so these prefix studio.site_url.
-       Pages opt in to a preview image with `share_image` in their front matter. {% endcomment %}
+    {% comment %} Link previews: crawlers need absolute URLs, so these resolve against studio.site_url.
+       A page can set its own `share_image` (+ `share_image_alt`) in front matter; otherwise it
+       gets the logo card. Every share image is a 1200x630 JPEG, so the size is stated here —
+       it lets Facebook/Messenger show the image on the very first share. {% endcomment %}
+    {% assign page_url = page.url | absoluteUrl: studio.site_url %}
+    {% if share_image %}
+      {% assign og_image = share_image %}{% assign og_image_alt = share_image_alt %}
+    {% else %}
+      {% assign og_image = "assets/share/default.jpg" %}{% assign og_image_alt = "Kreutzer logo — Music Tuition, Canberra" %}
+    {% endif %}
+    {% unless page.fileSlug == "404" %}<link rel="canonical" href="{{ page_url }}">{% endunless %}
     <meta property="og:type" content="website">
     <meta property="og:site_name" content="Kreutzer">
+    <meta property="og:locale" content="en_AU">
     <meta property="og:title" content="{{ title }}">
     <meta property="og:description" content="{{ description }}">
-    <meta property="og:url" content="{{ studio.site_url }}{{ page.url | relativePath }}">
-    {% if share_image %}
-    <meta property="og:image" content="{{ studio.site_url }}{{ share_image | replace: ' ', '%20' }}">
-    <meta property="og:image:alt" content="{{ share_image_alt }}">
+    <meta property="og:url" content="{{ page_url }}">
+    <meta property="og:image" content="{{ og_image | absoluteUrl: studio.site_url }}">
+    <meta property="og:image:type" content="image/jpeg">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+    <meta property="og:image:alt" content="{{ og_image_alt }}">
     <meta name="twitter:card" content="summary_large_image">
-    {% endif %}
     <link rel="icon" type="image/svg+xml" href="assets/Kreutzer-Favicon.svg">
     <link rel="icon" type="image/png" sizes="32x32" href="assets/favicon-32.png">
     <link rel="apple-touch-icon" href="assets/apple-touch-icon.png">

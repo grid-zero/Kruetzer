@@ -22,6 +22,18 @@ module.exports = function (eleventyConfig) {
     return value.replace(/^\//, "");
   });
 
+  // Absolute URL for link previews / canonical: `{{ path | absoluteUrl: studio.site_url }}`.
+  // site_url is CMS-editable, so tolerate a missing trailing slash (without it, URL
+  // resolution would drop the /Kruetzer/ project folder) and fail the build if it's
+  // blank or not a web address, rather than deploy previews that point nowhere.
+  eleventyConfig.addFilter("absoluteUrl", function (value, base) {
+    if (!/^https?:\/\/\S+$/.test((base || "").trim())) {
+      throw new Error(`studio.site_url must be a full web address, got "${base}"`);
+    }
+    base = base.trim().replace(/\/?$/, "/");
+    return new URL(String(value || "").replace(/^\//, ""), base).href;
+  });
+
   // Whole dollars stay whole ($1,120); anything with cents shows two places ($57.50)
   eleventyConfig.addFilter("aud", function (value) {
     const cents = Number.isInteger(value) ? 0 : 2;
