@@ -1,0 +1,14 @@
+---
+permalink: sitemap.xml
+layout: false
+eleventyExcludeFromCollections: true
+---
+{%- comment -%} Every page except noindex ones (404, thanks) and pages marked `sitemap: false`. {%- endcomment -%}
+<?xml version="1.0" encoding="utf-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+{%- for item in collections.all %}
+{%- unless item.data.noindex or item.data.sitemap == false %}
+  <url><loc>{{ item.url | absoluteUrl: studio.site_url }}</loc></url>
+{%- endunless %}
+{%- endfor %}
+</urlset>

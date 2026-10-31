@@ -22,16 +22,45 @@ module.exports = function (eleventyConfig) {
     return value.replace(/^\//, "");
   });
 
-  // Absolute URL for link previews / canonical: `{{ path | absoluteUrl: studio.site_url }}`.
+  // Absolute URL for link previews / canonical / sitemap: `{{ path | absoluteUrl: studio.site_url }}`.
   // site_url is CMS-editable, so tolerate a missing trailing slash (without it, URL
   // resolution would drop the /Kruetzer/ project folder) and fail the build if it's
   // blank or not a web address, rather than deploy previews that point nowhere.
-  eleventyConfig.addFilter("absoluteUrl", function (value, base) {
+  function absoluteUrl(value, base) {
     if (!/^https?:\/\/\S+$/.test((base || "").trim())) {
       throw new Error(`studio.site_url must be a full web address, got "${base}"`);
     }
     base = base.trim().replace(/\/?$/, "/");
     return new URL(String(value || "").replace(/^\//, ""), base).href;
+  }
+  eleventyConfig.addFilter("absoluteUrl", absoluteUrl);
+
+  // Search-engine description of the studio (schema.org JSON-LD), built from studio.json.
+  // Output with `| raw` inside <script type="application/ld+json">: HTML-escaping would
+  // break the JSON, so instead `<` is escaped as \u003c and nothing can close the script tag.
+  eleventyConfig.addFilter("structuredData", function (studio, description) {
+    const base = absoluteUrl("", studio.site_url);
+    const data = {
+      "@context": "https://schema.org",
+      "@type": "MusicSchool",
+      name: "Kreutzer",
+      url: base,
+      logo: absoluteUrl("assets/apple-touch-icon.png", base),
+      image: absoluteUrl("assets/share/default.jpg", base),
+      description,
+      email: studio.email,
+      foundingDate: "2025",
+      address: {
+        "@type": "PostalAddress",
+        addressLocality: studio.area,
+        addressRegion: "ACT",
+        addressCountry: "AU",
+      },
+      areaServed: { "@type": "City", name: "Canberra" },
+      sameAs: [studio.instagram, studio.facebook, studio.youtube].filter(Boolean),
+    };
+    if (!data.sameAs.length) delete data.sameAs;
+    return JSON.stringify(data, null, 2).replace(/</g, "\\u003c");
   });
 
   // Whole dollars stay whole ($1,120); anything with cents shows two places ($57.50)

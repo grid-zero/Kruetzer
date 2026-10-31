@@ -33,7 +33,8 @@ npm run build   # eleventy — one-shot build into _site/
   `base.html` and publish a stray `admin.html`.
 - **Output is escaped by default**: `setLiquidOptions({ outputEscape: "escape" })`, so
   every `{{ }}` HTML-escapes its value. The only intended `| raw`s are `{{ content | raw }}`
-  in `base.html` and `| markdown | raw` (the markdown filter escapes any HTML in its input). Don't store markup in variables to get around it — keep markup literal
+  in `base.html`, `| markdown | raw` (the markdown filter escapes any HTML in its input), and
+  `| structuredData | raw` for the homepage JSON-LD (the filter escapes `<`, so it can't close the script). Don't store markup in variables to get around it — keep markup literal
   in the template and let variables hold data only (see `instruments-list.html`).
 - Custom filter **`relativePath`** strips a leading `/`. It exists because the CMS stores
   image paths as `/assets/…` (see Content editing below). It throws on a missing value,
@@ -53,7 +54,8 @@ npm run build   # eleventy — one-shot build into _site/
   (`phoebe.html`, `harmoniche.html`, `angel.html`) purely to keep the source tidy.
 - `src/src.11tydata.js` is a directory data file that applies to every page under `src/`
   (subfolders included): it sets `layout: base.html` and a computed permalink of
-  `<fileSlug || "index">.html`. Result: **pages output flat** (`_site/about.html`,
+  `<fileSlug || "index">.html` unless the page's front matter sets its own `permalink`
+  (only `sitemap.liquid` → `sitemap.xml` and `robots.liquid` → `robots.txt` do). Result: **pages output flat** (`_site/about.html`,
   `_site/phoebe.html`), never nested — so a page in `src/teachers/` still uses the same
   relative `assets/…` / `contact.html` paths as a top-level page. Consequence: **file names
   must be unique across subfolders.** `fileSlug` is `""` for `index.html`, which is why the
@@ -65,6 +67,15 @@ npm run build   # eleventy — one-shot build into _site/
   image with `share_image` (+ `share_image_alt`) in front matter; pages without one get
   `assets/share/default.jpg` (the logo card). The image size is hard-coded as 1200×630 in
   `base.html`, so **every share image must be a 1200×630 JPEG** — a new profile needs its own crop.
+- **Search engines:** `sitemap.xml` lists every page except those with `noindex: true` in front
+  matter (404, thanks — these also get `<meta name="robots" content="noindex">` and no canonical)
+  or `sitemap: false` (the coming-soon resources/shop). `robots.txt` points at the sitemap, but
+  crawlers only read it at a domain root, so it matters once the site has its own domain. The
+  homepage carries schema.org `MusicSchool` JSON-LD built by the `structuredData` filter from
+  `studio.json` (social links appear in it once filled in).
+- **404 page:** GitHub Pages serves it at any missing address, including nested ones, so on that
+  page only `base.html` adds `<base href>` (the site root) and points its `#main` links at
+  `404.html#main`. Keep that when touching the skip link or the footer's "Back to top".
 - **Favicon:** `assets/Kreutzer-Favicon.svg` is the logo on a dark rounded tile (the bare
   `Kreutzer-Icon.svg` is pale gold on transparent and vanishes on light-mode tabs), with
   `favicon-32.png` and `apple-touch-icon.png` as raster fallbacks.
@@ -173,7 +184,8 @@ Keep new code the same way so it can't throw on pages without those nodes.
 
 ## Content editing (Sveltia CMS)
 
-- `src/admin/index.html` loads Sveltia CMS; `src/admin/config.yml` describes the content.
+- `src/admin/index.html` loads Sveltia CMS, **pinned to an exact version** on unpkg (bump it
+  deliberately and test a save; unpinned, a breaking release could stop editing overnight); `src/admin/config.yml` describes the content.
   Both ship to `_site/admin/` as-is. Local editing uses Sveltia's "Work with Local
   Repository" mode (Chrome/Edge).
 - **Teacher cards** on `teachers.html` render from `src/_data/teachers.json` — a top-level

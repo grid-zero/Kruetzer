@@ -21,7 +21,19 @@
     {% else %}
       {% assign og_image = "assets/share/default.jpg" %}{% assign og_image_alt = "Kreutzer logo — Music Tuition, Canberra" %}
     {% endif %}
-    {% unless page.fileSlug == "404" %}<link rel="canonical" href="{{ page_url }}">{% endunless %}
+    {% comment %} The 404 page is served at whatever address was missing, possibly a nested one
+       (/Kruetzer/old/page), where relative paths would resolve to the wrong folder. <base> pins
+       them to the site root; its own #anchors then need the file name to stay on the page. {% endcomment %}
+    {% assign self_link = "" %}
+    {% if page.fileSlug == "404" %}
+      <base href="{{ "" | absoluteUrl: studio.site_url }}">
+      {% assign self_link = "404.html" %}
+    {% endif %}
+    {% if noindex %}
+      <meta name="robots" content="noindex">
+    {% else %}
+      <link rel="canonical" href="{{ page_url }}">
+    {% endif %}
     <meta property="og:type" content="website">
     <meta property="og:site_name" content="Kreutzer">
     <meta property="og:locale" content="en_AU">
@@ -41,9 +53,14 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400..700&family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500;1,600&family=Montserrat:ital,wght@0,300..600;1,300..500&family=Tangerine:wght@400;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="css/index.css">
+    {% if page.url == "/" %}
+    <script type="application/ld+json">
+{{ studio | structuredData: description | raw }}
+    </script>
+    {% endif %}
   </head>
   <body>
-    <a class="skip-link" href="#main">Skip to content</a>
+    <a class="skip-link" href="{{ self_link }}#main">Skip to content</a>
     {% if loader %}{% include "loader.html" %}{% endif %}
     {% include "header.html" %}
     <main id="main">
